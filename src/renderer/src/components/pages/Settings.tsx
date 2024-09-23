@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import vladBg from '../../../../../resources/vladbg.webp'
 import { Setting } from '../../types/Setting.type'
@@ -8,6 +8,10 @@ import RamSetting from '../features/Settings/RamSetting'
 import Button from '../shared/UI/Button'
 
 const Settings: FC = () => {
+  useEffect(() => {
+    document.title = 'The Chocolate Thief - Настройки'
+  }, [])
+
   const {
     toggleAutoLogin,
     toggleDebugMode,
@@ -52,7 +56,7 @@ const Settings: FC = () => {
             <SettingsSwitcher setting={setting} key={setting.id} />
           ))}
           <RamSetting />
-          <NavLink to={'/'}>
+          <NavLink to={'/'} className="self-start">
             <Button role={'secondary'}>На главную</Button>
           </NavLink>
         </div>

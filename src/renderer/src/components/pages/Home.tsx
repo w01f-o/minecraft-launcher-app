@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import SettingsIcon from '../shared/Icons/SettingsIcon'
 import ModPackList from '../widgets/Modpack/ModpackList'
@@ -6,6 +6,10 @@ import stasBg from '../../../../../resources/stasbg.webp'
 import StartButton from '../features/StartButton'
 
 const Home: FC = () => {
+  useEffect(() => {
+    document.title = 'The Chocolate Thief'
+  }, [])
+
   return (
     <>
       <div className="flex h-full flex-grow justify-between items-center">
