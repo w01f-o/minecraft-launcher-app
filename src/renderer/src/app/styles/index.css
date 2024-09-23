@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+#root {
+  @apply flex flex-col w-screen min-h-screen overflow-hidden
+}
+
+#drag-region {
+  -webkit-app-region: drag;
+}
