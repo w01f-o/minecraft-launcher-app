@@ -16,9 +16,11 @@ const Settings: FC = () => {
     toggleAutoLogin,
     toggleDebugMode,
     toggleFullScreen,
+    toggleLauncherHide,
     isAutoLogin,
     isDebugMode,
     isFullscreen,
+    isLauncherHide,
   } = useSettings();
 
   const settingsSwitcherList: Setting[] = [
@@ -26,21 +28,28 @@ const Settings: FC = () => {
       id: 1,
       name: 'Debug - режим',
       description: 'Включить режим отладки при запуске игрового клиента',
-      defaultValue: isDebugMode,
+      value: isDebugMode,
       action: toggleDebugMode,
     },
     {
       id: 2,
       name: 'Полноэкранный режим',
       description: 'Включить полноэкранный режим в Minecraft',
-      defaultValue: isFullscreen,
+      value: isFullscreen,
       action: toggleFullScreen,
     },
     {
       id: 3,
+      name: 'Скрывать лаунчер',
+      description: 'Скрывать лаунчер при запуске игры',
+      value: isLauncherHide,
+      action: toggleLauncherHide,
+    },
+    {
+      id: 4,
       name: 'Автоматический вход на сервер',
       description: 'Включить автоматический вход на сервер при запуске',
-      defaultValue: isAutoLogin,
+      value: isAutoLogin,
       action: toggleAutoLogin,
     },
   ];

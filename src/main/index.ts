@@ -6,8 +6,8 @@ import icon from '../../resources/icon.png?asset';
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 670,
+    width: 1100,
+    height: 730,
     show: false,
     autoHideMenuBar: true,
     // ...(process.platform === 'linux' ? { icon } : {}),
@@ -29,15 +29,13 @@ function createWindow(): void {
     return { action: 'deny' };
   });
 
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
   }
 
-  ipcMain.on('TITLE_BAR_ACTION', (_event, args) => {
+  ipcMain.on('TITLE_BAR_ACTION', (_event, args: 'minimize' | 'maximize' | 'close') => {
     switch (args) {
       case 'minimize':
         mainWindow.minimize();
@@ -49,6 +47,30 @@ function createWindow(): void {
 
       case 'close':
         mainWindow.close();
+        break;
+    }
+  });
+
+  ipcMain.on('HIDE_LAUNCHER', (_event, args: 'hide' | 'show') => {
+    switch (args) {
+      case 'hide':
+        mainWindow.hide();
+        break;
+
+      case 'show':
+        mainWindow.show();
+        break;
+    }
+  });
+
+  ipcMain.on('DEBUG_WINDOW', (_event, args: 'hide' | 'show') => {
+    switch (args) {
+      case 'hide':
+        mainWindow.hide();
+        break;
+
+      case 'show':
+        mainWindow.show();
         break;
     }
   });

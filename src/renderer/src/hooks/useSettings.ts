@@ -1,25 +1,28 @@
 import { useAppDispatch, useAppSelector } from './redux';
 import {
-  toggleDebugMode as toggleDebugModeAction,
-  toggleAutoLogin as toggleAutoLoginAction,
-  toggleFullscreen as toggleFullscreenAction,
   setMaxRam as setMaxRamAction,
+  toggleAutoLogin as toggleAutoLoginAction,
+  toggleDebugMode as toggleDebugModeAction,
+  toggleFullscreen as toggleFullscreenAction,
+  toggleLauncherHide as toggleLauncherHideAction,
 } from '../store/reducers/settingsSlice';
 
 type useSettingReturn = {
   isDebugMode: boolean;
   isFullscreen: boolean;
   isAutoLogin: boolean;
+  isLauncherHide: boolean;
   maxRam: number | null;
   toggleDebugMode: () => void;
   toggleFullScreen: () => void;
   toggleAutoLogin: () => void;
+  toggleLauncherHide: () => void;
   setMaxRam: (value: number) => void;
 };
 
 export const useSettings = (): useSettingReturn => {
   const dispatch = useAppDispatch();
-  const { isDebugMode, isAutoLogin, isFullscreen, maxRam } = useAppSelector(
+  const { isDebugMode, isAutoLogin, isFullscreen, maxRam, isLauncherHide } = useAppSelector(
     (state) => state.settings,
   );
 
@@ -35,6 +38,10 @@ export const useSettings = (): useSettingReturn => {
     dispatch(toggleAutoLoginAction());
   };
 
+  const toggleLauncherHide = (): void => {
+    dispatch(toggleLauncherHideAction());
+  };
+
   const setMaxRam = (value: number): void => {
     dispatch(setMaxRamAction(value));
   };
@@ -43,10 +50,12 @@ export const useSettings = (): useSettingReturn => {
     isDebugMode,
     isAutoLogin,
     isFullscreen,
+    isLauncherHide,
     maxRam,
     toggleAutoLogin,
     toggleDebugMode,
     toggleFullScreen,
+    toggleLauncherHide,
     setMaxRam,
   };
 };

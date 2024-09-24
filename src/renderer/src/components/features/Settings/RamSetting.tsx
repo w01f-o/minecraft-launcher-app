@@ -16,9 +16,10 @@ const RamSetting: FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
+      <div className="text-lg">Выделение памяти:</div>
       <RangeInput value={maxRam} min={0} max={totalRam} setValue={setMaxRam} />
-      <div className="flex items-center text-xl gap-4 py-3 select-none">
+      <div className="flex items-center text-xl gap-4 select-none">
         {maxRam !== null && totalRam !== null && (
           <>
             <Field

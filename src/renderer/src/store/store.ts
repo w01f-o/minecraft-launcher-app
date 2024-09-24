@@ -25,7 +25,7 @@ const persistConfig = {
   storage,
   whitelist: ['settings', 'specs'],
 };
-
+//'settings', 'specs'
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

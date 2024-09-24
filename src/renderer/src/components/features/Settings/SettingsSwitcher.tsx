@@ -9,7 +9,7 @@ interface SettingsSwitcherProps {
 const SettingsSwitcher: FC<SettingsSwitcherProps> = ({ setting }) => {
   return (
     <div className="flex gap-6 items-center">
-      <ToggleSwitcher defaultChecked={setting.defaultValue} onChange={setting.action} />
+      <ToggleSwitcher checked={setting.value} onChange={setting.action} />
       <div>
         <div>{setting.name}</div>
         <div>{setting.description}</div>

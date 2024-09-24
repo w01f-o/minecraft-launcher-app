@@ -491,6 +491,19 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
+"@jebibot/skinview-utils@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@jebibot/skinview-utils/-/skinview-utils-0.8.0.tgz#35daa402b2470685ded3ada59eb6120732af216d"
+  integrity sha512-LzkAOxfwmXFr2lPtjl6Vz32XnhO0GvSLF1UAjwbxWCR9UNLNb7hDZPz+A1iQBbjEQ/V8n78AQfkcnidlzo363g==
+
+"@jebibot/skinview3d@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jebibot/skinview3d/-/skinview3d-3.1.0.tgz#ac63945761c59c6c94747e1dacf40ae6ee6a6c35"
+  integrity sha512-YhEG/cIh7UHRK+4UyyBgNX6IDayVpB1qcxf4nNq8qqHwfdLb5XxEPJ0sLZj+RT3u8EWPmaEedVov+G0GM9nvkw==
+  dependencies:
+    "@jebibot/skinview-utils" "^0.8.0"
+    three "^0.167.1"
+
 "@jridgewell/gen-mapping@^0.3.2", "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.5.tgz#dcce6aff74bdf6dad1a95802b69b04a2fcb1fb36"
@@ -4385,6 +4398,11 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
+
+three@^0.167.1:
+  version "0.167.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.167.1.tgz#3fe4ba2b0a03fd662afe4977a56803d955b61689"
+  integrity sha512-gYTLJA/UQip6J/tJvl91YYqlZF47+D/kxiWrbTon35ZHlXEN0VOo+Qke2walF1/x92v55H6enomymg4Dak52kw==
 
 tmp-promise@^3.0.2:
   version "3.0.3"

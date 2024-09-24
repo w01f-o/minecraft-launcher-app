@@ -2,6 +2,6 @@ export interface Setting {
   id: number;
   name: string;
   description: string;
-  defaultValue: boolean;
+  value: boolean;
   action: () => void;
 }

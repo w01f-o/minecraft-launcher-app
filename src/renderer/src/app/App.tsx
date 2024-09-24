@@ -1,18 +1,18 @@
 import { FC } from 'react';
 import './styles/index.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from '../components/pages/Home';
-import Settings from '../components/pages/Settings';
 import RootProvider from './providers/RootProvider';
 import Layout from '../components/pages/Layout';
+import { routes } from '../constants/routes';
 
 const App: FC = () => {
   return (
     <RootProvider>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/settings" element={<Settings />} />
+          {routes.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
         </Routes>
       </Layout>
     </RootProvider>

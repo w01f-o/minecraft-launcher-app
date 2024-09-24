@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import type { ModPack as ModPackType } from '../../../types/ModPack.type';
 import ModPack from '../../entities/ModPack';
 import rectangle from '../../../../../../resources/Прямоугольник 3.png';
@@ -51,12 +51,18 @@ const ModPackList: FC = () => {
   const { currentModPack, setCurrentModPack } = useMinecraft();
 
   useEffect(() => {
-    setCurrentModPack(modPacks[0]);
+    if (currentModPack === null) {
+      setCurrentModPack(modPacks[0]);
+    }
+  }, []);
+
+  const sortedModPacks = useMemo(() => {
+    return modPacks.sort((a) => (a.id === currentModPack?.id ? -1 : 1));
   }, []);
 
   return (
     <div className="flex flex-col gap-4 z-0">
-      {modPacks.map((modPack) => (
+      {sortedModPacks.map((modPack) => (
         <ModPack item={modPack} key={modPack.id} isCurrent={currentModPack?.id === modPack.id} />
       ))}
     </div>
