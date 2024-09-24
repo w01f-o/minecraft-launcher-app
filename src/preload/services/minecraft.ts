@@ -1,35 +1,27 @@
-import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../../types/MinecraftApi';
+import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../types/MinecraftApi';
 import { Authenticator, Client } from 'minecraft-launcher-core';
 import * as electron from 'electron';
+import { fabric } from 'tomate-loaders';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
-  start({
+  async start({
     setIsLoading,
     isFullscreen,
     isLauncherHide,
     navigateFunction,
     isDebugMode,
   }: StartMinecraftOptions) {
-    this.launcher.launch({
-      root: './minecraft',
-      version: {
-        number: '1.14',
-        type: 'release',
-      },
-      memory: {
-        max: '6G',
-        min: '4G',
-      },
-      authorization: Authenticator.getAuth('w01f'),
-      window: {
-        fullscreen: isFullscreen,
-      },
-    });
+    const minecraftDirectory: string = './minecraft';
 
     if (isDebugMode) {
       navigateFunction('/debug');
     }
+
+    const fabricConfig = await fabric.getMCLCLaunchConfig({
+      gameVersion: '1.20.1',
+      rootPath: minecraftDirectory,
+    });
 
     this.launcher.once('download', () => {
       setIsLoading(false);
@@ -40,6 +32,22 @@ export const minecraftApi: MinecraftApi = {
           electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
         });
       }
+    });
+
+    this.launcher.on('download-status', (e) => {
+      console.log(e);
+    });
+
+    await this.launcher.launch({
+      ...fabricConfig,
+      memory: {
+        max: '6G',
+        min: '4G',
+      },
+      authorization: Authenticator.getAuth('w01f'),
+      window: {
+        fullscreen: isFullscreen,
+      },
     });
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {

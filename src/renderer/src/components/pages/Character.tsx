@@ -1,27 +1,30 @@
 import { FC, useEffect, useRef } from 'react';
-import { SkinViewer } from '@jebibot/skinview3d';
+import { SkinViewer, WalkingAnimation } from '@jebibot/skinview3d';
 import skinImage from '../../../../../resources/skin.png';
+import capeImage from '../../../../../resources/Плащ.png';
 
 const Character: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasWrapperRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      const skinViewer = new SkinViewer({
+    if (canvasRef.current && canvasWrapperRef.current) {
+      new SkinViewer({
         canvas: canvasRef.current,
-        width: 300,
-        height: 400,
+        width: canvasWrapperRef.current.offsetWidth,
+        height: canvasWrapperRef.current.offsetHeight,
         skin: skinImage,
+        cape: capeImage,
+        animation: new WalkingAnimation(),
       });
-
-      skinViewer.width = 300;
-      skinViewer.height = 500;
     }
   }, []);
 
   return (
-    <div className="flex items-center">
-      <canvas ref={canvasRef}></canvas>
+    <div className="flex flex-grow items-stretch">
+      <div className="w-1/2" ref={canvasWrapperRef}>
+        <canvas ref={canvasRef} className="w-full h-full"></canvas>
+      </div>
     </div>
   );
 };
