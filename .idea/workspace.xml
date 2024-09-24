@@ -4,36 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="ref: New prettier settings">
-      <change afterPath="$PROJECT_DIR$/resources/skin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Debug.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Screenshots.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Skins.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Nav/NavBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/types/Route.type.ts" afterDir="false" />
+    <list default="true" id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="feat: Debug page">
+      <change afterPath="$PROJECT_DIR$/resources/minecraft-screenshot.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/Mod.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/Screenshot.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ArrowLeftIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ArrowRightIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/DownloadIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/EyeIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ReadyIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ThrashIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/GallerySwiperButtons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/SettingsSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/SettingsSwitcher.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/SettingsIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/SettingsIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpack/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpack/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Screenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Screenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Skins.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpack/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Nav/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/Setting.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/Setting.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/ModPack.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,6 +105,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\minecraft-launcher\frontend\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer\src\components\widgets" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -142,7 +142,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727169228297</updated>
       <workItem from="1727169229703" duration="324000" />
-      <workItem from="1727169562479" duration="12051000" />
+      <workItem from="1727169562479" duration="31647000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Stas easter">
       <option name="closed" value="true" />
@@ -160,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727170105502</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: Debug page">
+      <option name="closed" value="true" />
+      <created>1727182047711</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727182047711</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +182,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Stas easter" />
     <MESSAGE value="ref: New prettier settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref: New prettier settings" />
+    <MESSAGE value="feat: Debug page" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Debug page" />
   </component>
 </project>

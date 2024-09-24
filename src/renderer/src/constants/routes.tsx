@@ -1,7 +1,7 @@
 import { Route } from '../types/Route.type';
 import Home from '../components/pages/Home';
 import Settings from '../components/pages/Settings';
-import Skins from '../components/pages/Skins';
+import Character from '../components/pages/Character';
 import Screenshots from '../components/pages/Screenshots';
 import Debug from '../components/pages/Debug';
 import Loading from '../components/pages/Loading';
@@ -20,9 +20,9 @@ export const routes: Route[] = [
     isNavBar: false,
   },
   {
-    path: '/skins',
-    element: <Skins />,
-    title: 'Скины',
+    path: '/character',
+    element: <Character />,
+    title: 'Персонаж',
     isNavBar: true,
   },
   {

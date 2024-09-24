@@ -2,7 +2,7 @@ import { FC, useEffect, useRef } from 'react';
 import { SkinViewer } from '@jebibot/skinview3d';
 import skinImage from '../../../../../resources/skin.png';
 
-const Skins: FC = () => {
+const Character: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const Skins: FC = () => {
   );
 };
 
-export default Skins;
+export default Character;

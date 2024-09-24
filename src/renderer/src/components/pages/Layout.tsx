@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import Background from '../widgets/Background/Background';
 import TitleBar from '../widgets/TitleBar';
-import NavBar from '../widgets/Nav/NavBar';
+import NavBar from '../widgets/NavBar';
 import { useLocation } from 'react-router-dom';
 
 interface LayoutProps {
@@ -22,6 +22,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         {children}
       </div>
       <Background />
+      <div id="root-portal"></div>
     </>
   );
 };

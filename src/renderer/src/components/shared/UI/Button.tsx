@@ -6,9 +6,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   role: 'primary' | 'secondary';
   children?: ReactNode;
   isPending?: boolean;
+  rounded?: boolean;
+  danger?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ role, children, className, isPending, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  role,
+  children,
+  className,
+  isPending,
+  rounded,
+  danger,
+  ...props
+}) => {
   return (
     <button
       {...props}
@@ -19,6 +29,8 @@ const Button: FC<ButtonProps> = ({ role, children, className, isPending, ...prop
             role === 'secondary',
           'bg-blue text-white enabled:hover:before:bg-blue_light enabled:active:before:bg-blue_light':
             role === 'primary',
+          'rounded-full before:rounded-full !p-2.5': rounded,
+          'bg-red-400 text-white': danger,
           [`${className}`]: className,
         },
       )}

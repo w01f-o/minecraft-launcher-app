@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { routes } from '../../../constants/routes';
+import { routes } from '../../constants/routes';
 
 const NavBar: FC = () => {
   const [activeBarPosition, setActiveBarPosition] = useState<number | null>(16);
@@ -11,6 +11,7 @@ const NavBar: FC = () => {
 
   useEffect(() => {
     const linkEl = document.querySelector(`a[href="#${location.pathname}"]`);
+
     if (linkEl && listRef.current) {
       const { left } = linkEl.getBoundingClientRect();
       setActiveBarPosition(left - listRef.current.getBoundingClientRect().left);
@@ -39,7 +40,7 @@ const NavBar: FC = () => {
                 <NavLink
                   to={route.path}
                   className={clsx(
-                    'relative z-10 flex items-center justify-center rounded-xl h-10 w-32',
+                    'relative z-10 flex items-center justify-center rounded-xl h-10 w-32 before:absolute before:inset-0 before:transition before:opacity-[.05] hover:before:bg-black before:rounded-xl select-none',
                   )}
                 >
                   {route.title}

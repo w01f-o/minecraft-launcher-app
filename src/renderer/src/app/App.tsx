@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import './styles/index.css';
+import 'swiper/css';
 import { Route, Routes } from 'react-router-dom';
 import RootProvider from './providers/RootProvider';
 import Layout from '../components/pages/Layout';

@@ -6,5 +6,7 @@ export interface ModPack {
   version: string;
   description: string;
   thumbnail: string;
+  screenshots: string[];
   mods: Mod[];
+  isDownloaded: boolean;
 }

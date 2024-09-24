@@ -9,7 +9,7 @@ const TitleBar: FC = () => {
   };
 
   return (
-    <div className="flex justify-end w-screen h-10">
+    <div className="flex justify-end w-screen h-10 z-50">
       <div id="drag-region" className="flex-grow"></div>
       <div className="flex">
         <button
