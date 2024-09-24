@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface HomeIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
@@ -20,7 +20,7 @@ const HomeIcon: FC<HomeIconProps> = ({ ...props }) => {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default HomeIcon
+export default HomeIcon;

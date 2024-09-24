@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface MinimizeIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
@@ -14,7 +14,7 @@ const MinimizeIcon: FC<MinimizeIconProps> = ({ ...props }) => {
     >
       <rect x="6" y="11" width="12" height="2" fill="#F4F8FE" />
     </svg>
-  )
-}
+  );
+};
 
-export default MinimizeIcon
+export default MinimizeIcon;

@@ -1,19 +1,19 @@
-import { ChangeEvent, FC } from 'react'
-import RangeInput from '../../shared/UI/RangeInput'
-import { useSettings } from '../../../hooks/useSettings'
-import Field from '../../shared/UI/Field'
-import { useSpecs } from '../../../hooks/useSpecs'
+import { ChangeEvent, FC } from 'react';
+import RangeInput from '../../shared/UI/RangeInput';
+import { useSettings } from '../../../hooks/useSettings';
+import Field from '../../shared/UI/Field';
+import { useSpecs } from '../../../hooks/useSpecs';
 
 const RamSetting: FC = () => {
-  const { maxRam, setMaxRam } = useSettings()
-  const { totalRam } = useSpecs()
+  const { maxRam, setMaxRam } = useSettings();
+  const { totalRam } = useSpecs();
 
   const fieldChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-    const value = +e.target.value * 1024 * 1024
+    const value = +e.target.value * 1024 * 1024;
     if (value >= 0 && value <= totalRam!) {
-      setMaxRam(value)
+      setMaxRam(value);
     }
-  }
+  };
 
   return (
     <div>
@@ -32,7 +32,7 @@ const RamSetting: FC = () => {
         Мбайт
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RamSetting
+export default RamSetting;

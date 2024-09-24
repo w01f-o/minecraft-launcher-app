@@ -1,18 +1,18 @@
-import { FC } from 'react'
-import type { ModPack as ModPackType } from '../../types/ModPack.type'
-import clsx from 'clsx'
-import { useMinecraft } from '../../hooks/useMinecraft'
+import { FC } from 'react';
+import type { ModPack as ModPackType } from '../../types/ModPack.type';
+import clsx from 'clsx';
+import { useMinecraft } from '../../hooks/useMinecraft';
 
 interface ModPackProps {
-  item: ModPackType
-  isCurrent: boolean
+  item: ModPackType;
+  isCurrent: boolean;
 }
 
 const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
-  const { setCurrentModPack } = useMinecraft()
+  const { setCurrentModPack } = useMinecraft();
   const clickHandler = (): void => {
-    setCurrentModPack(item)
-  }
+    setCurrentModPack(item);
+  };
 
   return (
     <div
@@ -20,8 +20,8 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         'flex items-center gap-6 border-4  bg-white rounded-2xl py-4 px-6 h-40 cursor-pointer transition',
         {
           'border-white': !isCurrent,
-          'border-blue': isCurrent
-        }
+          'border-blue': isCurrent,
+        },
       )}
       onClick={clickHandler}
     >
@@ -35,7 +35,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         <div className="">{item.description}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ModPack
+export default ModPack;

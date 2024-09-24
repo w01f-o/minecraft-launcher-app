@@ -1,7 +1,7 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface BackgroundCloudProps extends SVGAttributes<HTMLOrSVGElement> {
-  variant?: 'left' | 'top' | 'bottom'
+  variant?: 'left' | 'top' | 'bottom';
 }
 
 const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) => {
@@ -29,7 +29,7 @@ const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) =>
             </radialGradient>
           </defs>
         </svg>
-      )
+      );
 
     case 'top':
       return (
@@ -41,7 +41,7 @@ const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) =>
             fill="#BBCCF4"
           />
         </svg>
-      )
+      );
 
     case 'bottom':
       return (
@@ -66,11 +66,11 @@ const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) =>
             </radialGradient>
           </defs>
         </svg>
-      )
+      );
 
     default:
-      return null
+      return null;
   }
-}
+};
 
-export default BackgroundCloudIcon
+export default BackgroundCloudIcon;

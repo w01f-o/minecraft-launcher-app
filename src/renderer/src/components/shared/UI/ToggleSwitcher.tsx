@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react'
+import { FC, InputHTMLAttributes } from 'react';
 
 interface ToggleSwitcherProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -11,7 +11,7 @@ const ToggleSwitcher: FC<ToggleSwitcherProps> = ({ ...props }) => {
         <div className="absolute flex items-center justify-center w-6 h-6 transition duration-150 bg-blue rounded-full dot left-1 top-1 peer-checked:translate-x-full peer-checked:bg-white"></div>
       </div>
     </label>
-  )
-}
+  );
+};
 
-export default ToggleSwitcher
+export default ToggleSwitcher;

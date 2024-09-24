@@ -1,16 +1,16 @@
-import { FC, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
-import vladBg from '../../../../../resources/vladbg.webp'
-import { Setting } from '../../types/Setting.type'
-import SettingsSwitcher from '../features/Settings/SettingsSwitcher'
-import { useSettings } from '../../hooks/useSettings'
-import RamSetting from '../features/Settings/RamSetting'
-import Button from '../shared/UI/Button'
+import { FC, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import vladBg from '../../../../../resources/vladbg.webp';
+import { Setting } from '../../types/Setting.type';
+import SettingsSwitcher from '../features/Settings/SettingsSwitcher';
+import { useSettings } from '../../hooks/useSettings';
+import RamSetting from '../features/Settings/RamSetting';
+import Button from '../shared/UI/Button';
 
 const Settings: FC = () => {
   useEffect(() => {
-    document.title = 'The Chocolate Thief - Настройки'
-  }, [])
+    document.title = 'The Chocolate Thief - Настройки';
+  }, []);
 
   const {
     toggleAutoLogin,
@@ -18,8 +18,8 @@ const Settings: FC = () => {
     toggleFullScreen,
     isAutoLogin,
     isDebugMode,
-    isFullscreen
-  } = useSettings()
+    isFullscreen,
+  } = useSettings();
 
   const settingsSwitcherList: Setting[] = [
     {
@@ -27,23 +27,23 @@ const Settings: FC = () => {
       name: 'Debug - режим',
       description: 'Включить режим отладки при запуске игрового клиента',
       defaultValue: isDebugMode,
-      action: toggleDebugMode
+      action: toggleDebugMode,
     },
     {
       id: 2,
       name: 'Полноэкранный режим',
       description: 'Включить полноэкранный режим в Minecraft',
       defaultValue: isFullscreen,
-      action: toggleFullScreen
+      action: toggleFullScreen,
     },
     {
       id: 3,
       name: 'Автоматический вход на сервер',
       description: 'Включить автоматический вход на сервер при запуске',
       defaultValue: isAutoLogin,
-      action: toggleAutoLogin
-    }
-  ]
+      action: toggleAutoLogin,
+    },
+  ];
 
   return (
     <>
@@ -62,7 +62,7 @@ const Settings: FC = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;

@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface SettingsIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
@@ -20,7 +20,7 @@ const SettingsIcon: FC<SettingsIconProps> = ({ ...props }) => {
         </clipPath>
       </defs>
     </svg>
-  )
-}
+  );
+};
 
-export default SettingsIcon
+export default SettingsIcon;

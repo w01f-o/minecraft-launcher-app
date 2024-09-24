@@ -1,4 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{}</component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="feat: Stas easter">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/types/UtilsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/UtilsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/RootProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/RootProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/StoreProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/StoreProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/SettingsSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/SettingsSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/BackgroundCloudIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/BackgroundCloudIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CrossIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CrossIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/HomeIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/HomeIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/MaximizeIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/MaximizeIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/MinimizeIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/MinimizeIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/SettingsIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/SettingsIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/ToggleSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/ToggleSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/Background.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/Background.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpack/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpack/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/redux.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/redux.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSpecs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useSpecs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/services/modPacks.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/services/modPacks.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/specsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/specsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/Mod.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/Mod.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/ModPack.type.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;w01f-o&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/w01f-o/minecraft-launcher-app.git&quot;,
+    &quot;accountId&quot;: &quot;92d1f896-0e74-4dd2-8067-1b3cb20e32b0&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2mVkeelyw6JYb9p5jg9O532Vzs6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="" />
+      <created>1727169228297</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727169228297</updated>
+      <workItem from="1727169229703" duration="324000" />
+      <workItem from="1727169562479" duration="449000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: Stas easter">
+      <option name="closed" value="true" />
+      <created>1727169352172</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727169352172</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/preload/index.d.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: Stas easter" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Stas easter" />
+  </component>
 </project>

@@ -1,9 +1,9 @@
-import { FC, ReactNode } from 'react'
-import Background from '../widgets/Background/Background'
-import TitleBar from '../widgets/TitleBar'
+import { FC, ReactNode } from 'react';
+import Background from '../widgets/Background/Background';
+import TitleBar from '../widgets/TitleBar';
 
 interface LayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       </div>
       <Background />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

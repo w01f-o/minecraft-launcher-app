@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface MaximizeIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
@@ -21,7 +21,7 @@ const MaximizeIcon: FC<MaximizeIconProps> = ({ ...props }) => {
         fill="#F4F8FE"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default MaximizeIcon
+export default MaximizeIcon;

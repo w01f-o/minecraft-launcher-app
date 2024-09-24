@@ -1,4 +1,4 @@
-import { FC, SVGAttributes } from 'react'
+import { FC, SVGAttributes } from 'react';
 
 interface CrossIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
@@ -18,7 +18,7 @@ const CrossIcon: FC<CrossIconProps> = ({ ...props }) => {
         fill="#FEFEFF"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default CrossIcon
+export default CrossIcon;

@@ -1,15 +1,15 @@
-import { FC, useState } from 'react'
-import Button from '../shared/UI/Button'
-import { useSettings } from '../../hooks/useSettings'
+import { FC, useState } from 'react';
+import Button from '../shared/UI/Button';
+import { useSettings } from '../../hooks/useSettings';
 
 const StartButton: FC = () => {
-  const { isFullscreen } = useSettings()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { isFullscreen } = useSettings();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const clickHandler = (): void => {
-    setIsLoading(true)
-    window.minecraft.start({ fullscreen: isFullscreen, setIsLoading })
-  }
+    setIsLoading(true);
+    window.minecraft.start({ fullscreen: isFullscreen, setIsLoading });
+  };
 
   return (
     <Button
@@ -20,7 +20,7 @@ const StartButton: FC = () => {
     >
       Играть
     </Button>
-  )
-}
+  );
+};
 
-export default StartButton
+export default StartButton;

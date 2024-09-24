@@ -1,29 +1,29 @@
-import { FC, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import SettingsIcon from '../shared/Icons/SettingsIcon'
-import ModPackList from '../widgets/Modpack/ModpackList'
-import stasBg from '../../../../../resources/stasbg.webp'
-import beepSound from '../../../../../resources/beep.ogg'
-import StartButton from '../features/StartButton'
-import clsx from 'clsx'
-import useSound from 'use-sound'
+import { FC, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import SettingsIcon from '../shared/Icons/SettingsIcon';
+import ModPackList from '../widgets/Modpack/ModpackList';
+import stasBg from '../../../../../resources/stasbg.webp';
+import beepSound from '../../../../../resources/beep.ogg';
+import StartButton from '../features/StartButton';
+import clsx from 'clsx';
+import useSound from 'use-sound';
 
 const Home: FC = () => {
   useEffect(() => {
-    document.title = 'The Chocolate Thief'
-  }, [])
+    document.title = 'The Chocolate Thief';
+  }, []);
 
-  const [stasEasterIsActive, setStasEasterIsActive] = useState<boolean>(false)
+  const [stasEasterIsActive, setStasEasterIsActive] = useState<boolean>(false);
   const [play] = useSound(beepSound, {
-    volume: 0.1
-  })
+    volume: 0.1,
+  });
 
   const stasEasterClickHandler = (): void => {
-    setStasEasterIsActive(!stasEasterIsActive)
+    setStasEasterIsActive(!stasEasterIsActive);
     if (!stasEasterIsActive) {
-      play()
+      play();
     }
-  }
+  };
 
   return (
     <>
@@ -47,12 +47,12 @@ const Home: FC = () => {
       </div>
       <div
         className={clsx('w-8 h-8 absolute right-[195px] bottom-[355px] z-10 rounded-full', {
-          'bg-red-400': stasEasterIsActive
+          'bg-red-400': stasEasterIsActive,
         })}
         onDoubleClick={stasEasterClickHandler}
       ></div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

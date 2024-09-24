@@ -1,12 +1,12 @@
-import { Client } from 'minecraft-launcher-core'
-import { Dispatch, SetStateAction } from 'react'
+import { Client } from 'minecraft-launcher-core';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface StartMinecraftOptions {
-  fullscreen: boolean
-  setIsLoading: Dispatch<SetStateAction<boolean>>
+  fullscreen: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface MinecraftApi {
-  launcher: Client
-  start: (options: StartMinecraftOptions) => void
+  launcher: Client;
+  start: (options: StartMinecraftOptions) => void;
 }

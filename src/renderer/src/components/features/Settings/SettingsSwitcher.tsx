@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import ToggleSwitcher from '../../shared/UI/ToggleSwitcher'
-import { Setting } from '../../../types/Setting.type'
+import { FC } from 'react';
+import ToggleSwitcher from '../../shared/UI/ToggleSwitcher';
+import { Setting } from '../../../types/Setting.type';
 
 interface SettingsSwitcherProps {
-  setting: Setting
+  setting: Setting;
 }
 
 const SettingsSwitcher: FC<SettingsSwitcherProps> = ({ setting }) => {
@@ -15,7 +15,7 @@ const SettingsSwitcher: FC<SettingsSwitcherProps> = ({ setting }) => {
         <div>{setting.description}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SettingsSwitcher
+export default SettingsSwitcher;

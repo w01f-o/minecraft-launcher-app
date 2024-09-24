@@ -1,3 +1,3 @@
 export interface UtilsApi {
-  getMemory: () => number
+  getMemory: () => number;
 }

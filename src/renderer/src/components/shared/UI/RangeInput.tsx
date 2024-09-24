@@ -1,54 +1,54 @@
-import { FC, useEffect, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react';
 
 interface RangeInputProps {
-  value: number | null
-  setValue: (value: number) => void
-  min: number
-  max: number | null
+  value: number | null;
+  setValue: (value: number) => void;
+  min: number;
+  max: number | null;
 }
 
 const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, value }) => {
-  const rangeRef = useRef<HTMLDivElement | null>(null)
+  const rangeRef = useRef<HTMLDivElement | null>(null);
   // TODO: Add type for Event
   useEffect(() => {
     const mouseMoveHandler = (e): void => {
       if (rangeRef.current && max !== null) {
-        const rect = rangeRef.current.getBoundingClientRect()
-        const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width)
-        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)))
+        const rect = rangeRef.current.getBoundingClientRect();
+        const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width);
+        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)));
       }
-    }
+    };
 
     const mouseUpHandler = (): void => {
       if (rangeRef.current) {
-        document.removeEventListener('mousemove', mouseMoveHandler)
+        document.removeEventListener('mousemove', mouseMoveHandler);
       }
-    }
+    };
 
     const mouseDownHandler = (e): void => {
       if (rangeRef.current && max !== null) {
-        document.addEventListener('mousemove', mouseMoveHandler)
+        document.addEventListener('mousemove', mouseMoveHandler);
 
-        const rect = rangeRef.current.getBoundingClientRect()
-        const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width)
-        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)))
+        const rect = rangeRef.current.getBoundingClientRect();
+        const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width);
+        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)));
 
         document.addEventListener('mouseup', mouseUpHandler, {
-          once: true
-        })
+          once: true,
+        });
       }
-    }
+    };
 
     if (rangeRef.current) {
-      rangeRef.current.addEventListener('mousedown', mouseDownHandler)
+      rangeRef.current.addEventListener('mousedown', mouseDownHandler);
     }
 
     return (): void => {
       if (rangeRef.current) {
-        rangeRef.current.removeEventListener('mousedown', mouseDownHandler)
+        rangeRef.current.removeEventListener('mousedown', mouseDownHandler);
       }
-    }
-  }, [max])
+    };
+  }, [max]);
 
   return (
     <div className="h-2 w-full">
@@ -60,12 +60,12 @@ const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, value }) => {
         <div
           className="absolute top-1/2 translate-y-[-50%] rounded-full bg-blue w-5 h-5 transition"
           style={{
-            left: `calc(${value === null && max === null ? 0 : (value! / max!) * 100}% - 10px)`
+            left: `calc(${value === null && max === null ? 0 : (value! / max!) * 100}% - 10px)`,
           }}
         ></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RangeInput
+export default RangeInput;

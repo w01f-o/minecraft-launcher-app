@@ -1,12 +1,12 @@
-import { FC } from 'react'
-import MaximizeIcon from '../shared/Icons/MaximizeIcon'
-import MinimizeIcon from '../shared/Icons/MinimizeIcon'
-import CloseIcon from '../shared/Icons/CloseIcon'
+import { FC } from 'react';
+import MaximizeIcon from '../shared/Icons/MaximizeIcon';
+import MinimizeIcon from '../shared/Icons/MinimizeIcon';
+import CloseIcon from '../shared/Icons/CloseIcon';
 
 const TitleBar: FC = () => {
   const clickHandler = (action: 'minimize' | 'maximize' | 'close') => (): void => {
-    window.electron.ipcRenderer.send('TITLE_BAR_ACTION', action)
-  }
+    window.electron.ipcRenderer.send('TITLE_BAR_ACTION', action);
+  };
 
   return (
     <div className="flex justify-end w-screen h-12 pb-2">
@@ -32,7 +32,7 @@ const TitleBar: FC = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TitleBar
+export default TitleBar;
