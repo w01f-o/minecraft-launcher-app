@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Mod as ModType } from '../../types/Mod.type';
+import { Mod as ModType } from '../../types/entities/Mod.type';
 
 interface ModProps {
   item: ModType;

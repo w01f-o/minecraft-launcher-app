@@ -1,16 +1,17 @@
 import { Mod } from './Mod.type';
+import { Screenshot } from './Screenshot.type';
 import { Update } from './Update.type';
 
 export interface ModPack {
   id: string;
   name: string;
   description: string;
-  screenshots: string[];
+  screenshots: Screenshot[];
   thumbnail: string;
-  version: string;
+  minecraftVersion: string;
   directoryName: string;
   modLoader: string;
-  mods: Mod[];
+  mods: Mod[] | null;
   updates: Update[];
   isDownloaded: boolean;
   isActual: boolean;

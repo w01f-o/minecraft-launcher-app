@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="feat: Screenshots page">
+    <list default="true" id="d3de2ea9-cbee-45b0-8e91-044e3396c9b8" name="Changes" comment="feat: Fetching modpacks">
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/Screenshot.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/skin.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/skin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Прямоугольник 3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/Mod.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/Mod.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/Mod.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/Mod.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/Update.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/Update.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +93,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer\src\types\entities" />
       <recent name="E:\Projects\minecraft-launcher\frontend\src\preload\services" />
       <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer\src\components\widgets" />
     </key>
@@ -125,6 +133,7 @@
       <workItem from="1727169229703" duration="324000" />
       <workItem from="1727169562479" duration="35621000" />
       <workItem from="1727206239572" duration="928000" />
+      <workItem from="1727222136321" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Stas easter">
       <option name="closed" value="true" />
@@ -174,6 +183,7 @@
     <MESSAGE value="ref: New prettier settings" />
     <MESSAGE value="feat: Debug page" />
     <MESSAGE value="feat: Screenshots page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Screenshots page" />
+    <MESSAGE value="feat: Fetching modpacks" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Fetching modpacks" />
   </component>
 </project>

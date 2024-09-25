@@ -1,11 +1,10 @@
 import { FC, useState } from 'react';
-import type { ModPack as ModPackType } from '../../types/ModPack.type';
+import type { ModPack as ModPackType } from '../../types/entities/ModPack.type';
 import clsx from 'clsx';
 import { useMinecraft } from '../../hooks/useMinecraft';
 import Modal from '../shared/UI/Modal';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import Mod from './Mod';
 import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
@@ -18,7 +17,7 @@ interface ModPackProps {
 
 const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const { setCurrentModPack } = useMinecraft();
+  const { setCurrentModPack, downloadedModPacks } = useMinecraft();
 
   const selectCurrentClickHandler = (): void => {
     setCurrentModPack(item);
@@ -42,12 +41,16 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         onClick={modPackClickHandler}
       >
         <div className="w-[110px] h-[110px]">
-          <img src={item.thumbnail} alt={item.name} className="w-full h-full object-cover" />
+          <img
+            src={`${import.meta.env.VITE_STATIC_URL}/${item.thumbnail}`}
+            alt={item.name}
+            className="w-full h-full object-cover"
+          />
         </div>
         <div>
           <div className="text-gray">Сборка</div>
           <div className="text-2xl">{item.name}</div>
-          <div>{item.version}</div>
+          <div>{item.minecraftVersion}</div>
         </div>
       </button>
       <Modal
@@ -67,7 +70,11 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
             {item.screenshots.map((screenshot, index) => (
               <SwiperSlide key={index}>
                 <div className="w-full h-[60vh] overflow-hidden rounded-2xl flex justify-start">
-                  <img src={screenshot} alt={item.name} className="w-full h-full object-cover" />
+                  <img
+                    src={`${import.meta.env.VITE_STATIC_URL}/${screenshot.thumbnail}`}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </SwiperSlide>
             ))}
@@ -77,7 +84,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
               <div className="w-[75%]">
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
                   {item.name}
-                  {!item.isDownloaded ? (
+                  {!downloadedModPacks.find((modPack) => modPack.id === item.id) ? (
                     <Button role={'primary'} rounded>
                       <DownloadIcon />
                     </Button>
@@ -99,7 +106,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
                     </>
                   )}
                 </div>
-                <div className="text-2xl mb-2">{item.version}</div>
+                <div className="text-2xl mb-2">{item.mi}</div>
                 <div className="text-xl">
                   {item.description}
                   {item.description}
@@ -109,9 +116,9 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
               </div>
             </div>
             <div>
-              {item.mods.map((mod, index) => (
+              {/* {item.mods.map((mod, index) => (
                 <Mod key={index} item={mod}></Mod>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
