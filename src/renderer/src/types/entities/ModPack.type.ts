@@ -1,6 +1,5 @@
 import { Mod } from './Mod.type';
 import { Screenshot } from './Screenshot.type';
-import { Update } from './Update.type';
 
 export interface ModPack {
   id: string;
@@ -12,7 +11,6 @@ export interface ModPack {
   directoryName: string;
   modLoader: string;
   mods: Mod[] | null;
-  updates: Update[];
   isDownloaded: boolean;
   isActual: boolean;
   isUpdated: boolean;

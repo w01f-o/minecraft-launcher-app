@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import type { ModPack as ModPackType } from '../../types/entities/ModPack.type';
 import clsx from 'clsx';
 import { useMinecraft } from '../../hooks/useMinecraft';
@@ -9,6 +9,7 @@ import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
 import ReadyIcon from '../shared/Icons/ReadyIcon';
+import CircleLoader from '../shared/UI/DownloadStatus';
 
 interface ModPackProps {
   item: ModPackType;
@@ -17,16 +18,45 @@ interface ModPackProps {
 
 const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const { setCurrentModPack, downloadedModPacks } = useMinecraft();
+  const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
+  const { setCurrentModPack, downloadedModPacks, addDownloadedModPacks } = useMinecraft();
 
   const selectCurrentClickHandler = (): void => {
-    setCurrentModPack(item);
     setModalIsOpen(!modalIsOpen);
+    setCurrentModPack(item);
   };
 
   const modPackClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
   };
+
+  const downloadClickHandler = (): void => {
+    setModalIsOpen(!modalIsOpen);
+    setDownloadProgress(0);
+    window.minecraft.download({
+      id: item.id,
+      directoryName: item.directoryName,
+      setDownloadProgress,
+    });
+  };
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (downloadProgress === 100) {
+      timeout = setTimeout(() => {
+        addDownloadedModPacks(item);
+        setDownloadProgress(null);
+      }, 1000);
+    }
+
+    return (): void => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [downloadProgress]);
+
+  const isDownloadedModPack = useMemo(() => {
+    return !!downloadedModPacks.find((m) => m.id === item.id);
+  }, [downloadedModPacks]);
 
   return (
     <div className="relative active:scale-[.98] transition">
@@ -40,7 +70,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         )}
         onClick={modPackClickHandler}
       >
-        <div className="w-[110px] h-[110px]">
+        <div className="w-[110px] h-[110px] overflow-hidden rounded-2xl">
           <img
             src={`${import.meta.env.VITE_STATIC_URL}/${item.thumbnail}`}
             alt={item.name}
@@ -51,6 +81,9 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
           <div className="text-gray">Сборка</div>
           <div className="text-2xl">{item.name}</div>
           <div>{item.minecraftVersion}</div>
+        </div>
+        <div className="flex justify-end flex-grow" title={`${downloadProgress}%`}>
+          <CircleLoader progress={downloadProgress} />
         </div>
       </button>
       <Modal
@@ -81,23 +114,28 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
           </Swiper>
           <div className="flex flex-col px-6 py-6">
             <div className="flex justify-between">
-              <div className="w-[75%]">
+              <div className="w-full">
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
                   {item.name}
-                  {!downloadedModPacks.find((modPack) => modPack.id === item.id) ? (
-                    <Button role={'primary'} rounded>
+                  {downloadProgress !== null && <div className="text-xl">{downloadProgress}%</div>}
+                  {!isDownloadedModPack && downloadProgress === null && (
+                    <Button role={'primary'} rounded onClick={downloadClickHandler}>
                       <DownloadIcon />
                     </Button>
-                  ) : (
+                  )}
+
+                  {isDownloadedModPack && (
                     <>
                       {isCurrent && (
                         <div className="grid place-items-center rounded-full bg-green-500 p-1">
                           <ReadyIcon />
                         </div>
                       )}
+
                       <Button role={'primary'} rounded danger>
                         <ThrashIcon />
                       </Button>
+
                       {!isCurrent && (
                         <Button role={'primary'} onClick={selectCurrentClickHandler}>
                           Выбрать
@@ -106,7 +144,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
                     </>
                   )}
                 </div>
-                <div className="text-2xl mb-2">{item.mi}</div>
+                <div className="text-2xl mb-2">{item.minecraftVersion}</div>
                 <div className="text-xl">
                   {item.description}
                   {item.description}
@@ -116,9 +154,9 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
               </div>
             </div>
             <div>
-              {/* {item.mods.map((mod, index) => (
-                <Mod key={index} item={mod}></Mod>
-              ))} */}
+              {/*{item.mods.map((mod, index) => (*/}
+              {/*  <Mod key={index} item={mod}></Mod>*/}
+              {/*))}*/}
             </div>
           </div>
         </div>

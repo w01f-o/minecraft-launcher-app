@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ModPack } from '@renderer/types/ModPack.type';
+import { ModPack } from '../types/entities/ModPack.type';
 
 export const modPacksApi = createApi({
   reducerPath: 'modPacksApi',

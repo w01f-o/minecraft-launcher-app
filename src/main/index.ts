@@ -2,15 +2,19 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { join } from 'path';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
+import * as path from 'node:path';
+import { DownloadOptions } from '../preload/types/MinecraftApi';
+import * as fs from 'node:fs';
+import * as unzipper from 'unzipper';
+
+export const minecraftDirectory = path.join(app.getPath('userData'), 'minecraft-game');
 
 function createWindow(): void {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1100,
-    height: 730,
+    minWidth: 1100,
+    minHeight: 730,
     show: false,
     autoHideMenuBar: true,
-    // ...(process.platform === 'linux' ? { icon } : {}),
     title: 'The Chocolate Thief',
     icon,
     webPreferences: {
@@ -74,18 +78,66 @@ function createWindow(): void {
         break;
     }
   });
+
+  ipcMain.on(
+    'MINECRAFT_DOWNLOAD',
+    async (_event, options: Omit<DownloadOptions, 'setDownloadProgress'>) => {
+      const { download } = await import('electron-dl');
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;
+      const directory = path.join(minecraftDirectory, options.directoryName);
+
+      const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
+        directory,
+        onProgress: (state) => mainWindow.webContents.send('download-progress', state),
+      });
+
+      const archivePath = downloadItem.savePath;
+
+      try {
+        await unzipArchive(archivePath, directory);
+        fs.rmSync(archivePath);
+        console.log('Archive unpacked successfully');
+      } catch (error) {
+        console.error('Error while unpacking the archive:', error);
+      }
+    },
+  );
+
+  ipcMain.on('GET_MINECRAFT_PATH', (_event, directoryName: string) => {
+    const dir = path.join(minecraftDirectory, directoryName);
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    mainWindow.webContents.send('MINECRAFT_PATH', dir);
+  });
+
+  ipcMain.on('LAUNCHER_LOADING_PROGRESS', (_event, progress) => {
+    mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', progress);
+  });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron');
+async function unzipArchive(archivePath: string, extractTo: string): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    fs.createReadStream(archivePath)
+      .pipe(unzipper.Extract({ path: extractTo }))
+      .on('close', () => {
+        console.log('Extraction complete');
+        resolve();
+      })
+      .on('error', (error) => {
+        console.error('Error during extraction:', error);
+        reject(error);
+      });
+  });
+}
 
-  // Default open or close DevTools by F12 in development
-  // and ignore CommandOrControl + R in production.
-  // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
+app.whenReady().then(() => {
+  electronApp.setAppUserModelId('com.electron');
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });
@@ -93,20 +145,12 @@ app.whenReady().then(() => {
   createWindow();
 
   app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.

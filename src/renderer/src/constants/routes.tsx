@@ -40,7 +40,7 @@ export const routes: Route[] = [
   {
     path: '/loading',
     element: <Loading />,
-    title: 'Debug',
+    title: 'Загрузка',
     isNavBar: false,
   },
 ];

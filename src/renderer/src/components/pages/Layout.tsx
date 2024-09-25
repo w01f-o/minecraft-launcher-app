@@ -11,6 +11,8 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
 
+  const pathnamesWithoutNavBar = ['/settings', '/loading'];
+
   return (
     <>
       <TitleBar />
@@ -18,7 +20,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <h1 className="text-[40px] leading-none font-bold text-blue_dark pb-4 mt-2 desktop-height:text-5xl desktop-height:mb-2 select-none">
           The Chocolate Thief
         </h1>
-        {pathname !== '/settings' && <NavBar />}
+        {!pathnamesWithoutNavBar.includes(pathname) && <NavBar />}
         {children}
       </div>
       <Background />

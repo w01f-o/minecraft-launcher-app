@@ -26,7 +26,9 @@
     "@jebibot/skinview3d": "^3.1.0",
     "@react-spring/web": "^9.7.4",
     "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
     "clsx": "^2.1.1",
+    "electron-dl": "^4.0.0",
     "minecraft-launcher-core": "^3.18.1",
     "react-loader-spinner": "^6.1.6",
     "react-redux": "^9.1.2",
@@ -35,6 +37,7 @@
     "swiper": "^11.1.14",
     "tailwind-scrollbar": "^3.1.0",
     "tomate-loaders": "^2.0.2",
+    "unzipper": "^0.12.3",
     "use-sound": "^4.0.3"
   },
   "devDependencies": {

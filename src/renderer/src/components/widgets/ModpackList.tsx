@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import ModPack from '../entities/ModPack';
 import { useMinecraft } from '../../hooks/useMinecraft';
 import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
@@ -6,13 +6,7 @@ import { MutatingDots } from 'react-loader-spinner';
 
 const ModPackList: FC = () => {
   const { data: modPacks, isSuccess, isLoading } = useGetModPacksQuery();
-  const { currentModPack, setCurrentModPack } = useMinecraft();
-
-  useEffect(() => {
-    if (isSuccess) {
-      setCurrentModPack(modPacks[0]);
-    }
-  }, [isSuccess]);
+  const { currentModPack } = useMinecraft();
 
   const sortedModPacks = useMemo(() => {
     return modPacks?.sort((a) => (a.id === currentModPack?.id ? -1 : 1));

@@ -23,7 +23,7 @@ const Button: FC<ButtonProps> = ({
     <button
       {...props}
       className={clsx(
-        'flex items-center justify-center rounded-2xl font-medium text-xl px-12 py-2.5 relative before:absolute before:rounded-2xl before:inset-0 before:transition before:opacity-20 transition duration-100 enabled:active:scale-95 select-none',
+        'flex items-center justify-center rounded-2xl font-medium disabled:opacity-50 text-xl px-12 py-2.5 relative before:absolute before:rounded-2xl before:inset-0 before:transition before:opacity-20 transition duration-100 enabled:active:scale-95 select-none',
         {
           'bg-white text-blue enabled:hover:before:bg-blue_dark enabled:active:before:bg-blue_dark before:opacity-10':
             role === 'secondary',
@@ -34,7 +34,7 @@ const Button: FC<ButtonProps> = ({
           [`${className}`]: className,
         },
       )}
-      disabled={isPending}
+      disabled={isPending || props.disabled}
     >
       {isPending ? <Bars height={28} color={'#F4F8FE'} /> : children}
     </button>
