@@ -29,7 +29,7 @@ const CharacterNameChanger: FC = () => {
     );
   }, [inputLocalName, username]);
 
-  const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>): void => {
+  const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (!canBeChanged) return;
 
