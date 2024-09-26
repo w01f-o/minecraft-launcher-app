@@ -3,9 +3,11 @@ import clsx from 'clsx';
 
 interface FieldProps extends InputHTMLAttributes<HTMLInputElement> {
   minify?: boolean;
+  className?: string;
+  fullWidth?: boolean;
 }
 
-const Field: FC<FieldProps> = ({ minify, ...props }) => {
+const Field: FC<FieldProps> = ({ minify, className, fullWidth, ...props }) => {
   return (
     <input
       {...props}
@@ -13,6 +15,8 @@ const Field: FC<FieldProps> = ({ minify, ...props }) => {
         'bg-blue_light rounded-2xl px-6 py-3 text-xl focus:outline-none focus:ring-2 transition',
         {
           'text-center w-28': minify,
+          'w-full': fullWidth,
+          [`${className}`]: className,
         },
       )}
     ></input>

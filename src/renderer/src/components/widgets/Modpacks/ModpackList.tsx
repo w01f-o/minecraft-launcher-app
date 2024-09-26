@@ -1,11 +1,12 @@
 import { FC, useMemo } from 'react';
-import ModPack from '../entities/ModPack';
-import { useMinecraft } from '../../hooks/useMinecraft';
+import ModPack from '../../entities/ModPack';
+import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
 import { MutatingDots } from 'react-loader-spinner';
+import ErrorMessage from '../../features/Errors/ErrorMessage';
 
 const ModPackList: FC = () => {
-  const { data: modPacks, isSuccess, isLoading } = useGetModPacksQuery();
+  const { data: modPacks, isSuccess, isLoading, isError, error } = useGetModPacksQuery();
   const { currentModPack } = useMinecraft();
 
   const sortedModPacks = useMemo(() => {
@@ -27,6 +28,7 @@ const ModPackList: FC = () => {
         sortedModPacks?.map((modPack) => (
           <ModPack item={modPack} key={modPack.id} isCurrent={currentModPack?.id === modPack.id} />
         ))}
+      {isError && <ErrorMessage message={JSON.stringify(error)} />}
     </div>
   );
 };

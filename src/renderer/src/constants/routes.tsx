@@ -2,7 +2,7 @@ import { Route } from '../types/Route.type';
 import Home from '../components/pages/Home';
 import Settings from '../components/pages/Settings';
 import Character from '../components/pages/Character';
-import Screenshots from '../components/pages/Screenshots';
+import ClientScreenshots from '../components/pages/ClientScreenshots';
 import Debug from '../components/pages/Debug';
 import Loading from '../components/pages/Loading';
 
@@ -27,7 +27,7 @@ export const routes: Route[] = [
   },
   {
     path: '/screenshots',
-    element: <Screenshots />,
+    element: <ClientScreenshots />,
     title: 'Скриншоты',
     isNavBar: true,
   },

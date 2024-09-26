@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import vladBg from '../../../../../resources/vladbg.webp';
 import { Setting } from '../../types/Setting.type';
 import SettingsSwitcher from '../features/Settings/SettingsSwitcher';
 import { useSettings } from '../../hooks/useSettings';
 import RamSetting from '../features/Settings/RamSetting';
 import Button from '../shared/UI/Button';
+import VladBackGround from '../widgets/Background/VladBackGround';
 
 const Settings: FC = () => {
   useEffect(() => {
@@ -56,9 +56,7 @@ const Settings: FC = () => {
 
   return (
     <>
-      <div className="absolute -left-10 -bottom-10">
-        <img src={vladBg} alt="" />
-      </div>
+      <VladBackGround />
       <div className="flex justify-end py-12 flex-grow">
         <div className="flex w-[60%] justify-center flex-col gap-6">
           {settingsSwitcherList.map((setting) => (

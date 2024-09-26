@@ -1,4 +1,4 @@
-import { Dispatch, FC, ReactNode, SetStateAction, MouseEvent } from 'react';
+import { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useEffect } from 'react';
 import { animated, useTransition } from '@react-spring/web';
 import ReactPortal from '../../features/ReactPortal';
 import clsx from 'clsx';
@@ -8,11 +8,12 @@ interface ModalProps {
   children: ReactNode;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   contentClassName?: string;
+  preventClose?: boolean;
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen }) => {
+const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen, preventClose }) => {
   const wrapperMouseDownHandler = (): void => {
-    setIsOpen(!isOpen);
+    !preventClose && setIsOpen(false);
   };
 
   const contentMouseDownHandler = (e: MouseEvent): void => {
@@ -25,6 +26,20 @@ const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen }
     leave: { opacity: 0 },
     config: { duration: 200 },
   });
+
+  useEffect(() => {
+    const keydownHandler = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
+        !preventClose && setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', keydownHandler);
+
+    return () => {
+      window.removeEventListener('keydown', keydownHandler);
+    };
+  }, [setIsOpen]);
 
   return transitions(
     (props, item) =>

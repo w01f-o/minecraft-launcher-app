@@ -1,5 +1,6 @@
 import { Mod } from './Mod.type';
 import { Screenshot } from './Screenshot.type';
+import { ModLoaders } from '../../enums/ModLoaders.enum';
 
 export interface ModPack {
   id: string;
@@ -9,7 +10,7 @@ export interface ModPack {
   thumbnail: string;
   minecraftVersion: string;
   directoryName: string;
-  modLoader: string;
+  modLoader: ModLoaders;
   mods: Mod[] | null;
   isDownloaded: boolean;
   isActual: boolean;

@@ -6,7 +6,7 @@ import {
 } from '../types/MinecraftApi';
 import { Authenticator, Client } from 'minecraft-launcher-core';
 import * as electron from 'electron';
-import { fabric } from 'tomate-loaders';
+import { fabric, forge, quilt } from 'tomate-loaders';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
@@ -31,51 +31,74 @@ export const minecraftApi: MinecraftApi = {
   }: StartMinecraftOptions) {
     navigateFunction('/loading');
 
-    electron.ipcRenderer.send('GET_MINECRAFT_PATH', clientOptions.directoryName);
-    electron.ipcRenderer.once('MINECRAFT_PATH', async (_event, path) => {
-      const rootPath: string = path;
+    const rootPath = await electron.ipcRenderer.invoke(
+      'GET_MINECRAFT_PATH',
+      clientOptions.directoryName,
+    );
+    let modloaderConfig: {
+      root: string;
+      version: { number: string; type: string; custom: string };
+    };
 
-      const fabricConfig = await fabric.getMCLCLaunchConfig({
-        gameVersion: clientOptions.gameVersion,
-        rootPath,
-      });
+    switch (clientOptions.modLoader) {
+      case 'FABRIC':
+        modloaderConfig = await fabric.getMCLCLaunchConfig({
+          gameVersion: clientOptions.gameVersion,
+          rootPath,
+        });
+        break;
+      case 'QUILT':
+        modloaderConfig = await quilt.getMCLCLaunchConfig({
+          gameVersion: clientOptions.gameVersion,
+          rootPath,
+        });
+        break;
+      case 'FORGE':
+        modloaderConfig = await forge.getMCLCLaunchConfig({
+          gameVersion: clientOptions.gameVersion,
+          rootPath,
+        });
+        break;
+      default:
+        throw new Error('Invalid modloader');
+    }
 
-      this.launcher.once('arguments', () => {
-        setIsLoading(false);
+    this.launcher.once('arguments', () => {
+      setIsLoading(false);
 
-        if (isDebugMode) {
-          navigateFunction('/debug');
-        } else {
-          navigateFunction('/');
-        }
+      if (isDebugMode) {
+        navigateFunction('/debug');
+      } else {
+        navigateFunction('/');
+      }
 
-        if (isLauncherHide) {
-          electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
-          this.launcher.once('close', () => {
-            electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
-          });
-        }
-      });
+      if (isLauncherHide) {
+        electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
 
-      this.launcher.on('progress', (e) => {
-        electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
-      });
+        this.launcher.once('close', () => {
+          electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
+        });
+      }
+    });
 
-      this.launcher.on('download-status', (e) => {
-        console.log(e);
-      });
+    this.launcher.on('progress', (e) => {
+      electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
+    });
 
-      await this.launcher.launch({
-        ...fabricConfig,
-        memory: {
-          max: '6G',
-          min: '4G',
-        },
-        authorization: Authenticator.getAuth(clientOptions.username),
-        window: {
-          fullscreen: isFullscreen,
-        },
-      });
+    this.launcher.on('download-status', (e) => {
+      console.log(e);
+    });
+
+    await this.launcher.launch({
+      ...modloaderConfig,
+      memory: {
+        max: Math.round(clientOptions.maxRam / 1024 / 1024),
+        min: 0,
+      },
+      authorization: Authenticator.getAuth(clientOptions.username),
+      window: {
+        fullscreen: isFullscreen,
+      },
     });
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {

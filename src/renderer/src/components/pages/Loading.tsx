@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import loadingLogo from '../../../../../resources/camel-minecraft.gif';
+
 const Loading: FC = () => {
   const [loadingStatus, setLoadingStatus] = useState<number>(0);
   const [dots, setDots] = useState<string>('');
@@ -11,7 +12,7 @@ const Loading: FC = () => {
 
     const interval = setInterval(() => {
       setDots((prev) => (prev.length < 3 ? prev + '.' : ''));
-    }, 500);
+    }, 400);
 
     return (): void => {
       clearInterval(interval);
@@ -19,7 +20,7 @@ const Loading: FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-grow flex-col items-center">
+    <div className="flex flex-grow flex-col items-center justify-center">
       <div>
         <img src={loadingLogo} alt="Loading..." />
       </div>

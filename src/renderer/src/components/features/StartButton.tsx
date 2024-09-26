@@ -6,9 +6,8 @@ import { useMinecraft } from '../../hooks/useMinecraft';
 
 const StartButton: FC = () => {
   const { currentModPack, username } = useMinecraft();
-  const { isFullscreen, isDebugMode, isLauncherHide, isAutoLogin } = useSettings();
+  const { isFullscreen, isDebugMode, isLauncherHide, isAutoLogin, maxRam } = useSettings();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const navigate = useNavigate();
 
   const clickHandler = async (): Promise<void> => {
@@ -26,7 +25,8 @@ const StartButton: FC = () => {
           directoryName: currentModPack.directoryName,
           gameVersion: currentModPack.minecraftVersion,
           modLoader: currentModPack.modLoader,
-          username,
+          username: username!,
+          maxRam: maxRam!,
         },
       });
     }
@@ -37,7 +37,7 @@ const StartButton: FC = () => {
       role={'primary'}
       className="self-end w-60 z-20"
       onClick={clickHandler}
-      isPending={isLoading}
+      isPending={isLoading || username === null || maxRam === null}
       disabled={currentModPack === null}
     >
       Играть

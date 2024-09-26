@@ -1,6 +1,7 @@
 import { Client } from 'minecraft-launcher-core';
 import { Dispatch, SetStateAction } from 'react';
 import { NavigateFunction } from 'react-router-dom';
+import { ModLoaders } from '../enums/ModLoaders.enum';
 
 export interface StartMinecraftOptions {
   isFullscreen: boolean;
@@ -12,8 +13,9 @@ export interface StartMinecraftOptions {
   clientOptions: {
     gameVersion: string;
     directoryName: string;
-    modLoader: string;
+    modLoader: ModLoaders;
     username: string;
+    maxRam: number;
   };
 }
 

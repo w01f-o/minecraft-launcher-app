@@ -27,9 +27,9 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: [],
+  whitelist: ['settings', 'specs', 'minecraft'],
 };
-//'settings', 'specs', 'minecraft'
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

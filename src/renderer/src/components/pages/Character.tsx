@@ -1,147 +1,43 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
-import { SkinViewer, WalkingAnimation } from '@jebibot/skinview3d';
-import steveDefaultSkin from '../../../../../resources/steve.png';
-import Field from '../shared/UI/Field';
-import { useMinecraft } from '../../hooks/useMinecraft';
-import Button from '../shared/UI/Button';
-import Modal from '../shared/UI/Modal';
-import { useDropzone } from 'react-dropzone';
-import UploadSvg from '../shared/Icons/UploadSvg';
-import clsx from 'clsx';
-import { useGetCharacterQuery, useUpdateCharacterMutation } from '../../services/character.api';
+import { FC } from 'react';
+import { useGetCharacterQuery } from '../../services/character.api';
+import { MutatingDots } from 'react-loader-spinner';
+import CharacterCanvas from '../widgets/Character/CharacterCanvas';
+import CharacterController from '../features/Character/CharacterController';
+import ErrorMessage from '../features/Errors/ErrorMessage';
 
 const Character: FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const canvasWrapperRef = useRef<HTMLDivElement | null>(null);
+  const { isFetching, isLoading, isError, error } = useGetCharacterQuery(
+    window.localStorage.getItem('hwid')!,
+  );
 
-  const { data, isLoading } = useGetCharacterQuery(window.localStorage.getItem('hwid')!);
+  if (isFetching || isLoading) {
+    return (
+      <div className="grid flex-grow place-items-center">
+        <MutatingDots
+          color="#85A2E8"
+          wrapperClass="justify-center"
+          secondaryColor="#85A2E8"
+          width={100}
+          height={100}
+        />
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    if (canvasRef.current && canvasWrapperRef.current && data) {
-      const skinViewer = new SkinViewer({
-        canvas: canvasRef.current,
-        width: canvasWrapperRef.current.offsetWidth,
-        height: canvasWrapperRef.current.offsetHeight,
-        skin: data.skins.default
-          ? `${import.meta.env.VITE_API_URL}/character/textures/${data.skins.default}`
-          : steveDefaultSkin,
-        animation: new WalkingAnimation(),
-      });
-
-      if (data.cape) {
-        skinViewer.loadCape(`${import.meta.env.VITE_API_URL}/character/textures/${data.cape}`);
-      }
-    }
-  }, [data]);
-
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [uploadType, setUploadType] = useState<'cape' | 'skin' | null>();
-
-  const uploaderButtonClickHandler = (type: 'cape' | 'skin') => (): void => {
-    setModalIsOpen(!modalIsOpen);
-    setUploadType(type);
-  };
-
-  const [updateCharacter] = useUpdateCharacterMutation();
-
-  const dropHandler = async (acceptedFiles: File[]) => {
-    const formData = new FormData();
-    setModalIsOpen(!modalIsOpen);
-
-    switch (uploadType) {
-      case 'skin':
-        formData.append('skin', acceptedFiles[0]);
-        break;
-      case 'cape':
-        formData.append('cape', acceptedFiles[0]);
-        break;
-    }
-    const hwid = await window.utils.getHwid();
-    formData.append('hwid', hwid);
-
-    updateCharacter(formData);
-  };
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: dropHandler });
-
-  const { username, setUsername } = useMinecraft();
-  const [inputLocalName, setInputLocalName] = useState<string>('');
-
-  useEffect(() => {
-    if (username !== null) {
-      setInputLocalName(username);
-    }
-  }, [username]);
-
-  const inputLocalNameChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputLocalName(e.target.value);
-  };
-
-  const submitChangeNameHandler = async () => {
-    const formData = new FormData();
-    formData.append('hwid', window.localStorage.getItem('hwid')!);
-    formData.append('username', inputLocalName);
-
-    updateCharacter(formData);
-    setUsername(inputLocalName);
-  };
-
-  if (isLoading) {
-    return <div>Загрузка...</div>;
+  if (isError) {
+    return (
+      <div className="grid place-items-center flex-grow">
+        <ErrorMessage message={JSON.stringify(error)} />
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-grow items-stretch">
-      <div className="w-1/2" ref={canvasWrapperRef}>
-        <canvas ref={canvasRef} className="w-full h-full"></canvas>
-      </div>
-      <div className="w-1/3 py-20">
-        <div className="flex flex-col gap-3">
-          <div className="text-2xl">Имя персонажа:</div>
-          <div className="flex">
-            <Field value={inputLocalName} onChange={inputLocalNameChangeHandler} />
-            {inputLocalName !== username && (
-              <Button role={'primary'} minify onClick={submitChangeNameHandler}></Button>
-            )}
-          </div>
-          <Button role={'secondary'} onClick={uploaderButtonClickHandler('skin')}>
-            Загрузить скин
-          </Button>
-          <div className="flex">
-            <Button
-              role={'secondary'}
-              onClick={uploaderButtonClickHandler('cape')}
-              className="w-full"
-            >
-              Загрузить плащ
-            </Button>
-            {/*<Button role={'primary'} minify danger>*/}
-            {/*  <ThrashIcon />*/}
-            {/*</Button>*/}
-          </div>
-          <Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen}>
-            <div className="flex gap-6 flex-col items-center justify-center h-[70vh]">
-              <h2
-                className={clsx('text-white text-4xl transition-all', {
-                  '!text-blue': isDragActive,
-                })}
-              >
-                {uploadType === 'cape' ? 'Загрузить плащ' : 'Загрузить скин'}
-              </h2>
-              <div
-                className={clsx(
-                  'grid place-items-center size-60 border-white rounded-2xl border-2 border-dashed cursor-pointer transition-all',
-                  {
-                    '!border-blue': isDragActive,
-                  },
-                )}
-                {...getRootProps()}
-              >
-                <input {...getInputProps()} />
-                <UploadSvg isHover={isDragActive} />
-              </div>
-            </div>
-          </Modal>
+    <div className="flex flex-grow items-center">
+      <CharacterCanvas />
+      <div className="w-1/2">
+        <div className="flex flex-col gap-3 h-full">
+          <CharacterController />
         </div>
       </div>
     </div>

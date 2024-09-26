@@ -33,7 +33,7 @@ const Button: FC<ButtonProps> = ({
             role === 'primary',
           'rounded-full before:rounded-full !p-2.5': rounded,
           'bg-red-400 text-white': danger,
-          'size-10': minify,
+          'size-12 !px-0': minify,
           [`${className}`]: className,
         },
       )}

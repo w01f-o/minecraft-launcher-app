@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, protocol, shell, dialog } from 'electron';
 import { join } from 'path';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
@@ -98,25 +98,63 @@ function createWindow(): void {
       try {
         await unzipArchive(archivePath, directory);
         fs.rmSync(archivePath);
-        console.log('Archive unpacked successfully');
       } catch (error) {
         console.error('Error while unpacking the archive:', error);
       }
     },
   );
 
-  ipcMain.on('GET_MINECRAFT_PATH', (_event, directoryName: string) => {
+  ipcMain.handle('GET_MINECRAFT_PATH', (_event, directoryName: string) => {
     const dir = path.join(minecraftDirectory, directoryName);
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
 
-    mainWindow.webContents.send('MINECRAFT_PATH', dir);
+    return dir;
   });
 
   ipcMain.on('LAUNCHER_LOADING_PROGRESS', (_event, progress) => {
     mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', progress);
+  });
+
+  ipcMain.handle('GET_LAUNCHER_SCREENSHOTS', () => {
+    const modpacks = fs.readdirSync(minecraftDirectory);
+
+    const screenshots: string[] = [];
+
+    for (const modpack of modpacks) {
+      const pathToScreenshotFolder = path.join(minecraftDirectory, modpack, 'screenshots');
+      const screenshotsFromModpack = fs.readdirSync(pathToScreenshotFolder);
+
+      for (const screenshot of screenshotsFromModpack) {
+        const pathToScreenshot = path.join(modpack, 'screenshots', screenshot);
+
+        screenshots.push(pathToScreenshot.replace(/\\/g, '/'));
+      }
+    }
+
+    return screenshots;
+  });
+
+  ipcMain.on('SAVE_SCREENSHOT', async (_e, screenshotPath) => {
+    const { canceled, filePath } = await dialog.showSaveDialog({
+      title: 'Сохранить скриншот',
+      buttonLabel: 'Сохранить',
+      defaultPath: path.basename(screenshotPath),
+      filters: [{ name: 'Images', extensions: ['png', 'jpg', 'jpeg'] }],
+    });
+
+    if (canceled || !filePath) {
+      return;
+    }
+
+    try {
+      const file = fs.readFileSync(path.join(minecraftDirectory, screenshotPath));
+      fs.writeFileSync(filePath, file);
+    } catch (error) {
+      console.error('Error while saving screenshot:', error);
+    }
   });
 }
 
@@ -145,6 +183,24 @@ app.whenReady().then(() => {
 
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+
+  protocol.handle('client-screenshots', async (request) => {
+    const url = request.url.replace('client-screenshots://', '');
+    const filePath = path.join(minecraftDirectory, url);
+
+    try {
+      const file = fs.readFileSync(filePath);
+
+      return new Response(file, {
+        headers: { 'Content-Type': 'image/png' },
+      });
+    } catch (error) {
+      return new Response(null, {
+        status: 404,
+        statusText: 'File Not Found',
+      });
+    }
   });
 });
 

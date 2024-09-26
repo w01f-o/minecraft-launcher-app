@@ -1,6 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { useMinecraft } from '../../hooks/useMinecraft';
-import { useUpdateCharacterMutation } from '../../services/character.api';
+import { useGetCharacterQuery, useUpdateCharacterMutation } from '../../services/character.api';
 
 interface MinecraftProviderProps {
   children: ReactNode;
@@ -9,7 +9,8 @@ interface MinecraftProviderProps {
 const MinecraftProvider: FC<MinecraftProviderProps> = ({ children }) => {
   const [hwid, setHwid] = useState<string | null>(null);
   const { setUsername } = useMinecraft();
-  const [updateCharacter, { data }] = useUpdateCharacterMutation();
+  const { data } = useGetCharacterQuery(hwid ?? '');
+  const [updateCharacter] = useUpdateCharacterMutation();
 
   useEffect(() => {
     window.utils.getHwid().then((hwid) => {

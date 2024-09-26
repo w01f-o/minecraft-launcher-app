@@ -18,7 +18,15 @@ export const characterApi = createApi({
       }),
       invalidatesTags: ['Character'],
     }),
+    deleteCape: builder.mutation<Character, string>({
+      query: (hwid: string) => ({
+        url: `/character/cape/${hwid}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Character'],
+    }),
   }),
 });
 
-export const { useGetCharacterQuery, useUpdateCharacterMutation } = characterApi;
+export const { useGetCharacterQuery, useUpdateCharacterMutation, useDeleteCapeMutation } =
+  characterApi;
