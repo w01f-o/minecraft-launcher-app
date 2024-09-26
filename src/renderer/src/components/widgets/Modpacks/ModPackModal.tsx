@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper/modules';
 import Screenshot from '../../entities/Screenshot';
 import ModPackController from '../../features/Modpacks/ModPackController';
 import ModList from '../Mods/ModList';
+import ActualIcon from '../../shared/Icons/ActualIcon';
 
 interface ModPackModalProps {
   item: ModPackType;
@@ -52,7 +53,16 @@ const ModPackModal: FC<ModPackModalProps> = ({
               setDownloadProgress={setDownloadProgress}
               downloadProgress={downloadProgress}
             />
-            <div className="text-2xl mb-2">{item.minecraftVersion}</div>
+            <div className="flex items-center gap-4 mb-2">
+              <div className="text-2xl">{item.minecraftVersion}</div>
+              {item.isActual && (
+                <div className="flex items-center gap-1">
+                  <ActualIcon />
+                  <p className="text-lg">Актуальная</p>
+                </div>
+              )}
+            </div>
+
             <div className="text-xl">{item.description}</div>
             <ModList mods={item.mods} />
           </div>

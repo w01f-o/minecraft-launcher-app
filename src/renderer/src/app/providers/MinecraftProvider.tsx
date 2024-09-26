@@ -28,7 +28,7 @@ const MinecraftProvider: FC<MinecraftProviderProps> = ({ children }) => {
   }, [hwid]);
 
   useEffect(() => {
-    if (data) {
+    if (data && data?.username !== null) {
       setUsername(data.username);
     }
   }, [data]);

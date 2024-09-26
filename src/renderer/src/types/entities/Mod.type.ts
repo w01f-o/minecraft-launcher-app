@@ -5,5 +5,6 @@ export interface Mod {
   minecraftVersion: string;
   description: string;
   url: string;
-  thumbnail: string;
+  thumbnail: string | null;
+  modrinthSlug: string;
 }

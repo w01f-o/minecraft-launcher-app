@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { useMinecraft } from '../../hooks/useMinecraft';
 import CircleLoader from '../shared/UI/DownloadStatus';
 import ModPackModal from '../widgets/Modpacks/ModPackModal';
+import ActualIcon from '../shared/Icons/ActualIcon';
 
 interface ModPackProps {
   item: ModPackType;
@@ -56,7 +57,10 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         <div>
           <div className="text-gray">Сборка</div>
           <div className="text-2xl">{item.name}</div>
-          <div>{item.minecraftVersion}</div>
+          <div className="flex items-center gap-2 pt-1">
+            <div>{item.minecraftVersion}</div>
+            {item.isActual && <ActualIcon />}
+          </div>
         </div>
         <div className="flex justify-end flex-grow" title={`${downloadProgress}%`}>
           <CircleLoader progress={downloadProgress} />
