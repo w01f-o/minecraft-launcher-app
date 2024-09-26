@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Screenshot deleting">
-      <change afterPath="$PROJECT_DIR$/src/main/constants/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Transition for change username button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +110,7 @@
       <updated>1727377156330</updated>
       <workItem from="1727377157428" duration="165000" />
       <workItem from="1727377330432" duration="2055000" />
-      <workItem from="1727379402260" duration="1349000" />
+      <workItem from="1727379402260" duration="2170000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -155,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727379780969</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: Transition for change username button">
+      <option name="closed" value="true" />
+      <created>1727380780047</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727380780047</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +176,7 @@
     <MESSAGE value="fix: Delete dotenv from git" />
     <MESSAGE value="feat: Error boundary" />
     <MESSAGE value="feat: Screenshot deleting" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Screenshot deleting" />
+    <MESSAGE value="feat: Transition for change username button" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Transition for change username button" />
   </component>
 </project>

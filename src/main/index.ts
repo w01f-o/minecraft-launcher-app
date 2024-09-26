@@ -119,7 +119,7 @@ function createWindow(): void {
     mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', progress);
   });
 
-  ipcMain.handle('GET_LAUNCHER_SCREENSHOTS', () => {
+  ipcMain.handle('GET_LAUNCHER_SCREENSHOTS', async () => {
     const modpacks = fs.readdirSync(minecraftDirectory);
 
     const screenshots: string[] = [];

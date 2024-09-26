@@ -6,11 +6,15 @@ import ClientScreenshot from '../entities/ClientScreenshot';
 import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
+import sadGif from '../../../../../resources/sad-azolotl.gif';
+import { MutatingDots } from 'react-loader-spinner';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
   const [initialIndex, setInitialIndex] = useState<number>(0);
   const [clientScreenshots, setClientScreenshots] = useState<string[]>([]);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const clickHandler = (index: number) => (): void => {
     setGalleryIsOpen(!galleryIsOpen);
@@ -18,9 +22,11 @@ const ClientScreenshots: FC = () => {
   };
 
   const fetchScreenshots = async (): Promise<void> => {
+    setIsLoading(true);
     const result = await window.electron.ipcRenderer.invoke('GET_LAUNCHER_SCREENSHOTS');
 
     setClientScreenshots(result);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -37,7 +43,21 @@ const ClientScreenshots: FC = () => {
     fetchScreenshots();
   };
 
-  return (
+  if (isLoading) {
+    return (
+      <div className="flex-grow grid place-items-center">
+        <MutatingDots
+          color="#85A2E8"
+          wrapperClass="justify-center"
+          secondaryColor="#85A2E8"
+          width={100}
+          height={100}
+        />
+      </div>
+    );
+  }
+
+  return clientScreenshots.length ? (
     <div className="custom-scrollbar overflow-y-auto">
       <div className="flex flex-wrap max-h-[70vh]">
         {clientScreenshots.map((item, index) => (
@@ -77,6 +97,15 @@ const ClientScreenshots: FC = () => {
           </div>
         </Swiper>
       </Modal>
+    </div>
+  ) : (
+    <div className="grid place-items-center flex-grow text-4xl">
+      <div className="flex flex-col gap-4 items-center">
+        <div>
+          <img src={sadGif} alt="" />
+        </div>
+        <div>Скриншотов пока-что нет</div>
+      </div>
     </div>
   );
 };
