@@ -6,3 +6,4 @@ out
 /minecraft
 .idea
 .vscode
+.env
