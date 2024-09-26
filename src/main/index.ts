@@ -154,6 +154,14 @@ function createWindow(): void {
       console.error('Error while saving screenshot:', error);
     }
   });
+
+  ipcMain.on('DELETE_SCREENSHOT', async (_e, screenshotPath) => {
+    try {
+      fs.rmSync(path.join(minecraftDirectory, screenshotPath));
+    } catch (error) {
+      console.error('Error while saving screenshot:', error);
+    }
+  });
 }
 
 async function unzipArchive(archivePath: string, extractTo: string): Promise<void> {

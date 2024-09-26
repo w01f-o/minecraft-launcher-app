@@ -5,6 +5,7 @@ import GallerySwiperButtons from '../widgets/GallerySwiperButtons';
 import ClientScreenshot from '../entities/ClientScreenshot';
 import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
+import ThrashIcon from '../shared/Icons/ThrashIcon';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
@@ -16,7 +17,7 @@ const ClientScreenshots: FC = () => {
     setInitialIndex(index);
   };
 
-  const fetchScreenshots = async () => {
+  const fetchScreenshots = async (): Promise<void> => {
     const result = await window.electron.ipcRenderer.invoke('GET_LAUNCHER_SCREENSHOTS');
 
     setClientScreenshots(result);
@@ -26,8 +27,14 @@ const ClientScreenshots: FC = () => {
     fetchScreenshots();
   }, []);
 
-  const downloadClickHandler = async () => {
+  const downloadClickHandler = (): void => {
     window.electron.ipcRenderer.send('SAVE_SCREENSHOT', clientScreenshots[initialIndex]);
+  };
+
+  const deleteClickHandler = (): void => {
+    setGalleryIsOpen(!galleryIsOpen);
+    window.electron.ipcRenderer.send('DELETE_SCREENSHOT', clientScreenshots[initialIndex]);
+    fetchScreenshots();
   };
 
   return (
@@ -58,9 +65,14 @@ const ClientScreenshots: FC = () => {
               <ClientScreenshot key={screenshot} screenshot={screenshot} />
             </SwiperSlide>
           ))}
-          <div className="absolute right-8 bottom-8 z-40 shadow-2xl ">
+          <div className="absolute right-8 bottom-8 z-40 shadow-2xl">
             <Button role={'primary'} rounded onClick={downloadClickHandler}>
               <DownloadIcon />
+            </Button>
+          </div>{' '}
+          <div className="absolute right-24 bottom-8 z-40 shadow-2xl">
+            <Button role={'primary'} danger rounded onClick={deleteClickHandler}>
+              <ThrashIcon />
             </Button>
           </div>
         </Swiper>
