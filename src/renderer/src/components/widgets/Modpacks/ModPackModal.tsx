@@ -58,7 +58,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
               {item.isActual && (
                 <div className="flex items-center gap-1">
                   <ActualIcon />
-                  <p className="text-lg">Актуальная</p>
+                  <p className="text-lg text-red-400 font-medium leading-none">Актуальная</p>
                 </div>
               )}
             </div>

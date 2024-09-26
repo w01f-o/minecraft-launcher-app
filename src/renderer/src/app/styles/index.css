@@ -4,12 +4,13 @@
 @tailwind utilities;
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   overflow: hidden;
+  @apply antialiased;
 }
 
 #root {
-  @apply flex flex-col w-screen min-h-screen overflow-hidden
+  @apply flex flex-col w-screen min-h-screen overflow-hidden;
 }
 
 #drag-region {
@@ -21,11 +22,11 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #85A2E8;
+  background-color: #85a2e8;
   border-radius: 20px;
-  border: 3px solid #85A2E8;
+  border: 3px solid #85a2e8;
 }
 
 * {
-  @apply focus:outline-blue
+  @apply focus:outline-blue;
 }

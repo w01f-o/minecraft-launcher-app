@@ -75,7 +75,7 @@ export const minecraftApi: MinecraftApi = {
       if (isLauncherHide) {
         electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
 
-        this.launcher.once('close', () => {
+        this.launcher.on('close', () => {
           electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
         });
       }
