@@ -21,7 +21,7 @@ const CharacterCanvas: FC = () => {
     cape: TextureSource | RemoteImage | null;
   } | null>(null);
 
-  const fetchTextures = async () => {
+  const fetchTextures = async (): Promise<void> => {
     setTexturesIsLoading(true);
     setTexturesError(null);
     if (!data || data.skins.default === null) {
@@ -54,9 +54,11 @@ const CharacterCanvas: FC = () => {
 
         setTexturesData({ skin: skinTexture, cape: null });
       }
-    } catch (e: any) {
-      console.error(e);
-      setTexturesError(JSON.stringify(e.message));
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setTexturesError(error.message);
+      }
+      console.error(error);
     } finally {
       setTexturesIsLoading(false);
     }
@@ -84,7 +86,7 @@ const CharacterCanvas: FC = () => {
 
     window.addEventListener('resize', resizeHandler);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('resize', resizeHandler);
     };
   }, [canvasRef.current, texturesData]);
@@ -94,10 +96,18 @@ const CharacterCanvas: FC = () => {
   }, [data]);
 
   useEffect(() => {
-    if (texturesData && skinViewerRef.current) {
-      skinViewerRef.current.loadSkin(texturesData.skin);
+    try {
+      if (texturesData && skinViewerRef.current) {
+        skinViewerRef.current.loadSkin(texturesData.skin);
 
-      texturesData.cape && skinViewerRef.current.loadCape(texturesData.cape);
+        texturesData.cape && skinViewerRef.current.loadCape(texturesData.cape);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setTexturesError(error.message);
+      }
+
+      console.error(error);
     }
   }, [texturesData]);
 
