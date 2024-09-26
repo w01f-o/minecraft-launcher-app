@@ -5,9 +5,7 @@ import ReadyIcon from '../../shared/Icons/ReadyIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
 
-interface CharacterNameChangerProps {}
-
-const CharacterNameChanger: FC<CharacterNameChangerProps> = ({}) => {
+const CharacterNameChanger: FC = () => {
   const { username } = useMinecraft();
   const [updateCharacter, { isLoading }] = useUpdateCharacterMutation();
   const [inputLocalName, setInputLocalName] = useState<string | null>(null);
@@ -18,7 +16,7 @@ const CharacterNameChanger: FC<CharacterNameChangerProps> = ({}) => {
     }
   }, [username]);
 
-  const inputLocalNameChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const inputLocalNameChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputLocalName(e.target.value);
   };
 
@@ -31,7 +29,7 @@ const CharacterNameChanger: FC<CharacterNameChangerProps> = ({}) => {
     );
   }, [inputLocalName, username]);
 
-  const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>) => {
+  const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (!canBeChanged) return;
 

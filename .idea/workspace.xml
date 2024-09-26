@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="...">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Error boundary">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,21 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "w01f-o"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;w01f-o&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/w01f-o/minecraft-launcher-app.git",
-    "accountId": "92d1f896-0e74-4dd2-8067-1b3cb20e32b0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/w01f-o/minecraft-launcher-app.git&quot;,
+    &quot;accountId&quot;: &quot;92d1f896-0e74-4dd2-8067-1b3cb20e32b0&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2mcY6VKylw51GTXWYBPKVE4ZiiL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,8 +50,14 @@
     "com.codeium.enabled": "true",
     "git-widget-placeholder": "dev",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -51,6 +69,23 @@
         <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -67,7 +102,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727377156330</updated>
-      <workItem from="1727377157428" duration="123000" />
+      <workItem from="1727377157428" duration="165000" />
+      <workItem from="1727377330432" duration="1568000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -77,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727377251068</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix: Delete dotenv from git">
+      <option name="closed" value="true" />
+      <created>1727377301273</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727377301273</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,6 +134,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="..." />
-    <option name="LAST_COMMIT_MESSAGE" value="..." />
+    <MESSAGE value="fix: Delete dotenv from git" />
+    <MESSAGE value="feat: Error boundary" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Error boundary" />
   </component>
 </project>

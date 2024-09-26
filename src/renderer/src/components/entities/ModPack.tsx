@@ -21,6 +21,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
+
     if (downloadProgress === 100) {
       timeout = setTimeout(() => {
         addDownloadedModPacks(item);

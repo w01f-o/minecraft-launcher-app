@@ -20,7 +20,7 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
   const [updateCharacter, { isLoading, isSuccess }] = useUpdateCharacterMutation();
   const [fileError, setFileError] = useState<boolean>(false);
 
-  const dropHandler = (acceptedFiles: File[]) => {
+  const dropHandler = (acceptedFiles: File[]): void => {
     if (acceptedFiles.length === 0) {
       setFileError(true);
 

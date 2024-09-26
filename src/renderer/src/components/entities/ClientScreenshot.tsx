@@ -17,13 +17,15 @@ type ClientScreenshotProps =
 const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  const loadHandler = () => {
+  const loadHandler = (): void => {
+    //TODO: Remove delay
+
     setTimeout(() => {
       setIsLoaded(true);
     }, 500);
   };
 
-  const clickHandler = () => {
+  const clickHandler = (): void => {
     if (props.isPreview && isLoaded) {
       props.clickHandler(props.index)();
     }

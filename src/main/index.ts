@@ -139,8 +139,6 @@ function createWindow(): void {
 
   ipcMain.on('SAVE_SCREENSHOT', async (_e, screenshotPath) => {
     const { canceled, filePath } = await dialog.showSaveDialog({
-      title: 'Сохранить скриншот',
-      buttonLabel: 'Сохранить',
       defaultPath: path.basename(screenshotPath),
       filters: [{ name: 'Images', extensions: ['png', 'jpg', 'jpeg'] }],
     });
@@ -174,7 +172,7 @@ async function unzipArchive(archivePath: string, extractTo: string): Promise<voi
 }
 
 app.whenReady().then(() => {
-  electronApp.setAppUserModelId('com.electron');
+  electronApp.setAppUserModelId('com.thechocolatethief');
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });

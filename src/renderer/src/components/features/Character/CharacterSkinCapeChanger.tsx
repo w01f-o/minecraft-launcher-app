@@ -4,9 +4,7 @@ import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import CharacterDropZoneModal from './CharacterDropZoneModal';
 import { useDeleteCapeMutation } from '../../../services/character.api';
 
-interface CharacterSkinCapeChangerProps {}
-
-const CharacterSkinCapeChanger: FC<CharacterSkinCapeChangerProps> = ({}) => {
+const CharacterSkinCapeChanger: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [uploadType, setUploadType] = useState<'cape' | 'skin' | null>(null);
 
@@ -17,7 +15,7 @@ const CharacterSkinCapeChanger: FC<CharacterSkinCapeChangerProps> = ({}) => {
     setUploadType(type);
   };
 
-  const deleteCapeClickHandler = () => {
+  const deleteCapeClickHandler = (): void => {
     deleteCape(window.localStorage.getItem('hwid')!);
   };
 
