@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import Screenshot from '../../entities/Screenshot';
 import ModPackController from '../../features/Modpacks/ModPackController';
+import Mod from '../../entities/Mod';
 
 interface ModPackModalProps {
   item: ModPackType;
@@ -43,7 +44,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
           ))}
         </Swiper>
         <div className="flex flex-col px-6 py-6">
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between">
             <ModPackController
               setModalIsOpen={setModalIsOpen}
               item={item}
@@ -51,6 +52,9 @@ const ModPackModal: FC<ModPackModalProps> = ({
               setDownloadProgress={setDownloadProgress}
               downloadProgress={downloadProgress}
             />
+            <div className="text-2xl mb-2">{item.minecraftVersion}</div>
+            <div className="text-xl">{item.description}</div>
+            {item.mods?.map((mod) => <Mod item={mod} key={mod.id} />)}
           </div>
         </div>
       </div>

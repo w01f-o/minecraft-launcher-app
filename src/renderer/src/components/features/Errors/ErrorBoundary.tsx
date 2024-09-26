@@ -48,10 +48,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       return (
         <>
           <TitleBar />
-          <div className="flex-grow grid place-items-center">
+          <div className="flex-grow grid place-items-center ">
             <Background />
-            <div className="max-w-2xl">
-              <ErrorMessage message={JSON.stringify(this.state.error)} />
+            <div className="max-w-2xl custom-scrollbar overflow-y-auto">
+              <div className="max-h-[70vh]">
+                <ErrorMessage message={JSON.stringify(this.state.error)} />
+              </div>
             </div>
           </div>
         </>

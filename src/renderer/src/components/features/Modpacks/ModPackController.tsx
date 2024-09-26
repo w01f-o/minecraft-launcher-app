@@ -80,8 +80,6 @@ const ModPackController: FC<ModPackControllerProps> = ({
           </>
         )}
       </div>
-      <div className="text-2xl mb-2">{item.minecraftVersion}</div>
-      <div className="text-xl">{item.description}</div>
     </div>
   );
 };
