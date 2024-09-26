@@ -11,7 +11,7 @@ export interface ModPack {
   minecraftVersion: string;
   directoryName: string;
   modLoader: ModLoaders;
-  mods: Mod[] | null;
+  mods: Mod[];
   isDownloaded: boolean;
   isActual: boolean;
   isUpdated: boolean;

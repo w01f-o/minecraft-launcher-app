@@ -163,6 +163,10 @@ function createWindow(): void {
       console.error('Error while saving screenshot:', error);
     }
   });
+
+  ipcMain.on('OPEN_MODRINTH', (_e, link) => {
+    shell.openExternal(`https://modrinth.com/${link}`);
+  });
 }
 
 app.whenReady().then(() => {
