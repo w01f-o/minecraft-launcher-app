@@ -44,7 +44,7 @@ const RamSetting: FC = () => {
               type="text"
               minify
               className={clsx({
-                'bg-red-400': ramWarning,
+                'bg-red-400 focus:ring-red-500': ramWarning,
               })}
             />
           </>
