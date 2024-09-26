@@ -60,11 +60,11 @@ const ClientScreenshots: FC = () => {
   return clientScreenshots.length ? (
     <div className="custom-scrollbar overflow-y-auto">
       <div className="flex flex-wrap max-h-[70vh]">
-        {clientScreenshots.map((item, index) => (
+        {clientScreenshots.map((screenshot, index) => (
           <ClientScreenshot
-            key={index}
+            key={screenshot}
             isPreview
-            screenshot={item}
+            screenshot={screenshot}
             index={index}
             clickHandler={clickHandler}
           />
@@ -80,8 +80,8 @@ const ClientScreenshots: FC = () => {
           onSlideChange={(swiper) => setInitialIndex(swiper.realIndex)}
         >
           <GallerySwiperButtons isOpen={galleryIsOpen} />
-          {clientScreenshots.map((screenshot, index) => (
-            <SwiperSlide key={index} className="h-full">
+          {clientScreenshots.map((screenshot) => (
+            <SwiperSlide key={screenshot} className="h-full">
               <ClientScreenshot key={screenshot} screenshot={screenshot} />
             </SwiperSlide>
           ))}
@@ -89,7 +89,7 @@ const ClientScreenshots: FC = () => {
             <Button role={'primary'} rounded onClick={downloadClickHandler}>
               <DownloadIcon />
             </Button>
-          </div>{' '}
+          </div>
           <div className="absolute right-24 bottom-8 z-40 shadow-2xl">
             <Button role={'primary'} danger rounded onClick={deleteClickHandler}>
               <ThrashIcon />

@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Transition for change username button">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Loader for screenshots">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +113,7 @@
       <updated>1727377156330</updated>
       <workItem from="1727377157428" duration="165000" />
       <workItem from="1727377330432" duration="2055000" />
-      <workItem from="1727379402260" duration="2170000" />
+      <workItem from="1727379402260" duration="3130000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -160,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727380780047</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: Loader for screenshots">
+      <option name="closed" value="true" />
+      <created>1727381630633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381630633</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +188,7 @@
     <MESSAGE value="feat: Error boundary" />
     <MESSAGE value="feat: Screenshot deleting" />
     <MESSAGE value="feat: Transition for change username button" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Transition for change username button" />
+    <MESSAGE value="feat: Loader for screenshots" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Loader for screenshots" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, protocol, shell, dialog } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, protocol, shell } from 'electron';
 import { join } from 'path';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
@@ -194,6 +194,14 @@ app.whenReady().then(() => {
       });
     }
   });
+
+  // installExtension(REACT_DEVELOPER_TOOLS)
+  //   .then((name) => console.log(`Added Extension:  ${name}`))
+  //   .catch((err) => console.log('An error occurred: ', err));
+  //
+  // installExtension(REDUX_DEVTOOLS)
+  //   .then((name) => console.log(`Added Extension:  ${name}`))
+  //   .catch((err) => console.log('An error occurred: ', err));
 });
 
 app.on('window-all-closed', () => {
