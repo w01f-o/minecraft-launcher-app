@@ -4,6 +4,7 @@ import Button from '../../shared/UI/Button';
 import ReadyIcon from '../../shared/Icons/ReadyIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
+import { useTransition, animated } from '@react-spring/web';
 
 const CharacterNameChanger: FC = () => {
   const { username } = useMinecraft();
@@ -40,6 +41,13 @@ const CharacterNameChanger: FC = () => {
     updateCharacter(formData);
   };
 
+  const changeButtonTransition = useTransition(canBeChanged, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 100 },
+  });
+
   return (
     <>
       <div className="text-2xl">Имя персонажа:</div>
@@ -49,10 +57,15 @@ const CharacterNameChanger: FC = () => {
           onChange={inputLocalNameChangeHandler}
           className="w-[80%]"
         />
-        {canBeChanged && (
-          <Button role={'primary'} minify isPending={isLoading}>
-            <ReadyIcon />
-          </Button>
+        {changeButtonTransition(
+          (props, canBeChanged) =>
+            canBeChanged && (
+              <animated.div style={props}>
+                <Button role={'primary'} minify isPending={isLoading}>
+                  <ReadyIcon />
+                </Button>
+              </animated.div>
+            ),
         )}
       </form>
     </>

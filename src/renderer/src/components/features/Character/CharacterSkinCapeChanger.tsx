@@ -21,7 +21,7 @@ const CharacterSkinCapeChanger: FC = () => {
 
   return (
     <>
-      <Button className="w-[80%]" role={'secondary'} onClick={uploaderButtonClickHandler('skin')}>
+      <Button className="w-[80%]" role={'primary'} onClick={uploaderButtonClickHandler('skin')}>
         Загрузить скин
       </Button>
       <div className="flex gap-4">

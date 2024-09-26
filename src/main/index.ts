@@ -5,9 +5,9 @@ import icon from '../../resources/icon.png?asset';
 import * as path from 'node:path';
 import { DownloadOptions } from '../preload/types/MinecraftApi';
 import * as fs from 'node:fs';
-import * as unzipper from 'unzipper';
 
-export const minecraftDirectory = path.join(app.getPath('userData'), 'minecraft-game');
+import { unzipArchive } from './utils/unzipeArchive';
+import { minecraftDirectory } from './constants/constants';
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -28,6 +28,7 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
   });
+
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: 'deny' };
@@ -161,21 +162,6 @@ function createWindow(): void {
     } catch (error) {
       console.error('Error while saving screenshot:', error);
     }
-  });
-}
-
-async function unzipArchive(archivePath: string, extractTo: string): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    fs.createReadStream(archivePath)
-      .pipe(unzipper.Extract({ path: extractTo }))
-      .on('close', () => {
-        console.log('Extraction complete');
-        resolve();
-      })
-      .on('error', (error) => {
-        console.error('Error during extraction:', error);
-        reject(error);
-      });
   });
 }
 
