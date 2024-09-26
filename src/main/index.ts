@@ -83,7 +83,6 @@ function createWindow(): void {
     'MINECRAFT_DOWNLOAD',
     async (_event, options: Omit<DownloadOptions, 'setDownloadProgress'>) => {
       const { download } = await import('electron-dl');
-
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;

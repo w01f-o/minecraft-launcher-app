@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { useMinecraft } from '../../hooks/useMinecraft';
 
 const StartButton: FC = () => {
-  const { currentModPack } = useMinecraft();
+  const { currentModPack, username } = useMinecraft();
   const { isFullscreen, isDebugMode, isLauncherHide, isAutoLogin } = useSettings();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
-  const clickHandler = (): void => {
+  const clickHandler = async (): Promise<void> => {
     setIsLoading(true);
 
     if (currentModPack) {
-      window.minecraft.start({
+      await window.minecraft.start({
         isFullscreen,
         isLauncherHide,
         isAutoLogin,
@@ -26,6 +26,7 @@ const StartButton: FC = () => {
           directoryName: currentModPack.directoryName,
           gameVersion: currentModPack.minecraftVersion,
           modLoader: currentModPack.modLoader,
+          username,
         },
       });
     }

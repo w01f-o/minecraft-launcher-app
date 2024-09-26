@@ -14,18 +14,20 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { modPacksApi } from '@renderer/services/modPacks.api';
+import { characterApi } from '../services/character.api';
 
 const rootReducer = combineReducers({
   minecraft: minecraftReducer,
   settings: settingsReducer,
   specs: specsReducer,
   [modPacksApi.reducerPath]: modPacksApi.reducer,
+  [characterApi.reducerPath]: characterApi.reducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['settings', 'specs', 'minecraft'],
+  whitelist: [],
 };
 //'settings', 'specs', 'minecraft'
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -37,7 +39,9 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(modPacksApi.middleware),
+    })
+      .concat(modPacksApi.middleware)
+      .concat(characterApi.middleware),
 });
 export const persistor = persistStore(store);
 

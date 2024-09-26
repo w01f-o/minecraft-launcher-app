@@ -71,7 +71,7 @@ export const minecraftApi: MinecraftApi = {
           max: '6G',
           min: '4G',
         },
-        authorization: Authenticator.getAuth('w01f'),
+        authorization: Authenticator.getAuth(clientOptions.username),
         window: {
           fullscreen: isFullscreen,
         },

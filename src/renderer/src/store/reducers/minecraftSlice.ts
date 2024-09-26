@@ -4,11 +4,13 @@ import { ModPack } from '../../types/entities/ModPack.type';
 export interface State {
   currentModPack: ModPack | null;
   downloadedModPacks: ModPack[];
+  username: string | null;
 }
 
 const initialState: State = {
   currentModPack: null,
   downloadedModPacks: [],
+  username: null,
 };
 
 export const minecraftSlice = createSlice({
@@ -26,9 +28,12 @@ export const minecraftSlice = createSlice({
         (modPack) => modPack.id !== action.payload.id,
       );
     },
+    setUsername: (state, action: PayloadAction<string>) => {
+      state.username = action.payload;
+    },
   },
 });
 
-export const { setCurrentModPack, addDownloadedModPacks, removeDownloadedModPacks } =
+export const { setCurrentModPack, addDownloadedModPacks, removeDownloadedModPacks, setUsername } =
   minecraftSlice.actions;
 export default minecraftSlice.reducer;

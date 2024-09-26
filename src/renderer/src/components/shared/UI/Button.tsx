@@ -8,6 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isPending?: boolean;
   rounded?: boolean;
   danger?: boolean;
+  minify?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: FC<ButtonProps> = ({
   isPending,
   rounded,
   danger,
+  minify,
   ...props
 }) => {
   return (
@@ -31,6 +33,7 @@ const Button: FC<ButtonProps> = ({
             role === 'primary',
           'rounded-full before:rounded-full !p-2.5': rounded,
           'bg-red-400 text-white': danger,
+          'size-10': minify,
           [`${className}`]: className,
         },
       )}

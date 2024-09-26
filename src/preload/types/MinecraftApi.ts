@@ -13,6 +13,7 @@ export interface StartMinecraftOptions {
     gameVersion: string;
     directoryName: string;
     modLoader: string;
+    username: string;
   };
 }
 

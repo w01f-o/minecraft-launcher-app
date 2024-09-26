@@ -4,19 +4,24 @@ import {
   setCurrentModPack as setCurrentModPackAction,
   addDownloadedModPacks as addDownloadedModPacksAction,
   removeDownloadedModPacks as removeDownloadedModPacksAction,
+  setUsername as setUsernameAction,
 } from '../store/reducers/minecraftSlice';
 
 type useMinecraftReturn = {
   currentModPack: ModPack | null;
   downloadedModPacks: ModPack[];
+  username: string | null;
   setCurrentModPack: (modPack: ModPack) => void;
   addDownloadedModPacks: (modPack: ModPack) => void;
   removeDownloadedModPacks: (modPack: ModPack) => void;
+  setUsername: (username: string) => void;
 };
 
 export const useMinecraft = (): useMinecraftReturn => {
   const dispatch = useAppDispatch();
-  const { currentModPack, downloadedModPacks } = useAppSelector((state) => state.minecraft);
+  const { currentModPack, downloadedModPacks, username } = useAppSelector(
+    (state) => state.minecraft,
+  );
 
   const setCurrentModPack = (modPack: ModPack): void => {
     dispatch(setCurrentModPackAction(modPack));
@@ -30,11 +35,17 @@ export const useMinecraft = (): useMinecraftReturn => {
     dispatch(removeDownloadedModPacksAction(modPack));
   };
 
+  const setUsername = (username: string): void => {
+    dispatch(setUsernameAction(username));
+  };
+
   return {
     currentModPack,
     downloadedModPacks,
     setCurrentModPack,
     addDownloadedModPacks,
     removeDownloadedModPacks,
+    setUsername,
+    username,
   };
 };
