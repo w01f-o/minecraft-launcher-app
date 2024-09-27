@@ -3,10 +3,10 @@ import './styles/index.css';
 import 'swiper/css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Route, Routes } from 'react-router-dom';
-import RootProvider from './providers/RootProvider';
 import Layout from '../components/pages/Layout';
 import { routes } from '../constants/routes';
-import { ErrorBoundary } from '../components/features/Errors/ErrorBoundary';
+import { ErrorBoundary } from '@renderer/components/features/Errors/ErrorBoundary';
+import RootProvider from '@renderer/app/providers/RootProvider';
 
 const App: FC = () => {
   return (

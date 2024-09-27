@@ -4,17 +4,36 @@ import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
 import { MutatingDots } from 'react-loader-spinner';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
+import { animated, useTransition } from '@react-spring/web';
+import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
+
+const gap = 20;
+const cardHeight = 160;
 
 const ModPackList: FC = () => {
   const { data: modPacks, isSuccess, isLoading, isError, error } = useGetModPacksQuery();
   const { currentModPack } = useMinecraft();
 
   const sortedModPacks = useMemo(() => {
-    return modPacks?.sort((a) => (a.id === currentModPack?.id ? -1 : 1));
-  }, [modPacks]);
+    return [...(modPacks || [])].sort((a) => (a.id === currentModPack?.id ? -1 : 1));
+  }, [modPacks, currentModPack]);
+
+  let height = -gap;
+
+  const transitions = useTransition(
+    sortedModPacks.map((modpack) => ({ ...modpack, y: (height += cardHeight + gap) - cardHeight })),
+    {
+      key: (item: ModPackType) => item.id,
+      from: { height: 0, opacity: 0 },
+      leave: { height: 0, opacity: 0 },
+      enter: ({ y }) => ({ y, height: cardHeight, opacity: 1 }),
+      update: ({ y }) => ({ y, height: cardHeight }),
+      config: { tension: 400, friction: 40 },
+    },
+  );
 
   return (
-    <div className="flex flex-col gap-4 z-0">
+    <div className="z-0 relative" style={{ height: sortedModPacks.length > 0 ? height : 'auto' }}>
       {isLoading && (
         <MutatingDots
           color="#85A2E8"
@@ -25,8 +44,13 @@ const ModPackList: FC = () => {
         />
       )}
       {isSuccess &&
-        sortedModPacks?.map((modPack) => (
-          <ModPack item={modPack} key={modPack.id} isCurrent={currentModPack?.id === modPack.id} />
+        transitions((styles, modpack, _t, index) => (
+          <animated.div
+            style={{ zIndex: modPacks.length - index, ...styles }}
+            className="absolute w-full"
+          >
+            <ModPack item={modpack} isCurrent={currentModPack?.id === modpack.id} />
+          </animated.div>
         ))}
       {isError && <ErrorMessage message={JSON.stringify(error)} />}
     </div>

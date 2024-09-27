@@ -13,10 +13,14 @@ const Mod: FC<ModProps> = ({ item }) => {
       href={`https://modrinth.com/mod/${item.modrinthSlug}`}
       target="_blank"
       rel="noreferrer"
-      title={item.description}
+      title={`https://modrinth.com/mod/${item.modrinthSlug}`}
     >
       <div className="flex size-[60px] overflow-hidden rounded-xl relative z-20">
-        {item.thumbnail ? <img src={item.thumbnail} alt={item.name} /> : <NoThumbnailModIcon />}
+        {item.thumbnail ? (
+          <img src={item.thumbnail} alt={item.name} className="size-full object-cover" />
+        ) : (
+          <NoThumbnailModIcon />
+        )}
       </div>
       <div className="text-xl relative z-20">{item.name}</div>
     </a>

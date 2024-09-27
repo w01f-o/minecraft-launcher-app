@@ -36,7 +36,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   }, [downloadProgress]);
 
   return (
-    <div className="relative active:scale-[.98] transition">
+    <div className="relative active:scale-[.98] transition h-[160px]">
       <button
         className={clsx(
           'flex w-full text-start items-center gap-6 border-4 bg-white rounded-2xl py-4 px-6 h-40 cursor-pointer transition before:absolute before:inset-0 hover:before:bg-black before:opacity-[.05] before:rounded-2xl before:transition',

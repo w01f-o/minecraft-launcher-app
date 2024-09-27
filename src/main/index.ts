@@ -126,6 +126,10 @@ function createWindow(): void {
 
     for (const modpack of modpacks) {
       const pathToScreenshotFolder = path.join(minecraftDirectory, modpack, 'screenshots');
+
+      if (!fs.existsSync(pathToScreenshotFolder)) {
+        continue;
+      }
       const screenshotsFromModpack = fs.readdirSync(pathToScreenshotFolder);
 
       for (const screenshot of screenshotsFromModpack) {
