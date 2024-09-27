@@ -5,6 +5,7 @@ import { useMinecraft } from '../../hooks/useMinecraft';
 import CircleLoader from '../shared/UI/DownloadStatus';
 import ModPackModal from '../widgets/Modpacks/ModPackModal';
 import ActualIcon from '../shared/Icons/ActualIcon';
+import Image from '@renderer/components/features/Image';
 
 interface ModPackProps {
   item: ModPackType;
@@ -47,13 +48,13 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         )}
         onClick={modPackClickHandler}
       >
-        <div className="w-[110px] h-[110px] overflow-hidden rounded-2xl">
-          <img
-            src={`${import.meta.env.VITE_STATIC_URL}/${item.thumbnail}`}
-            alt={item.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <Image
+          src={`${import.meta.env.VITE_STATIC_URL}/${item.thumbnail}`}
+          alt={item.name}
+          width={110}
+          height={110}
+          wrapperClassName="rounded-2xl"
+        />
         <div>
           <div className="text-gray">Сборка</div>
           <div className="text-2xl">{item.name}</div>

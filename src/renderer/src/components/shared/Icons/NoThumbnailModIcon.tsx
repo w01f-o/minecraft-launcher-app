@@ -4,7 +4,7 @@ interface NoThumbnailModIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
 const NoThumbnailModIcon: FC<NoThumbnailModIconProps> = ({ ...props }) => {
   return (
-    <div className="bg-white size-full">
+    <div className="bg-white rounded-xl overflow-hidden size-[60px] relative z-20">
       <svg
         fillRule="evenodd"
         strokeLinecap="round"

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Mod as ModType } from '../../types/entities/Mod.type';
 import NoThumbnailModIcon from '../shared/Icons/NoThumbnailModIcon';
+import Image from '@renderer/components/features/Image';
 
 interface ModProps {
   item: ModType;
@@ -15,13 +16,17 @@ const Mod: FC<ModProps> = ({ item }) => {
       rel="noreferrer"
       title={`https://modrinth.com/mod/${item.modrinthSlug}`}
     >
-      <div className="flex size-[60px] overflow-hidden rounded-xl relative z-20">
-        {item.thumbnail ? (
-          <img src={item.thumbnail} alt={item.name} className="size-full object-cover" />
-        ) : (
-          <NoThumbnailModIcon />
-        )}
-      </div>
+      {item.thumbnail ? (
+        <Image
+          src={item.thumbnail}
+          alt={item.name}
+          width={60}
+          height={60}
+          wrapperClassName="rounded-xl relative z-20"
+        />
+      ) : (
+        <NoThumbnailModIcon />
+      )}
       <div className="text-xl relative z-20">{item.name}</div>
     </a>
   );
