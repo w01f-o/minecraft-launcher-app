@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import clsx from 'clsx';
 import Image from '@renderer/components/features/Image';
 
@@ -15,10 +15,16 @@ type ClientScreenshotProps =
     };
 
 const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const clickHandler = (): void => {
-    if (props.isPreview) {
+    if (props.isPreview && isLoaded) {
       props.clickHandler(props.index)();
     }
+  };
+
+  const loadHandler = (): void => {
+    setIsLoaded(true);
   };
 
   if (props.isPreview) {
@@ -26,7 +32,10 @@ const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
       <div className="xl:w-1/5 w-1/3 p-3 h-56">
         <button
           className={clsx(
-            'peer select-none flex overflow-hidden h-full w-full relative hover:scale-[1.03] before:bg-black before:pointer-events-none rounded-xl active:scale-[.99] transition-all before:absolute before:inset-0 before:opacity-25 before:rounded-xl before:transition',
+            'peer select-none flex before:z-40 overflow-hidden h-full cursor-progress w-full relative before:pointer-events-none rounded-xl active:scale-[.99] transition-all before:absolute before:inset-0 before:opacity-25 before:rounded-xl before:transition',
+            {
+              'hover:scale-105 hover:before:bg-black !cursor-pointer': isLoaded,
+            },
           )}
           onClick={clickHandler}
         >
@@ -35,6 +44,7 @@ const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
             alt={''}
             width={'100%'}
             height={'100%'}
+            onLoad={loadHandler}
           />
         </button>
       </div>

@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Image with loader component">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/Screenshot.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Image.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +128,8 @@
       <workItem from="1727389746098" duration="1000" />
       <workItem from="1727390175345" duration="1725000" />
       <workItem from="1727392704564" duration="1314000" />
-      <workItem from="1727433491567" duration="18210000" />
+      <workItem from="1727433491567" duration="18246000" />
+      <workItem from="1727453148531" duration="585000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -266,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727452313465</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: Image with loader component">
+      <option name="closed" value="true" />
+      <created>1727452828843</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727452828843</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

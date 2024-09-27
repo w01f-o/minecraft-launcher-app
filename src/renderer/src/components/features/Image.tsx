@@ -10,6 +10,7 @@ interface ImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | '
   height?: number | string;
   wrapperClassName?: string;
   imageClassName?: string;
+  onLoad?: () => void;
 }
 
 const Image: FC<ImageProps> = ({
@@ -19,12 +20,14 @@ const Image: FC<ImageProps> = ({
   height,
   wrapperClassName,
   imageClassName,
+  onLoad,
   ...props
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadHandler = (): void => {
     setIsLoading(false);
+    onLoad?.();
   };
 
   const loadingTransition = useTransition(isLoading, {
