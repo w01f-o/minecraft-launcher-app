@@ -35,7 +35,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
           slidesPerView={1}
           loop
           spaceBetween={50}
-          className="w-full"
+          className="w-full  rounded-2xl overflow-hidden"
           autoplay={{ delay: 2000, pauseOnMouseEnter: true }}
         >
           {item.screenshots.map((screenshot) => (
