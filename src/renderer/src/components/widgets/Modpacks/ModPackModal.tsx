@@ -3,10 +3,10 @@ import Modal from '../../shared/UI/Modal';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import Screenshot from '../../entities/Screenshot';
 import ModPackController from '../../features/Modpacks/ModPackController';
 import ModList from '../Mods/ModList';
 import ActualIcon from '../../shared/Icons/ActualIcon';
+import Image from '@renderer/components/features/Image';
 
 interface ModPackModalProps {
   item: ModPackType;
@@ -40,7 +40,13 @@ const ModPackModal: FC<ModPackModalProps> = ({
         >
           {item.screenshots.map((screenshot) => (
             <SwiperSlide key={screenshot.id}>
-              <Screenshot item={screenshot} name={item.name} />
+              <Image
+                src={`${import.meta.env.VITE_STATIC_URL}/${screenshot.thumbnail}`}
+                alt={item.name}
+                width={'100%'}
+                height={'60vh'}
+                wrapperClassName="rounded-2xl"
+              />
             </SwiperSlide>
           ))}
         </Swiper>
