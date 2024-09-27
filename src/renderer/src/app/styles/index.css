@@ -30,3 +30,7 @@ body {
 * {
   @apply focus:outline-blue;
 }
+
+.root-animate {
+  will-change: opacity;
+}

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import UploadSvg from '../../shared/Icons/UploadSvg';
 import { useDropzone } from 'react-dropzone';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
-import { MutatingDots } from 'react-loader-spinner';
+import DotsLoader from '@renderer/components/widgets/DotsLoader';
 
 interface CharacterDropZoneModalProps {
   modalIsOpen: boolean;
@@ -98,7 +98,7 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
           <input {...getInputProps()} />
 
           {isLoading ? (
-            <MutatingDots
+            <DotsLoader
               color="#F4F8FE"
               wrapperClass="justify-center"
               secondaryColor="#F4F8FE"

@@ -7,7 +7,7 @@ import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
-import { MutatingDots } from 'react-loader-spinner';
+import DotsLoader from '@renderer/components/widgets/DotsLoader';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
@@ -46,7 +46,7 @@ const ClientScreenshots: FC = () => {
   if (isLoading) {
     return (
       <div className="flex-grow grid place-items-center">
-        <MutatingDots
+        <DotsLoader
           color="#85A2E8"
           wrapperClass="justify-center"
           secondaryColor="#85A2E8"

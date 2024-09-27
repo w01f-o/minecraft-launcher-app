@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useGetCharacterQuery } from '../../services/character.api';
-import { MutatingDots } from 'react-loader-spinner';
 import CharacterCanvas from '../widgets/Character/CharacterCanvas';
 import CharacterController from '../features/Character/CharacterController';
 import ErrorMessage from '../features/Errors/ErrorMessage';
+import DotsLoader from '@renderer/components/widgets/DotsLoader';
 
 const Character: FC = () => {
   const { isFetching, isLoading, isError, error } = useGetCharacterQuery(
@@ -13,7 +13,7 @@ const Character: FC = () => {
   if (isFetching || isLoading) {
     return (
       <div className="grid flex-grow place-items-center">
-        <MutatingDots
+        <DotsLoader
           color="#85A2E8"
           wrapperClass="justify-center"
           secondaryColor="#85A2E8"

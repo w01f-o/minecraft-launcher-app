@@ -2,10 +2,10 @@ import { FC, useMemo } from 'react';
 import ModPack from '../../entities/ModPack';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
-import { MutatingDots } from 'react-loader-spinner';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
 import { animated, useTransition } from '@react-spring/web';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
+import DotsLoader from '@renderer/components/widgets/DotsLoader';
 
 const gap = 20;
 const cardHeight = 160;
@@ -35,7 +35,7 @@ const ModPackList: FC = () => {
   return (
     <div className="z-0 relative" style={{ height: sortedModPacks.length > 0 ? height : 'auto' }}>
       {isLoading && (
-        <MutatingDots
+        <DotsLoader
           color="#85A2E8"
           wrapperClass="justify-center"
           secondaryColor="#85A2E8"
@@ -47,7 +47,7 @@ const ModPackList: FC = () => {
         transitions((styles, modpack, _t, index) => (
           <animated.div
             style={{ zIndex: modPacks.length - index, ...styles }}
-            className="absolute w-full"
+            className="absolute w-full will-change-transform"
           >
             <ModPack item={modpack} isCurrent={currentModPack?.id === modpack.id} />
           </animated.div>

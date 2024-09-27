@@ -3,8 +3,9 @@ import { useGetCharacterQuery } from '../../../services/character.api';
 import { SkinViewer, WalkingAnimation } from '@jebibot/skinview3d';
 import steveDefaultSkinTexture from '../../../../../../resources/steve.png';
 import type { RemoteImage, TextureSource } from '@jebibot/skinview-utils';
-import { MutatingDots } from 'react-loader-spinner';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
+import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import { useSpring, animated } from '@react-spring/web';
 
 const CharacterCanvas: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -74,6 +75,9 @@ const CharacterCanvas: FC = () => {
         height,
         animation: new WalkingAnimation(),
       });
+
+      skinViewerRef.current.autoRotate = true;
+      skinViewerRef.current.autoRotateSpeed = 0.5;
     }
 
     const resizeHandler = (): void => {
@@ -111,10 +115,16 @@ const CharacterCanvas: FC = () => {
     }
   }, [texturesData]);
 
+  const springProps = useSpring({
+    opacity: texturesIsLoading ? 0 : 1,
+    transform: texturesIsLoading ? 'scale(0.95)' : 'scale(1)',
+    config: { tension: 170, friction: 26 },
+  });
+
   return (
     <div className="grid place-items-center w-1/2 h-[70vh] relative" ref={canvasWrapperRef}>
       {texturesIsLoading && (
-        <MutatingDots
+        <DotsLoader
           color="#85A2E8"
           wrapperClass="justify-center"
           secondaryColor="#85A2E8"
@@ -123,7 +133,9 @@ const CharacterCanvas: FC = () => {
         />
       )}
       {texturesError !== null && <ErrorMessage message={texturesError} />}
-      {!texturesIsLoading && texturesError === null && <canvas ref={canvasRef}></canvas>}
+      {!texturesIsLoading && texturesError === null && (
+        <animated.canvas ref={canvasRef} style={springProps}></animated.canvas>
+      )}
     </div>
   );
 };
