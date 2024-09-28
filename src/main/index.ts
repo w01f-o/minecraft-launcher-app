@@ -273,8 +273,6 @@ function createWindow(): void {
         await unzipArchive(archivePath, directory);
         fs.rmSync(archivePath);
 
-        console.log(javaPath);
-
         return javaPath;
       } catch (error) {
         console.error('Error while unpacking the archive:', error);

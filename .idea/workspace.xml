@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Java from server">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Auto login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +133,7 @@
       <workItem from="1727485612379" duration="421000" />
       <workItem from="1727518134790" duration="19533000" />
       <workItem from="1727539948253" duration="223000" />
-      <workItem from="1727541067885" duration="980000" />
+      <workItem from="1727541067885" duration="2121000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -338,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727537732448</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: Auto login">
+      <option name="closed" value="true" />
+      <created>1727542136938</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727542136938</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +375,8 @@
     <MESSAGE value="feat: Notification hub" />
     <MESSAGE value="feat: Notification for each features" />
     <MESSAGE value="feat: Java from server" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Java from server" />
+    <MESSAGE value="feat: Auto login" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Auto login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
