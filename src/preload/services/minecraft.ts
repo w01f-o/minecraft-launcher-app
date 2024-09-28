@@ -11,12 +11,8 @@ import { fabric, forge, quilt } from 'tomate-loaders';
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
   async download({ setDownloadProgress, id, directoryName }: DownloadOptions) {
-    electron.ipcRenderer.on('download-progress', (_event, state) => {
+    electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_event, { state }) => {
       setDownloadProgress(state.percent * 100);
-    });
-
-    electron.ipcRenderer.on('download-error', (_event, error) => {
-      console.log(error);
     });
 
     electron.ipcRenderer.send('MINECRAFT_DOWNLOAD', { id, directoryName });
@@ -30,6 +26,11 @@ export const minecraftApi: MinecraftApi = {
     clientOptions,
   }: StartMinecraftOptions) {
     navigateFunction('/loading');
+
+    await electron.ipcRenderer.invoke('CHECK_UPDATES', {
+      modpackId: clientOptions.modpackId,
+      directoryName: clientOptions.directoryName,
+    });
 
     const rootPath = await electron.ipcRenderer.invoke(
       'GET_MINECRAFT_PATH',

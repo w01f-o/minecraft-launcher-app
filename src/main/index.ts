@@ -91,7 +91,9 @@ function createWindow(): void {
 
       const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
         directory,
-        onProgress: (state) => mainWindow.webContents.send('download-progress', state),
+        onProgress: (state) =>
+          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id }),
+        saveAs: false,
       });
 
       const archivePath = downloadItem.savePath;
@@ -168,8 +170,74 @@ function createWindow(): void {
     }
   });
 
-  ipcMain.on('OPEN_MODRINTH', (_e, link) => {
-    shell.openExternal(`https://modrinth.com/${link}`);
+  ipcMain.handle(
+    'CHECK_UPDATES',
+    async (_event, { modpackId, directoryName }: { modpackId: string; directoryName: string }) => {
+      const hashesFileDir = path.join(minecraftDirectory, directoryName, 'launcher-hashes.json');
+      const hashesFileContent = fs.readFileSync(hashesFileDir, 'utf8');
+      const hashes = JSON.parse(hashesFileContent);
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-expect-error
+      const url = `${import.meta.env.VITE_API_URL}/modpack/check_update/${modpackId}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(hashes),
+      });
+
+      if (res.ok) {
+        const { downloadLink, toDelete } = await res.json();
+
+        if (toDelete.length > 0) {
+          for (const file of toDelete) {
+            fs.rmSync(path.join(minecraftDirectory, file));
+          }
+        }
+
+        if (downloadLink) {
+          const { download } = await import('electron-dl');
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-expect-error
+          const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${downloadLink}`;
+          const directory = path.join(minecraftDirectory, directoryName);
+          console.log(downloadUrl);
+          const downloadItem = await download(
+            BrowserWindow.getFocusedWindow() ?? mainWindow,
+            downloadUrl,
+            {
+              directory,
+              onProgress: (state) => {
+                mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
+                  total: state.totalBytes,
+                  task: state.transferredBytes,
+                });
+              },
+            },
+          );
+
+          const archivePath = downloadItem.savePath;
+          try {
+            await unzipArchive(archivePath, directory);
+            fs.rmSync(archivePath);
+          } catch (error) {
+            console.error('Error while unpacking the archive:', error);
+          }
+        }
+      }
+
+      return;
+    },
+  );
+
+  ipcMain.on('DELETE_MODPACK', async (_event, directoryName) => {
+    const dir = path.join(minecraftDirectory, directoryName);
+
+    if (fs.existsSync(dir)) {
+      fs.rmSync(dir, { recursive: true });
+    }
   });
 }
 

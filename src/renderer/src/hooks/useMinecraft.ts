@@ -11,7 +11,7 @@ type useMinecraftReturn = {
   currentModPack: ModPack | null;
   downloadedModPacks: ModPack[];
   username: string | null;
-  setCurrentModPack: (modPack: ModPack) => void;
+  setCurrentModPack: (modPack: ModPack | null) => void;
   addDownloadedModPacks: (modPack: ModPack) => void;
   removeDownloadedModPacks: (modPack: ModPack) => void;
   setUsername: (username: string) => void;
@@ -23,7 +23,7 @@ export const useMinecraft = (): useMinecraftReturn => {
     (state) => state.minecraft,
   );
 
-  const setCurrentModPack = (modPack: ModPack): void => {
+  const setCurrentModPack = (modPack: ModPack | null): void => {
     dispatch(setCurrentModPackAction(modPack));
   };
 

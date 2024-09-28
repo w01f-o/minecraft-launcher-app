@@ -27,6 +27,7 @@ const StartButton: FC = () => {
           modLoader: currentModPack.modLoader,
           username: username!,
           maxRam: maxRam!,
+          modpackId: currentModPack.id,
         },
       });
     }

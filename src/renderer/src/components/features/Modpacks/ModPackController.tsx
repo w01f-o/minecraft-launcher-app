@@ -21,12 +21,14 @@ const ModPackController: FC<ModPackControllerProps> = ({
   setModalIsOpen,
   modalIsOpen,
 }) => {
-  const { setCurrentModPack, downloadedModPacks, currentModPack } = useMinecraft();
+  const { setCurrentModPack, downloadedModPacks, currentModPack, removeDownloadedModPacks } =
+    useMinecraft();
 
   const selectCurrentClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
     setCurrentModPack(item);
   };
+
   const downloadClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
     setDownloadProgress(0);
@@ -39,6 +41,11 @@ const ModPackController: FC<ModPackControllerProps> = ({
 
   const deleteClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
+    window.electron.ipcRenderer.send('DELETE_MODPACK', item.directoryName);
+    removeDownloadedModPacks(item);
+    if (currentModPack?.id === item.id) {
+      setCurrentModPack(null);
+    }
   };
 
   const isDownloadedModPack = useMemo(() => {

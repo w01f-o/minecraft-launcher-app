@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Image with loader component">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Rounded modpack screenshot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSpecs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/specsSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,24 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.dev.executor": "Run",
+    "npm.start.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -128,7 +140,8 @@
       <workItem from="1727390175345" duration="1725000" />
       <workItem from="1727392704564" duration="1314000" />
       <workItem from="1727433491567" duration="18246000" />
-      <workItem from="1727453148531" duration="740000" />
+      <workItem from="1727453148531" duration="823000" />
+      <workItem from="1727454110596" duration="18288000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -282,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727453743044</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat: Rounded modpack screenshot">
+      <option name="closed" value="true" />
+      <created>1727453927692</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727453927692</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +329,7 @@
     <MESSAGE value="feat: Animation for modpack list" />
     <MESSAGE value="feat: Routing animation" />
     <MESSAGE value="feat: Image with loader component" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Image with loader component" />
+    <MESSAGE value="feat: Rounded modpack screenshot" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Rounded modpack screenshot" />
   </component>
 </project>

@@ -2,13 +2,12 @@ import { ChangeEvent, FC, useMemo } from 'react';
 import RangeInput from '../../shared/UI/RangeInput';
 import { useSettings } from '../../../hooks/useSettings';
 import Field from '../../shared/UI/Field';
-import { useSpecs } from '../../../hooks/useSpecs';
 import clsx from 'clsx';
-import { useTransition, animated } from '@react-spring/web';
+import { animated, useTransition } from '@react-spring/web';
 
 const RamSetting: FC = () => {
   const { maxRam, setMaxRam } = useSettings();
-  const { totalRam } = useSpecs();
+  const totalRam = Number(window.localStorage.getItem('totalRam')!);
 
   const fieldChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = +e.target.value * 1024 * 1024;

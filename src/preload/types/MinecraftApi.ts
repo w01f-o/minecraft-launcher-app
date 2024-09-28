@@ -13,6 +13,7 @@ export interface StartMinecraftOptions {
   clientOptions: {
     gameVersion: string;
     directoryName: string;
+    modpackId: string;
     modLoader: ModLoaders;
     username: string;
     maxRam: number;

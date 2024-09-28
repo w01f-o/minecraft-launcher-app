@@ -17,7 +17,7 @@ export const minecraftSlice = createSlice({
   name: 'minecraft',
   initialState,
   reducers: {
-    setCurrentModPack: (state, action: PayloadAction<ModPack>) => {
+    setCurrentModPack: (state, action: PayloadAction<ModPack | null>) => {
       state.currentModPack = action.payload;
     },
     addDownloadedModPacks: (state, action: PayloadAction<ModPack>) => {

@@ -1,16 +1,15 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import minecraftReducer from './reducers/minecraftSlice';
 import settingsReducer from './reducers/settingsSlice';
-import specsReducer from './reducers/specsSlice';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { modPacksApi } from '@renderer/services/modPacks.api';
@@ -19,7 +18,6 @@ import { characterApi } from '../services/character.api';
 const rootReducer = combineReducers({
   minecraft: minecraftReducer,
   settings: settingsReducer,
-  specs: specsReducer,
   [modPacksApi.reducerPath]: modPacksApi.reducer,
   [characterApi.reducerPath]: characterApi.reducer,
 });
@@ -27,9 +25,9 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['settings', 'specs', 'minecraft'],
+  whitelist: ['settings', 'minecraft'],
 };
-
+// 'settings', 'minecraft'
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
