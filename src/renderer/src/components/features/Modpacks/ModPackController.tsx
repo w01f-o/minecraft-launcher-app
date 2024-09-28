@@ -82,7 +82,9 @@ const ModPackController: FC<ModPackControllerProps> = ({
     <div className="w-full">
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
         {item.name}
-        {downloadProgress !== null && <div className="text-xl">{downloadProgress}%</div>}
+        {downloadProgress !== null && (
+          <div className="text-xl self-end">Загрузка - {Math.round(downloadProgress)}%</div>
+        )}
         {!isDownloadedModPack && downloadProgress === null && (
           <Button role={'primary'} rounded onClick={downloadClickHandler} isPending={isDownloading}>
             <DownloadIcon />

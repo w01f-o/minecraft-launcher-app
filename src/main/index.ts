@@ -90,8 +90,10 @@ function createWindow(): void {
 
       const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
         directory,
-        onProgress: (state) =>
-          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id }),
+        onProgress: (state) => {
+          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id });
+          console.log(state);
+        },
         saveAs: false,
         onStarted: () => {
           mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
@@ -226,6 +228,7 @@ function createWindow(): void {
                   total: state.totalBytes,
                   task: state.transferredBytes,
                 });
+                console.log(state);
               },
             },
           );
@@ -265,6 +268,7 @@ function createWindow(): void {
                 total: state.totalBytes,
                 task: state.transferredBytes,
               });
+              console.log(state);
             },
           },
         );
