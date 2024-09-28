@@ -3,6 +3,7 @@ import Background from '../widgets/Background/Background';
 import TitleBar from '../widgets/TitleBar';
 import NavBar from '../widgets/NavBar';
 import { useLocation } from 'react-router-dom';
+import Toast from '@renderer/components/features/Toast/Toast';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,7 +11,6 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
-
   const pathnamesWithoutNavBar = ['/settings', '/loading'];
 
   return (
@@ -25,6 +25,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       </div>
       <Background />
       <div id="root-portal"></div>
+      <Toast />
     </>
   );
 };

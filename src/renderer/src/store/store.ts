@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import minecraftReducer from './reducers/minecraftSlice';
 import settingsReducer from './reducers/settingsSlice';
+import toastReducer from './reducers/toastSlice';
 import {
   FLUSH,
   PAUSE,
@@ -18,6 +19,7 @@ import { characterApi } from '../services/character.api';
 const rootReducer = combineReducers({
   minecraft: minecraftReducer,
   settings: settingsReducer,
+  toast: toastReducer,
   [modPacksApi.reducerPath]: modPacksApi.reducer,
   [characterApi.reducerPath]: characterApi.reducer,
 });
@@ -27,7 +29,7 @@ const persistConfig = {
   storage,
   whitelist: ['settings', 'minecraft'],
 };
-// 'settings', 'minecraft'
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
