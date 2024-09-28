@@ -1,29 +1,9 @@
-import {
-  DebugOptions,
-  DownloadOptions,
-  MinecraftApi,
-  StartMinecraftOptions,
-} from '../types/MinecraftApi';
+import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../types/MinecraftApi';
 import { Authenticator, Client } from 'minecraft-launcher-core';
 import * as electron from 'electron';
 import { fabric, forge, quilt } from 'tomate-loaders';
 
 export const minecraftApi: MinecraftApi = {
-  download: async (options: DownloadOptions) => {
-    electron.ipcRenderer.send('DOWNLOAD_MINECRAFT', {
-      id: options.id,
-      directoryName: options.directoryName,
-    });
-
-    electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_event, { state, id }) => {
-      if (id === options.id) options.setDownloadProgress(state.percent * 100);
-
-      if (state.percent * 100 === 100) {
-        electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
-      }
-    });
-  },
-
   launcher: new Client(),
   async start({
     setIsLoading,

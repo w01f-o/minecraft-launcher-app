@@ -5,11 +5,14 @@ import ReadyIcon from '../../shared/Icons/ReadyIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
 import { useTransition, animated } from '@react-spring/web';
+import { useToast } from '@renderer/hooks/useToast';
 
 const CharacterNameChanger: FC = () => {
   const { username } = useMinecraft();
   const [updateCharacter, { isLoading }] = useUpdateCharacterMutation();
   const [inputLocalName, setInputLocalName] = useState<string | null>(null);
+
+  const toast = useToast();
 
   useEffect(() => {
     if (username !== null) {
@@ -38,7 +41,18 @@ const CharacterNameChanger: FC = () => {
     formData.append('hwid', window.localStorage.getItem('hwid')!);
     formData.append('username', inputLocalName!);
 
-    updateCharacter(formData);
+    try {
+      await updateCharacter(formData).unwrap();
+      toast.add({
+        type: 'success',
+        message: 'Имя персонажа успешно изменено',
+      });
+    } catch (e) {
+      toast.add({
+        type: 'error',
+        message: 'Произошла ошибка при изменении имени персонажа',
+      });
+    }
   };
 
   const changeButtonTransition = useTransition(canBeChanged, {

@@ -5,6 +5,7 @@ import ReadyIcon from '../../shared/Icons/ReadyIcon';
 import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
+import { useToast } from '@renderer/hooks/useToast';
 
 interface ModPackControllerProps {
   item: ModPackType;
@@ -30,6 +31,8 @@ const ModPackController: FC<ModPackControllerProps> = ({
     isDownloading,
   } = useMinecraft();
 
+  const toast = useToast();
+
   const selectCurrentClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
     setCurrentModPack(item);
@@ -39,19 +42,31 @@ const ModPackController: FC<ModPackControllerProps> = ({
     setModalIsOpen(!modalIsOpen);
     setDownloadProgress(0);
     setIsDownloading(true);
-    window.minecraft.download({
+
+    window.electron.ipcRenderer.send('DOWNLOAD_MINECRAFT', {
       id: item.id,
       directoryName: item.directoryName,
-      setDownloadProgress,
     });
   };
 
-  const deleteClickHandler = (): void => {
+  const deleteClickHandler = async (): Promise<void> => {
     setModalIsOpen(!modalIsOpen);
-    window.electron.ipcRenderer.send('DELETE_MODPACK', item.directoryName);
-    removeDownloadedModPacks(item);
-    if (currentModPack?.id === item.id) {
-      setCurrentModPack(null);
+    const result = await window.electron.ipcRenderer.invoke('DELETE_MODPACK', item.directoryName);
+
+    if (result.isSuccess) {
+      removeDownloadedModPacks(item);
+
+      currentModPack?.id === item.id && setCurrentModPack(null);
+
+      toast.add({
+        type: 'success',
+        message: `Сборка ${item.name} успешно удалена`,
+      });
+    } else {
+      toast.add({
+        type: 'error',
+        message: `Не удалось удалить сборку ${item.name}`,
+      });
     }
   };
 

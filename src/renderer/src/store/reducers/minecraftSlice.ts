@@ -5,14 +5,12 @@ export interface State {
   currentModPack: ModPack | null;
   downloadedModPacks: ModPack[];
   username: string | null;
-  isDownloading: boolean;
 }
 
 const initialState: State = {
   currentModPack: null,
   downloadedModPacks: [],
   username: null,
-  isDownloading: false,
 };
 
 export const minecraftSlice = createSlice({
@@ -33,9 +31,6 @@ export const minecraftSlice = createSlice({
     setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
     },
-    setIsDownloading: (state, action: PayloadAction<boolean>) => {
-      state.isDownloading = action.payload;
-    },
   },
 });
 
@@ -44,6 +39,5 @@ export const {
   addDownloadedModPacks: addDownloadedModPacksAction,
   removeDownloadedModPacks: removeDownloadedModPacksAction,
   setUsername: setUsernameAction,
-  setIsDownloading: setIsDownloadingAction,
 } = minecraftSlice.actions;
 export default minecraftSlice.reducer;

@@ -25,15 +25,8 @@ export interface DebugOptions {
   setDebugInfo: Dispatch<SetStateAction<string[]>>;
 }
 
-export interface DownloadOptions {
-  directoryName: string;
-  id: string;
-  setDownloadProgress: Dispatch<SetStateAction<number | null>>;
-}
-
 export interface MinecraftApi {
   launcher: Client;
-  download: (options: DownloadOptions) => void;
   start: (options: StartMinecraftOptions) => Promise<void>;
   debug: (options: DebugOptions) => void;
 }

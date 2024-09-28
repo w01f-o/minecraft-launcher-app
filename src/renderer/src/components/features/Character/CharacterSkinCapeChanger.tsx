@@ -3,6 +3,7 @@ import Button from '../../shared/UI/Button';
 import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import CharacterDropZoneModal from './CharacterDropZoneModal';
 import { useDeleteCapeMutation, useGetCharacterQuery } from '../../../services/character.api';
+import { useToast } from '@renderer/hooks/useToast';
 
 const CharacterSkinCapeChanger: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -10,13 +11,27 @@ const CharacterSkinCapeChanger: FC = () => {
   const { data } = useGetCharacterQuery(window.localStorage.getItem('hwid')!);
   const [deleteCape, { isLoading }] = useDeleteCapeMutation();
 
+  const toast = useToast();
+
   const uploaderButtonClickHandler = (type: 'cape' | 'skin') => (): void => {
     setModalIsOpen(!modalIsOpen);
     setUploadType(type);
   };
 
-  const deleteCapeClickHandler = (): void => {
-    deleteCape(window.localStorage.getItem('hwid')!);
+  const deleteCapeClickHandler = async (): Promise<void> => {
+    try {
+      await deleteCape(window.localStorage.getItem('hwid')!).unwrap();
+
+      toast.add({
+        type: 'success',
+        message: 'Плащ успешно удалён',
+      });
+    } catch (e) {
+      toast.add({
+        type: 'error',
+        message: 'Произошла ошибка при удалении плаща',
+      });
+    }
   };
 
   return (

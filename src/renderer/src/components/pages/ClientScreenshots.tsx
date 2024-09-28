@@ -8,11 +8,14 @@ import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
 import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import { useToast } from '@renderer/hooks/useToast';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
   const [initialIndex, setInitialIndex] = useState<number>(0);
   const [clientScreenshots, setClientScreenshots] = useState<string[]>([]);
+
+  const toast = useToast();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -37,10 +40,24 @@ const ClientScreenshots: FC = () => {
     window.electron.ipcRenderer.send('SAVE_SCREENSHOT', clientScreenshots[initialIndex]);
   };
 
-  const deleteClickHandler = (): void => {
+  const deleteClickHandler = async (): Promise<void> => {
     setGalleryIsOpen(!galleryIsOpen);
-    window.electron.ipcRenderer.send('DELETE_SCREENSHOT', clientScreenshots[initialIndex]);
-    fetchScreenshots();
+    const result = await window.electron.ipcRenderer.invoke(
+      'DELETE_SCREENSHOT',
+      clientScreenshots[initialIndex],
+    );
+    if (result.isSuccess) {
+      toast.add({
+        type: 'success',
+        message: 'Скриншот успешно удален',
+      });
+      fetchScreenshots();
+    } else {
+      toast.add({
+        type: 'error',
+        message: 'Не удалось удалить скриншот',
+      });
+    }
   };
 
   if (isLoading) {

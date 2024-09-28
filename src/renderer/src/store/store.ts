@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import minecraftReducer from './reducers/minecraftSlice';
 import settingsReducer from './reducers/settingsSlice';
 import toastReducer from './reducers/toastSlice';
+import downloadStatusReducer from './reducers/downloadStatusSlice';
 import {
   FLUSH,
   PAUSE,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   minecraft: minecraftReducer,
   settings: settingsReducer,
   toast: toastReducer,
+  downloadStatus: downloadStatusReducer,
   [modPacksApi.reducerPath]: modPacksApi.reducer,
   [characterApi.reducerPath]: characterApi.reducer,
 });

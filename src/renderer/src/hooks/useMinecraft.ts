@@ -4,9 +4,9 @@ import {
   addDownloadedModPacksAction,
   removeDownloadedModPacksAction,
   setCurrentModPackAction,
-  setIsDownloadingAction,
   setUsernameAction,
 } from '../store/reducers/minecraftSlice';
+import { setIsDownloadingAction } from '@renderer/store/reducers/downloadStatusSlice';
 
 type useMinecraftReturn = {
   currentModPack: ModPack | null;
@@ -22,9 +22,11 @@ type useMinecraftReturn = {
 
 export const useMinecraft = (): useMinecraftReturn => {
   const dispatch = useAppDispatch();
-  const { currentModPack, downloadedModPacks, username, isDownloading } = useAppSelector(
+  const { currentModPack, downloadedModPacks, username } = useAppSelector(
     (state) => state.minecraft,
   );
+
+  const { isDownloading } = useAppSelector((state) => state.downloadStatus);
 
   const setCurrentModPack = (modPack: ModPack | null): void => {
     dispatch(setCurrentModPackAction(modPack));

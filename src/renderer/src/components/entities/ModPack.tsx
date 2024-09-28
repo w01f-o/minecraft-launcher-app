@@ -6,6 +6,7 @@ import CircleLoader from '../shared/UI/DownloadStatus';
 import ModPackModal from '../widgets/Modpacks/ModPackModal';
 import ActualIcon from '../shared/Icons/ActualIcon';
 import Image from '@renderer/components/features/Image';
+import { useToast } from '@renderer/hooks/useToast';
 
 interface ModPackProps {
   item: ModPackType;
@@ -17,25 +18,47 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
   const { addDownloadedModPacks, setIsDownloading } = useMinecraft();
 
+  const toast = useToast();
+
   const modPackClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
   };
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
+      if (id === item.id) {
+        toast.add({
+          type: 'info',
+          message: `Началась загрузка сборки ${item.name}`,
+        });
+      }
+    });
 
-    if (downloadProgress === 100) {
-      timeout = setTimeout(() => {
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
+      if (id === item.id) {
         addDownloadedModPacks(item);
         setDownloadProgress(null);
         setIsDownloading(false);
-      }, 1000);
-    }
+
+        toast.add({
+          type: 'success',
+          message: `Сборка ${item.name} успешно загружена`,
+        });
+      }
+    });
+
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_e, { state, id }) => {
+      if (id === item.id) {
+        setDownloadProgress(state.percent * 100);
+      }
+    });
 
     return (): void => {
-      if (timeout) clearTimeout(timeout);
+      window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_STARTED');
+      window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_COMPLETED');
+      window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
     };
-  }, [downloadProgress]);
+  }, []);
 
   return (
     <div className="relative active:scale-[.98] transition h-[160px]">

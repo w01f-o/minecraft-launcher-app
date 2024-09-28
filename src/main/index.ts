@@ -94,6 +94,12 @@ function createWindow(): void {
         onProgress: (state) =>
           mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id }),
         saveAs: false,
+        onStarted: () => {
+          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
+        },
+        onCompleted: () => {
+          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
+        },
       });
 
       const archivePath = downloadItem.savePath;
@@ -162,11 +168,18 @@ function createWindow(): void {
     }
   });
 
-  ipcMain.on('DELETE_SCREENSHOT', async (_e, screenshotPath) => {
+  ipcMain.handle('DELETE_SCREENSHOT', async (_e, screenshotPath) => {
     try {
       fs.rmSync(path.join(minecraftDirectory, screenshotPath));
+
+      return {
+        isSuccess: true,
+      };
     } catch (error) {
-      console.error('Error while saving screenshot:', error);
+      return {
+        isSuccess: false,
+        error,
+      };
     }
   });
 
@@ -232,11 +245,15 @@ function createWindow(): void {
     },
   );
 
-  ipcMain.on('DELETE_MODPACK', async (_event, directoryName) => {
+  ipcMain.handle('DELETE_MODPACK', async (_event, directoryName) => {
     const dir = path.join(minecraftDirectory, directoryName);
 
-    if (fs.existsSync(dir)) {
+    try {
       fs.rmSync(dir, { recursive: true });
+
+      return { isSuccess: true };
+    } catch (error) {
+      return { isSuccess: false, error };
     }
   });
 }

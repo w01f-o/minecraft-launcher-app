@@ -5,6 +5,7 @@ import UploadSvg from '../../shared/Icons/UploadSvg';
 import { useDropzone } from 'react-dropzone';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
 import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import { useToast } from '@renderer/hooks/useToast';
 
 interface CharacterDropZoneModalProps {
   modalIsOpen: boolean;
@@ -20,7 +21,9 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
   const [updateCharacter, { isLoading, isSuccess }] = useUpdateCharacterMutation();
   const [fileError, setFileError] = useState<boolean>(false);
 
-  const dropHandler = (acceptedFiles: File[]): void => {
+  const toast = useToast();
+
+  const dropHandler = async (acceptedFiles: File[]): Promise<void> => {
     if (acceptedFiles.length === 0) {
       setFileError(true);
 
@@ -40,7 +43,18 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
     const hwid = window.localStorage.getItem('hwid')!;
     formData.append('hwid', hwid);
 
-    updateCharacter(formData);
+    try {
+      await updateCharacter(formData).unwrap();
+      toast.add({
+        type: 'success',
+        message: `${uploadType === 'skin' ? 'Скин' : 'Плащ'} успешно обновлен`,
+      });
+    } catch (e) {
+      toast.add({
+        type: 'error',
+        message: `Произошла ошибка при обновлении ${uploadType === 'skin' ? 'скина' : 'плаща'}`,
+      });
+    }
   };
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({

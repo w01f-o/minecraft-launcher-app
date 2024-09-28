@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat and ref: LICENSE.md file, remove all console.logs, some refactoring and add download queue">
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Toast/Toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Toast/ToastItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ErrorIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ToastIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useToast.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/toastSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/types/ToastItem.type.ts" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Notification hub">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Toast/ToastItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/downloadStatusSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -140,7 +143,7 @@
       <workItem from="1727453148531" duration="823000" />
       <workItem from="1727454110596" duration="18519000" />
       <workItem from="1727485612379" duration="421000" />
-      <workItem from="1727518134790" duration="13751000" />
+      <workItem from="1727518134790" duration="16324000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -318,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727522612194</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat: Notification hub">
+      <option name="closed" value="true" />
+      <created>1727531982847</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727531982847</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,14 +358,15 @@
     <MESSAGE value="feat: Rounded modpack screenshot" />
     <MESSAGE value="feat: Updating modpacks" />
     <MESSAGE value="feat and ref: LICENSE.md file, remove all console.logs, some refactoring and add download queue" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat and ref: LICENSE.md file, remove all console.logs, some refactoring and add download queue" />
+    <MESSAGE value="feat: Notification hub" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Notification hub" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx</url>
-          <line>76</line>
+          <line>91</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
