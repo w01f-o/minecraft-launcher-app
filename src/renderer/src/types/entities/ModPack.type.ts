@@ -16,4 +16,5 @@ export interface ModPack {
   isActual: boolean;
   isUpdated: boolean;
   size: number;
+  javaVersion: string;
 }

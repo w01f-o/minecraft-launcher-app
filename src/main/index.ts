@@ -6,7 +6,7 @@ import * as path from 'node:path';
 import * as fs from 'node:fs';
 
 import { unzipArchive } from './utils/unzipeArchive';
-import { minecraftDirectory } from './constants/constants';
+import { javasDirectory, minecraftDirectory } from './constants/constants';
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -82,7 +82,6 @@ function createWindow(): void {
   ipcMain.on(
     'DOWNLOAD_MINECRAFT',
     async (_event, options: { id: string; directoryName: string }) => {
-      console.log(options.directoryName);
       const { download } = await import('electron-dl');
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
@@ -245,6 +244,46 @@ function createWindow(): void {
     },
   );
 
+  ipcMain.handle('CHECK_JAVA', async (_event, javaVersion) => {
+    const javaPath = path.join(javasDirectory, javaVersion, 'bin', 'javaw.exe');
+
+    if (!fs.existsSync(javaPath)) {
+      try {
+        const { download } = await import('electron-dl');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        const javaUrl = `${import.meta.env.VITE_API_URL}/modpack/get_java/${javaVersion}`;
+        const directory = path.join(javasDirectory, javaVersion);
+
+        const downloadJava = await download(
+          BrowserWindow.getFocusedWindow() ?? mainWindow,
+          javaUrl,
+          {
+            directory,
+            onProgress: (state) => {
+              mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
+                total: state.totalBytes,
+                task: state.transferredBytes,
+              });
+            },
+          },
+        );
+        const archivePath = downloadJava.savePath;
+
+        await unzipArchive(archivePath, directory);
+        fs.rmSync(archivePath);
+
+        console.log(javaPath);
+
+        return javaPath;
+      } catch (error) {
+        console.error('Error while unpacking the archive:', error);
+      }
+    }
+
+    return javaPath;
+  });
+
   ipcMain.handle('DELETE_MODPACK', async (_event, directoryName) => {
     const dir = path.join(minecraftDirectory, directoryName);
 
@@ -259,7 +298,15 @@ function createWindow(): void {
 }
 
 app.whenReady().then(() => {
-  electronApp.setAppUserModelId('com.thechocolatethief');
+  if (!fs.existsSync(minecraftDirectory)) {
+    fs.mkdirSync(minecraftDirectory);
+  }
+
+  if (!fs.existsSync(javasDirectory)) {
+    fs.mkdirSync(javasDirectory);
+  }
+
+  electronApp.setAppUserModelId('com.thechocolatethief.app');
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });

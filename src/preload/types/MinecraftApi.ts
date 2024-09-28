@@ -15,6 +15,7 @@ export interface StartMinecraftOptions {
     directoryName: string;
     modpackId: string;
     modLoader: ModLoaders;
+    javaVersion: string;
     username: string;
     maxRam: number;
   };

@@ -20,6 +20,8 @@ export const minecraftApi: MinecraftApi = {
       directoryName: clientOptions.directoryName,
     });
 
+    const javaPath = await electron.ipcRenderer.invoke('CHECK_JAVA', clientOptions.javaVersion);
+
     const rootPath = await electron.ipcRenderer.invoke(
       'GET_MINECRAFT_PATH',
       clientOptions.directoryName,
@@ -64,7 +66,7 @@ export const minecraftApi: MinecraftApi = {
       if (isLauncherHide) {
         electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
 
-        this.launcher.on('close', () => {
+        this.launcher.once('close', () => {
           electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
         });
       }
@@ -84,6 +86,7 @@ export const minecraftApi: MinecraftApi = {
       window: {
         fullscreen: isFullscreen,
       },
+      javaPath,
     });
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {

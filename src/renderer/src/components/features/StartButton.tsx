@@ -11,7 +11,7 @@ const StartButton: FC = () => {
   const navigate = useNavigate();
 
   const clickHandler = async (): Promise<void> => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     if (currentModPack) {
       await window.minecraft.start({
@@ -28,6 +28,7 @@ const StartButton: FC = () => {
           username: username!,
           maxRam: maxRam!,
           modpackId: currentModPack.id,
+          javaVersion: currentModPack.javaVersion,
         },
       });
     }
