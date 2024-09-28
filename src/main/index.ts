@@ -3,7 +3,6 @@ import { join } from 'path';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
 import * as path from 'node:path';
-import { DownloadOptions } from '../preload/types/MinecraftApi';
 import * as fs from 'node:fs';
 
 import { unzipArchive } from './utils/unzipeArchive';
@@ -81,8 +80,9 @@ function createWindow(): void {
   });
 
   ipcMain.on(
-    'MINECRAFT_DOWNLOAD',
-    async (_event, options: Omit<DownloadOptions, 'setDownloadProgress'>) => {
+    'DOWNLOAD_MINECRAFT',
+    async (_event, options: { id: string; directoryName: string }) => {
+      console.log(options.directoryName);
       const { download } = await import('electron-dl');
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
@@ -203,7 +203,7 @@ function createWindow(): void {
           //@ts-expect-error
           const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${downloadLink}`;
           const directory = path.join(minecraftDirectory, directoryName);
-          console.log(downloadUrl);
+
           const downloadItem = await download(
             BrowserWindow.getFocusedWindow() ?? mainWindow,
             downloadUrl,
@@ -270,14 +270,6 @@ app.whenReady().then(() => {
       });
     }
   });
-
-  // installExtension(REACT_DEVELOPER_TOOLS)
-  //   .then((name) => console.log(`Added Extension:  ${name}`))
-  //   .catch((err) => console.log('An error occurred: ', err));
-  //
-  // installExtension(REDUX_DEVTOOLS)
-  //   .then((name) => console.log(`Added Extension:  ${name}`))
-  //   .catch((err) => console.log('An error occurred: ', err));
 });
 
 app.on('window-all-closed', () => {

@@ -4,21 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Rounded modpack screenshot">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Updating modpacks">
+      <change afterPath="$PROJECT_DIR$/LICENSE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSpecs.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/specsSlice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -62,24 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "npm.dev.executor": "Run",
-    "npm.start.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -141,7 +141,9 @@
       <workItem from="1727392704564" duration="1314000" />
       <workItem from="1727433491567" duration="18246000" />
       <workItem from="1727453148531" duration="823000" />
-      <workItem from="1727454110596" duration="18288000" />
+      <workItem from="1727454110596" duration="18519000" />
+      <workItem from="1727485612379" duration="421000" />
+      <workItem from="1727518134790" duration="4470000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -303,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727453927692</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat: Updating modpacks">
+      <option name="closed" value="true" />
+      <created>1727482337833</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727482337833</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +340,19 @@
     <MESSAGE value="feat: Routing animation" />
     <MESSAGE value="feat: Image with loader component" />
     <MESSAGE value="feat: Rounded modpack screenshot" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Rounded modpack screenshot" />
+    <MESSAGE value="feat: Updating modpacks" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Updating modpacks" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx</url>
+          <line>76</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

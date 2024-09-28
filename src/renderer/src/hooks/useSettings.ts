@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from './redux';
 import {
-  setMaxRam as setMaxRamAction,
-  toggleAutoLogin as toggleAutoLoginAction,
-  toggleDebugMode as toggleDebugModeAction,
-  toggleFullscreen as toggleFullscreenAction,
-  toggleLauncherHide as toggleLauncherHideAction,
+  setMaxRamAction,
+  toggleAutoLoginAction,
+  toggleDebugModeAction,
+  toggleFullscreenAction,
+  toggleLauncherHideAction,
 } from '../store/reducers/settingsSlice';
 
 type useSettingReturn = {

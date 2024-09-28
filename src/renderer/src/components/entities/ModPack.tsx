@@ -15,7 +15,7 @@ interface ModPackProps {
 const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
-  const { addDownloadedModPacks } = useMinecraft();
+  const { addDownloadedModPacks, setIsDownloading } = useMinecraft();
 
   const modPackClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
@@ -28,6 +28,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
       timeout = setTimeout(() => {
         addDownloadedModPacks(item);
         setDownloadProgress(null);
+        setIsDownloading(false);
       }, 1000);
     }
 

@@ -9,14 +9,22 @@ import * as electron from 'electron';
 import { fabric, forge, quilt } from 'tomate-loaders';
 
 export const minecraftApi: MinecraftApi = {
-  launcher: new Client(),
-  async download({ setDownloadProgress, id, directoryName }: DownloadOptions) {
-    electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_event, { state }) => {
-      setDownloadProgress(state.percent * 100);
+  download: async (options: DownloadOptions) => {
+    electron.ipcRenderer.send('DOWNLOAD_MINECRAFT', {
+      id: options.id,
+      directoryName: options.directoryName,
     });
 
-    electron.ipcRenderer.send('MINECRAFT_DOWNLOAD', { id, directoryName });
+    electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_event, { state, id }) => {
+      if (id === options.id) options.setDownloadProgress(state.percent * 100);
+
+      if (state.percent * 100 === 100) {
+        electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
+      }
+    });
   },
+
+  launcher: new Client(),
   async start({
     setIsLoading,
     isFullscreen,
@@ -86,10 +94,6 @@ export const minecraftApi: MinecraftApi = {
       electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
     });
 
-    this.launcher.on('download-status', (e) => {
-      console.log(e);
-    });
-
     await this.launcher.launch({
       ...modloaderConfig,
       memory: {
@@ -105,12 +109,10 @@ export const minecraftApi: MinecraftApi = {
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {
     if (isDebugMode) {
       const debugHandler = (e: string): void => {
-        console.log(e);
         setDebugInfo((prev) => [...prev, e]);
       };
 
       const dataHandler = (e: string): void => {
-        console.log(e);
         setDebugInfo((prev) => [...prev, e]);
       };
 

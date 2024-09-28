@@ -6,7 +6,6 @@ export const unzipArchive = (archivePath: string, extractTo: string): Promise<vo
     fs.createReadStream(archivePath)
       .pipe(unzipper.Extract({ path: extractTo }))
       .on('close', () => {
-        console.log('Extraction complete');
         resolve();
       })
       .on('error', (error: never) => {

@@ -21,8 +21,14 @@ const ModPackController: FC<ModPackControllerProps> = ({
   setModalIsOpen,
   modalIsOpen,
 }) => {
-  const { setCurrentModPack, downloadedModPacks, currentModPack, removeDownloadedModPacks } =
-    useMinecraft();
+  const {
+    setCurrentModPack,
+    downloadedModPacks,
+    currentModPack,
+    removeDownloadedModPacks,
+    setIsDownloading,
+    isDownloading,
+  } = useMinecraft();
 
   const selectCurrentClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
@@ -32,6 +38,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
   const downloadClickHandler = (): void => {
     setModalIsOpen(!modalIsOpen);
     setDownloadProgress(0);
+    setIsDownloading(true);
     window.minecraft.download({
       id: item.id,
       directoryName: item.directoryName,
@@ -62,7 +69,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
         {item.name}
         {downloadProgress !== null && <div className="text-xl">{downloadProgress}%</div>}
         {!isDownloadedModPack && downloadProgress === null && (
-          <Button role={'primary'} rounded onClick={downloadClickHandler}>
+          <Button role={'primary'} rounded onClick={downloadClickHandler} isPending={isDownloading}>
             <DownloadIcon />
           </Button>
         )}

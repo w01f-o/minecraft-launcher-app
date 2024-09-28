@@ -6,12 +6,9 @@ const Loading: FC = () => {
   const [dots, setDots] = useState<string>('');
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const loadingProgressHandler = (_e: Electron.IpcRendererEvent, progress: any): void => {
+    window.electron.ipcRenderer.on('LAUNCHER_LOADING_PROGRESS', (_e, progress): void => {
       setLoadingStatus(Math.round((progress.task / progress.total) * 100));
-    };
-
-    window.electron.ipcRenderer.on('LAUNCHER_LOADING_PROGRESS', loadingProgressHandler);
+    });
 
     const interval = setInterval(() => {
       setDots((prev) => (prev.length < 3 ? prev + '.' : ''));

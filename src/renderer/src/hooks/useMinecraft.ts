@@ -1,10 +1,11 @@
 import { ModPack } from '../types/entities/ModPack.type';
 import { useAppDispatch, useAppSelector } from './redux';
 import {
-  setCurrentModPack as setCurrentModPackAction,
-  addDownloadedModPacks as addDownloadedModPacksAction,
-  removeDownloadedModPacks as removeDownloadedModPacksAction,
-  setUsername as setUsernameAction,
+  addDownloadedModPacksAction,
+  removeDownloadedModPacksAction,
+  setCurrentModPackAction,
+  setIsDownloadingAction,
+  setUsernameAction,
 } from '../store/reducers/minecraftSlice';
 
 type useMinecraftReturn = {
@@ -15,11 +16,13 @@ type useMinecraftReturn = {
   addDownloadedModPacks: (modPack: ModPack) => void;
   removeDownloadedModPacks: (modPack: ModPack) => void;
   setUsername: (username: string) => void;
+  isDownloading: boolean;
+  setIsDownloading: (isDownloading: boolean) => void;
 };
 
 export const useMinecraft = (): useMinecraftReturn => {
   const dispatch = useAppDispatch();
-  const { currentModPack, downloadedModPacks, username } = useAppSelector(
+  const { currentModPack, downloadedModPacks, username, isDownloading } = useAppSelector(
     (state) => state.minecraft,
   );
 
@@ -39,6 +42,10 @@ export const useMinecraft = (): useMinecraftReturn => {
     dispatch(setUsernameAction(username));
   };
 
+  const setIsDownloading = (isDownloading: boolean): void => {
+    dispatch(setIsDownloadingAction(isDownloading));
+  };
+
   return {
     currentModPack,
     downloadedModPacks,
@@ -47,5 +54,7 @@ export const useMinecraft = (): useMinecraftReturn => {
     removeDownloadedModPacks,
     setUsername,
     username,
+    isDownloading,
+    setIsDownloading,
   };
 };

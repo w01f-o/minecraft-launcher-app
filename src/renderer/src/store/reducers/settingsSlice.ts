@@ -46,6 +46,11 @@ export const settingsSlice = createSlice({
   },
 });
 
-export const { toggleDebugMode, toggleAutoLogin, toggleFullscreen, setMaxRam, toggleLauncherHide } =
-  settingsSlice.actions;
+export const {
+  toggleDebugMode: toggleDebugModeAction,
+  toggleAutoLogin: toggleAutoLoginAction,
+  toggleFullscreen: toggleFullscreenAction,
+  setMaxRam: setMaxRamAction,
+  toggleLauncherHide: toggleLauncherHideAction,
+} = settingsSlice.actions;
 export default settingsSlice.reducer;
