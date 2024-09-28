@@ -11,10 +11,14 @@ const Mod: FC<ModProps> = ({ item }) => {
   return (
     <a
       className="w-full flex items-center gap-3 py-4 px-6 rounded-xl relative before:z-10 before:absolute before:inset-0 before:rounded-xl hover:before:bg-gray before:opacity-20 before:transition-all"
-      href={`https://modrinth.com/mod/${item.modrinthSlug}`}
       target="_blank"
       rel="noreferrer"
-      title={`https://modrinth.com/mod/${item.modrinthSlug}`}
+      {...(item.modrinthSlug
+        ? {
+            href: `https://modrinth.com/mod/${item.modrinthSlug}`,
+            title: `https://modrinth.com/mod/${item.modrinthSlug}`,
+          }
+        : {})}
     >
       {item.thumbnail ? (
         <Image

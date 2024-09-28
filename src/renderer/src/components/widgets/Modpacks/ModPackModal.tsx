@@ -51,7 +51,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
           ))}
         </Swiper>
         <div className="flex flex-col px-6 py-6">
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between gap-2">
             <ModPackController
               setModalIsOpen={setModalIsOpen}
               item={item}

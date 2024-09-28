@@ -203,19 +203,19 @@ function createWindow(): void {
       });
 
       if (res.ok) {
-        const { downloadLink, toDelete } = await res.json();
+        const json = await res.json();
 
-        if (toDelete.length > 0) {
-          for (const file of toDelete) {
+        if (json.toDelete.length > 0) {
+          for (const file of json.toDelete) {
             fs.rmSync(path.join(minecraftDirectory, file));
           }
         }
-
-        if (downloadLink) {
+        console.log(json);
+        if (json.downloadLink) {
           const { download } = await import('electron-dl');
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-expect-error
-          const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${downloadLink}`;
+          const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${json.downloadLink}`;
           const directory = path.join(minecraftDirectory, directoryName);
 
           const downloadItem = await download(
