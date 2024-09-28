@@ -11,42 +11,48 @@ export const minecraftApi: MinecraftApi = {
     isLauncherHide,
     navigateFunction,
     isDebugMode,
-    clientOptions,
+    clientOptions: {
+      gameVersion,
+      autoLogin,
+      javaVersion,
+      directoryName,
+      modpackId,
+      maxRam,
+      username,
+      modLoader,
+    },
   }: StartMinecraftOptions) {
     navigateFunction('/loading');
 
     await electron.ipcRenderer.invoke('CHECK_UPDATES', {
-      modpackId: clientOptions.modpackId,
-      directoryName: clientOptions.directoryName,
+      modpackId: modpackId,
+      directoryName: directoryName,
     });
 
-    const javaPath = await electron.ipcRenderer.invoke('CHECK_JAVA', clientOptions.javaVersion);
+    const javaPath = await electron.ipcRenderer.invoke('CHECK_JAVA', javaVersion);
 
-    const rootPath = await electron.ipcRenderer.invoke(
-      'GET_MINECRAFT_PATH',
-      clientOptions.directoryName,
-    );
+    const rootPath = await electron.ipcRenderer.invoke('GET_MINECRAFT_PATH', directoryName);
     let modloaderConfig: {
       root: string;
       version: { number: string; type: string; custom: string };
     };
 
-    switch (clientOptions.modLoader) {
+    switch (modLoader) {
       case 'FABRIC':
         modloaderConfig = await fabric.getMCLCLaunchConfig({
-          gameVersion: clientOptions.gameVersion,
+          gameVersion: gameVersion,
           rootPath,
         });
         break;
       case 'QUILT':
         modloaderConfig = await quilt.getMCLCLaunchConfig({
-          gameVersion: clientOptions.gameVersion,
+          gameVersion: gameVersion,
           rootPath,
         });
         break;
       case 'FORGE':
         modloaderConfig = await forge.getMCLCLaunchConfig({
-          gameVersion: clientOptions.gameVersion,
+          gameVersion: gameVersion,
           rootPath,
         });
         break;
@@ -79,14 +85,22 @@ export const minecraftApi: MinecraftApi = {
     await this.launcher.launch({
       ...modloaderConfig,
       memory: {
-        max: Math.round(clientOptions.maxRam / 1024 / 1024),
+        max: Math.round(maxRam / 1024 / 1024),
         min: 0,
       },
-      authorization: Authenticator.getAuth(clientOptions.username),
+      authorization: Authenticator.getAuth(username),
       window: {
         fullscreen: isFullscreen,
       },
       javaPath,
+      ...(autoLogin.isAutoLogin
+        ? {
+            quickPlay: {
+              type: 'multiplayer',
+              identifier: autoLogin.serverIp,
+            },
+          }
+        : {}),
     });
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {

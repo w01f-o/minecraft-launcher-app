@@ -17,7 +17,6 @@ const StartButton: FC = () => {
       await window.minecraft.start({
         isFullscreen,
         isLauncherHide,
-        isAutoLogin,
         isDebugMode,
         setIsLoading,
         navigateFunction: navigate,
@@ -29,6 +28,10 @@ const StartButton: FC = () => {
           maxRam: maxRam!,
           modpackId: currentModPack.id,
           javaVersion: currentModPack.javaVersion,
+          autoLogin: {
+            isAutoLogin,
+            serverIp: window.localStorage.getItem('serverIp')!,
+          },
         },
       });
     }

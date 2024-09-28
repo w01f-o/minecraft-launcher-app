@@ -12,11 +12,22 @@ const MinecraftProvider: FC<MinecraftProviderProps> = ({ children }) => {
   const { data } = useGetCharacterQuery(hwid ?? '');
   const [updateCharacter] = useUpdateCharacterMutation();
 
+  const fetchMinecraftServerIp = async (): Promise<void> => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/modpack/get_server_data/ip`);
+    const json = await response.json();
+
+    window.localStorage.setItem('serverIp', json.serverIp);
+  };
+
   useEffect(() => {
     window.utils.getHwid().then((hwid) => {
       setHwid(hwid);
       window.localStorage.setItem('hwid', hwid);
     });
+  }, []);
+
+  useEffect(() => {
+    fetchMinecraftServerIp();
   }, []);
 
   useEffect(() => {

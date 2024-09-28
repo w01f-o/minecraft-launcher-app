@@ -5,7 +5,6 @@ import { ModLoaders } from '../enums/ModLoaders.enum';
 
 export interface StartMinecraftOptions {
   isFullscreen: boolean;
-  isAutoLogin: boolean;
   isLauncherHide: boolean;
   isDebugMode: boolean;
   navigateFunction: NavigateFunction;
@@ -18,6 +17,14 @@ export interface StartMinecraftOptions {
     javaVersion: string;
     username: string;
     maxRam: number;
+    autoLogin:
+      | {
+          isAutoLogin: true;
+          serverIp: string;
+        }
+      | {
+          isAutoLogin: false;
+        };
   };
 }
 
