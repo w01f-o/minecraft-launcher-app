@@ -87,7 +87,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
             {item.isActual && <ActualIcon />}
           </div>
         </div>
-        <div className="flex justify-end flex-grow" title={`${downloadProgress}%`}>
+        <div className="flex justify-end flex-grow" title={`${Math.round(downloadProgress ?? 0)}%`}>
           <CircleLoader progress={downloadProgress} />
         </div>
       </button>

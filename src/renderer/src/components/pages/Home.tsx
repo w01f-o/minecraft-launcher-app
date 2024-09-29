@@ -14,7 +14,7 @@ const Home: FC = () => {
     <>
       <div className="flex h-full flex-grow justify-between items-center">
         <div
-          className="z-30 relative overflow-y-auto w-1/2 max-h-[70vh] scrollbar-track-transparent scrollbar-thumb-blue pr-4 custom-scrollbar"
+          className="z-0 relative overflow-y-auto w-1/2 max-h-[70vh] scrollbar-track-transparent scrollbar-thumb-blue pr-4 custom-scrollbar"
           id="modpacks-scroll-container"
         >
           <ModPackList />

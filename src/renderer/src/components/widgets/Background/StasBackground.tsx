@@ -23,18 +23,18 @@ const StasBackground: FC = () => {
 
   return (
     <>
-      <div className="absolute right-0 bottom-0 z-10 pointer-events-none select-none">
-        <img src={stasImage} alt="" />
+      <div className="flex absolute right-0 bottom-0 z-10 pointer-events-none select-none w-auto h-[70vh]">
+        <img src={stasImage} alt="" className="size-full" />
+        <div
+          className={clsx(
+            'w-8 h-8 absolute right-[36%] opacity-70 bottom-[47vh] z-10 rounded-full pointer-events-auto transition cursor-pointer',
+            {
+              'bg-red-400': stasEasterIsActive,
+            },
+          )}
+          onDoubleClick={stasEasterClickHandler}
+        ></div>
       </div>
-      <div
-        className={clsx(
-          'w-8 h-8 absolute right-[195px] bottom-[355px] z-10 rounded-full transition cursor-pointer',
-          {
-            'bg-red-400': stasEasterIsActive,
-          },
-        )}
-        onDoubleClick={stasEasterClickHandler}
-      ></div>
     </>
   );
 };
