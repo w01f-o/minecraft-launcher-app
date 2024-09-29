@@ -25,36 +25,43 @@ const CharacterCanvas: FC = () => {
   const fetchTextures = async (): Promise<void> => {
     setTexturesIsLoading(true);
     setTexturesError(null);
-    if (!data || data.skins.default === null) {
-      setTexturesData({ cape: null, skin: steveDefaultSkinTexture });
+    if (!data) {
+      setTexturesError('Fetch error');
       setTexturesIsLoading(false);
 
       return;
     }
 
-    try {
-      if (data.cape !== null) {
-        const [skinResponse, capeResponse] = await Promise.all([
-          fetch(`${import.meta.env.VITE_API_URL}/character/textures/${data.skins.default}`),
-          fetch(`${import.meta.env.VITE_API_URL}/character/textures/${data.cape}`),
-        ]);
-
-        const [skinBlob, capeBlob] = await Promise.all([skinResponse.blob(), capeResponse.blob()]);
-        const [skinTexture, capeTexture] = await Promise.all([
-          createImageBitmap(skinBlob),
-          createImageBitmap(capeBlob),
-        ]);
-
-        setTexturesData({ skin: skinTexture, cape: capeTexture });
-      } else {
+    const fetchSkin = async (): Promise<TextureSource | null> => {
+      if (data.skins.default) {
         const skinResponse = await fetch(
           `${import.meta.env.VITE_API_URL}/character/textures/${data.skins.default}`,
         );
         const skinBlob = await skinResponse.blob();
-        const skinTexture = await createImageBitmap(skinBlob);
 
-        setTexturesData({ skin: skinTexture, cape: null });
+        return await createImageBitmap(skinBlob);
       }
+
+      return null;
+    };
+
+    const fetchCape = async (): Promise<TextureSource | null> => {
+      if (data.cape) {
+        const capeResponse = await fetch(
+          `${import.meta.env.VITE_API_URL}/character/textures/${data.cape}`,
+        );
+        const capeBlob = await capeResponse.blob();
+
+        return await createImageBitmap(capeBlob);
+      }
+
+      return null;
+    };
+
+    try {
+      const [cape, skin] = await Promise.all([fetchCape(), fetchSkin()]);
+
+      setTexturesData({ skin: skin ?? steveDefaultSkinTexture, cape });
     } catch (error: unknown) {
       if (error instanceof Error) {
         setTexturesError(error.message);

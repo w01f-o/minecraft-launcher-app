@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: ...">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Fixed Stas background">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/stasbg.webp" beforeDir="false" afterPath="$PROJECT_DIR$/resources/stasbg.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/vladbg.webp" beforeDir="false" afterPath="$PROJECT_DIR$/resources/vladbg.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/VladBackGround.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/VladBackGround.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +162,8 @@
       <workItem from="1727566588372" duration="442000" />
       <workItem from="1727568718188" duration="378000" />
       <workItem from="1727570336953" duration="589000" />
-      <workItem from="1727604311897" duration="5672000" />
+      <workItem from="1727604311897" duration="6005000" />
+      <workItem from="1727635827557" duration="2767000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -401,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727567022122</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fix: Fixed Stas background">
+      <option name="closed" value="true" />
+      <created>1727610647594</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1727610647594</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +439,8 @@
     <MESSAGE value="feat: Java from server" />
     <MESSAGE value="feat: Auto login" />
     <MESSAGE value="feat: ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ..." />
+    <MESSAGE value="fix: Fixed Stas background" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Fixed Stas background" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
