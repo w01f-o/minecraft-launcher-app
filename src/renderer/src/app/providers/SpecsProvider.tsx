@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { useSettings } from '../../hooks/useSettings';
+import { useToast } from '@renderer/hooks/useToast';
 
 interface SpecsProviderProps {
   children: ReactNode;
@@ -7,6 +8,19 @@ interface SpecsProviderProps {
 
 const SpecsProvider: FC<SpecsProviderProps> = ({ children }) => {
   const { setMaxRam, maxRam } = useSettings();
+
+  const toast = useToast();
+
+  useEffect(() => {
+    window.electron.ipcRenderer.on('unhandled-error', (_e, error) => {
+      console.error(error);
+      toast.add({ message: `Произошла ошибка: ${error.message}`, type: 'error' });
+    });
+
+    return (): void => {
+      window.electron.ipcRenderer.removeAllListeners('unhandled-error');
+    };
+  }, []);
 
   useEffect(() => {
     if (maxRam === null) {

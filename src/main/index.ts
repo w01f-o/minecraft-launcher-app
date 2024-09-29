@@ -8,6 +8,14 @@ import * as fs from 'node:fs';
 import { unzipArchive } from './utils/unzipeArchive';
 import { javasDirectory, minecraftDirectory } from './constants/constants';
 
+(async (): Promise<void> => {
+  const { default: unhandled } = await import('electron-unhandled');
+
+  unhandled({
+    logger: (error) => BrowserWindow.getFocusedWindow()?.webContents.send('unhandled-error', error),
+  });
+})();
+
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
     minWidth: 1100,
@@ -38,6 +46,10 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
   }
+
+  ipcMain.on('PRELOAD_ERROR', (_event, error) => {
+    mainWindow.webContents.send('unhandled-error', error);
+  });
 
   ipcMain.on('TITLE_BAR_ACTION', (_event, args: 'minimize' | 'maximize' | 'close') => {
     switch (args) {
@@ -92,7 +104,6 @@ function createWindow(): void {
         directory,
         onProgress: (state) => {
           mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id });
-          console.log(state);
         },
         saveAs: false,
         onStarted: () => {
@@ -210,7 +221,7 @@ function createWindow(): void {
             fs.rmSync(path.join(minecraftDirectory, file));
           }
         }
-        console.log(json);
+
         if (json.downloadLink) {
           const { download } = await import('electron-dl');
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -228,7 +239,6 @@ function createWindow(): void {
                   total: state.totalBytes,
                   task: state.transferredBytes,
                 });
-                console.log(state);
               },
             },
           );
@@ -268,7 +278,6 @@ function createWindow(): void {
                 total: state.totalBytes,
                 task: state.transferredBytes,
               });
-              console.log(state);
             },
           },
         );

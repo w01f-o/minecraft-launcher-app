@@ -37,71 +37,75 @@ export const minecraftApi: MinecraftApi = {
       version: { number: string; type: string; custom: string };
     };
 
-    switch (modLoader) {
-      case 'FABRIC':
-        modloaderConfig = await fabric.getMCLCLaunchConfig({
-          gameVersion: gameVersion,
-          rootPath,
-        });
-        break;
-      case 'QUILT':
-        modloaderConfig = await quilt.getMCLCLaunchConfig({
-          gameVersion: gameVersion,
-          rootPath,
-        });
-        break;
-      case 'FORGE':
-        modloaderConfig = await forge.getMCLCLaunchConfig({
-          gameVersion: gameVersion,
-          rootPath,
-        });
-        break;
-      default:
-        throw new Error('Invalid modloader');
+    try {
+      switch (modLoader) {
+        case 'FABRIC':
+          modloaderConfig = await fabric.getMCLCLaunchConfig({
+            gameVersion: gameVersion,
+            rootPath,
+          });
+          break;
+        case 'QUILT':
+          modloaderConfig = await quilt.getMCLCLaunchConfig({
+            gameVersion: gameVersion,
+            rootPath,
+          });
+          break;
+        case 'FORGE':
+          modloaderConfig = await forge.getMCLCLaunchConfig({
+            gameVersion: gameVersion,
+            rootPath,
+          });
+          break;
+        default:
+          throw new Error('Invalid modloader');
+      }
+
+      this.launcher.once('arguments', () => {
+        setIsLoading(false);
+
+        if (isDebugMode) {
+          navigateFunction('/debug');
+        } else {
+          navigateFunction('/');
+        }
+
+        if (isLauncherHide) {
+          electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
+
+          this.launcher.once('close', () => {
+            electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
+          });
+        }
+      });
+
+      this.launcher.on('progress', (e) => {
+        electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
+      });
+
+      await this.launcher.launch({
+        ...modloaderConfig,
+        memory: {
+          max: Math.round(maxRam / 1024 / 1024),
+          min: 0,
+        },
+        authorization: Authenticator.getAuth(username),
+        window: {
+          fullscreen: isFullscreen,
+        },
+        javaPath,
+        ...(autoLogin.isAutoLogin
+          ? {
+              quickPlay: {
+                type: 'multiplayer',
+                identifier: autoLogin.serverIp,
+              },
+            }
+          : {}),
+      });
+    } catch (e) {
+      electron.ipcRenderer.send('PRELOAD_ERROR', e);
     }
-
-    this.launcher.once('arguments', () => {
-      setIsLoading(false);
-
-      if (isDebugMode) {
-        navigateFunction('/debug');
-      } else {
-        navigateFunction('/');
-      }
-
-      if (isLauncherHide) {
-        electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
-
-        this.launcher.once('close', () => {
-          electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
-        });
-      }
-    });
-
-    this.launcher.on('progress', (e) => {
-      electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
-    });
-
-    await this.launcher.launch({
-      ...modloaderConfig,
-      memory: {
-        max: Math.round(maxRam / 1024 / 1024),
-        min: 0,
-      },
-      authorization: Authenticator.getAuth(username),
-      window: {
-        fullscreen: isFullscreen,
-      },
-      javaPath,
-      ...(autoLogin.isAutoLogin
-        ? {
-            quickPlay: {
-              type: 'multiplayer',
-              identifier: autoLogin.serverIp,
-            },
-          }
-        : {}),
-    });
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {
     if (isDebugMode) {
