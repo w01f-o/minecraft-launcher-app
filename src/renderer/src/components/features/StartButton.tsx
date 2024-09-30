@@ -45,7 +45,7 @@ const StartButton: FC = () => {
       isPending={isLoading || username === null || maxRam === null}
       disabled={currentModPack === null}
     >
-      Играть
+      хуй
     </Button>
   );
 };

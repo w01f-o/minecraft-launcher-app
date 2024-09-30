@@ -7,6 +7,7 @@ import * as fs from 'node:fs';
 
 import { unzipArchive } from './utils/unzipeArchive';
 import { javasDirectory, minecraftDirectory } from './constants/constants';
+import { updateElectronApp, UpdateSourceType } from 'update-electron-app';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
@@ -316,11 +317,20 @@ app.whenReady().then(() => {
   }
 
   electronApp.setAppUserModelId('com.thechocolatethief.app');
+
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });
 
   createWindow();
+
+  updateElectronApp({
+    updateSource: {
+      type: UpdateSourceType.ElectronPublicUpdateService,
+      repo: 'w01f-o/minecraft-launcher-app',
+      host: 'https://github.com',
+    },
+  });
 
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

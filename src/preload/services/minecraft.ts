@@ -6,20 +6,20 @@ import { fabric, forge, quilt } from 'tomate-loaders';
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
   async start({
-    setIsLoading,
-    isFullscreen,
-    isLauncherHide,
     navigateFunction,
     isDebugMode,
+    isLauncherHide,
+    setIsLoading,
+    isFullscreen,
     clientOptions: {
-      gameVersion,
-      autoLogin,
       javaVersion,
       directoryName,
       modpackId,
       maxRam,
       username,
       modLoader,
+      gameVersion,
+      autoLogin,
     },
   }: StartMinecraftOptions) {
     navigateFunction('/loading');

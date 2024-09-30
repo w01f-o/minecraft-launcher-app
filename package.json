@@ -1,9 +1,9 @@
 {
   "name": "the-chocolate-thief",
   "version": "1.0.0",
-  "description": "Minecraft launcher, based on Electron.js + React",
+  "description": "Minecraft launcher for local usage",
   "main": "./out/main/index.js",
-  "author": "w01f-o",
+  "author": "w01f",
   "homepage": "https://github.com/w01f-o/minecraft-launcher-app",
   "repository": "https://github.com/w01f-o/minecraft-launcher-app",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
+    "build:win": "npm run build && electron-builder --win --publish=always",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux"
   },
@@ -44,6 +44,7 @@
     "tailwind-scrollbar": "^3.1.0",
     "tomate-loaders": "^2.0.2",
     "unzipper": "^0.12.3",
+    "update-electron-app": "^3.0.0",
     "use-sound": "^4.0.3"
   },
   "devDependencies": {

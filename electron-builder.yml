@@ -20,3 +20,8 @@ nsis:
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+publish:
+  provider: github
+  owner: w01f-o
+  repo: minecraft-launcher-app
+  releaseType: release
