@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Fixed appId in builder.yml">
-      <change afterPath="$PROJECT_DIR$/src/main/env.d.ts" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Empty mod list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Mods/ModList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Mods/ModList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/icon.icns" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/build/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +179,7 @@
       <workItem from="1727656842115" duration="32000" />
       <workItem from="1727696574686" duration="319000" />
       <workItem from="1727707270032" duration="379000" />
-      <workItem from="1727707657778" duration="1354000" />
+      <workItem from="1727707657778" duration="1917000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -446,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727656863785</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix: Empty mod list">
+      <option name="closed" value="true" />
+      <created>1727709052210</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727709052210</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,7 +465,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: Delete dotenv from git" />
     <MESSAGE value="feat: Error boundary" />
     <MESSAGE value="feat: Screenshot deleting" />
     <MESSAGE value="feat: Transition for change username button" />
@@ -483,7 +489,8 @@
     <MESSAGE value="fix: Fixed cape loading issue" />
     <MESSAGE value="feat: Error handling" />
     <MESSAGE value="fix: Fixed appId in builder.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Fixed appId in builder.yml" />
+    <MESSAGE value="fix: Empty mod list" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Empty mod list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

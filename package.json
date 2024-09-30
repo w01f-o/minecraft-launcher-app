@@ -1,6 +1,6 @@
 {
-  "name": "minecraft-launcher",
-  "version": "0.0.1",
+  "name": "the-chocolate-thief",
+  "version": "1.0.0",
   "description": "Minecraft launcher, based on Electron.js + React",
   "main": "./out/main/index.js",
   "author": "w01f-o",
