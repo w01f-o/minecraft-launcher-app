@@ -1,6 +1,6 @@
 {
   "name": "the-chocolate-thief",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Minecraft launcher for local usage",
   "main": "./out/main/index.js",
   "author": "w01f",
@@ -32,6 +32,7 @@
     "clsx": "^2.1.1",
     "electron-dl": "^4.0.0",
     "electron-unhandled": "^5.0.0",
+    "electron-updater": "^6.3.4",
     "hwid": "^0.5.0",
     "minecraft-launcher-core": "^3.18.1",
     "react-dropzone": "^14.2.3",
@@ -44,7 +45,6 @@
     "tailwind-scrollbar": "^3.1.0",
     "tomate-loaders": "^2.0.2",
     "unzipper": "^0.12.3",
-    "update-electron-app": "^3.0.0",
     "use-sound": "^4.0.3"
   },
   "devDependencies": {

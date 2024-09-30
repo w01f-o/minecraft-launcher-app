@@ -7,7 +7,7 @@ import * as fs from 'node:fs';
 
 import { unzipArchive } from './utils/unzipeArchive';
 import { javasDirectory, minecraftDirectory } from './constants/constants';
-import { updateElectronApp, UpdateSourceType } from 'update-electron-app';
+import { autoUpdater } from 'electron-updater';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
@@ -316,6 +316,14 @@ app.whenReady().then(() => {
     fs.mkdirSync(javasDirectory);
   }
 
+  autoUpdater.checkForUpdatesAndNotify();
+
+  const updateInterval = 60 * 60 * 1000;
+
+  setInterval(() => {
+    autoUpdater.checkForUpdatesAndNotify();
+  }, updateInterval);
+
   electronApp.setAppUserModelId('com.thechocolatethief.app');
 
   app.on('browser-window-created', (_, window) => {
@@ -323,14 +331,6 @@ app.whenReady().then(() => {
   });
 
   createWindow();
-
-  updateElectronApp({
-    updateSource: {
-      type: UpdateSourceType.ElectronPublicUpdateService,
-      repo: 'w01f-o/minecraft-launcher-app',
-      host: 'https://github.com',
-    },
-  });
 
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -359,4 +359,26 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+autoUpdater.on('update-available', () => {
+  dialog.showMessageBox({
+    title: 'Обновление доступно',
+    message: 'Доступно новое обновление. Оно будет загружено в фоновом режиме.',
+  });
+});
+
+autoUpdater.on('update-downloaded', () => {
+  dialog
+    .showMessageBox({
+      title: 'Обновление загружено',
+      message: 'Обновление загружено. Приложение будет перезапущено для применения обновления.',
+    })
+    .then(() => {
+      autoUpdater.quitAndInstall();
+    });
+});
+
+autoUpdater.on('error', (err) => {
+  dialog.showErrorBox('Ошибка обновления', `Ошибка при обновлении: ${err.message}`);
 });
