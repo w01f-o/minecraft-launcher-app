@@ -1,4 +1,4 @@
-appId: com.com.thechocolatethief.app
+appId: com.thechocolatethief.app
 productName: The Chocolate Thief
 directories:
   buildResources: build
