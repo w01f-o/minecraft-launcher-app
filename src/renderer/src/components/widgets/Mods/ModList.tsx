@@ -7,6 +7,10 @@ interface ModListProps {
 }
 
 const ModList: FC<ModListProps> = ({ mods }) => {
+  if (!mods.length) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col pt-6">
       <div className="flex items-end gap-2">

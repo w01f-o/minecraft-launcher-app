@@ -36,7 +36,7 @@ const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen, 
 
     window.addEventListener('keydown', keydownHandler);
 
-    return () => {
+    return (): void => {
       window.removeEventListener('keydown', keydownHandler);
     };
   }, [setIsOpen]);

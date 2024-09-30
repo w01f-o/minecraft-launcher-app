@@ -95,8 +95,7 @@ function createWindow(): void {
     'DOWNLOAD_MINECRAFT',
     async (_event, options: { id: string; directoryName: string }) => {
       const { download } = await import('electron-dl');
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+
       const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;
       const directory = path.join(minecraftDirectory, options.directoryName);
 
@@ -198,12 +197,14 @@ function createWindow(): void {
   ipcMain.handle(
     'CHECK_UPDATES',
     async (_event, { modpackId, directoryName }: { modpackId: string; directoryName: string }) => {
-      const hashesFileDir = path.join(minecraftDirectory, directoryName, 'launcher-hashes.json');
+      const hashesFileDir = path.join(
+        minecraftDirectory,
+        directoryName,
+        'tct-mc-launcher-hashes.json',
+      );
       const hashesFileContent = fs.readFileSync(hashesFileDir, 'utf8');
       const hashes = JSON.parse(hashesFileContent);
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-expect-error
       const url = `${import.meta.env.VITE_API_URL}/modpack/check_update/${modpackId}`;
       const res = await fetch(url, {
         method: 'POST',
@@ -215,7 +216,7 @@ function createWindow(): void {
 
       if (res.ok) {
         const json = await res.json();
-
+        console.log(json);
         if (json.toDelete.length > 0) {
           for (const file of json.toDelete) {
             fs.rmSync(path.join(minecraftDirectory, file));
@@ -224,8 +225,6 @@ function createWindow(): void {
 
         if (json.downloadLink) {
           const { download } = await import('electron-dl');
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-expect-error
           const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${json.downloadLink}`;
           const directory = path.join(minecraftDirectory, directoryName);
 
@@ -263,8 +262,7 @@ function createWindow(): void {
     if (!fs.existsSync(javaPath)) {
       try {
         const { download } = await import('electron-dl');
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-expect-error
+
         const javaUrl = `${import.meta.env.VITE_API_URL}/modpack/get_java/${javaVersion}`;
         const directory = path.join(javasDirectory, javaVersion);
 

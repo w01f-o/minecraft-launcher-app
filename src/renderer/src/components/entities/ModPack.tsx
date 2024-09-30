@@ -25,6 +25,8 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   };
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
       if (id === item.id) {
         toast.add({
@@ -36,14 +38,16 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
 
     window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
       if (id === item.id) {
-        addDownloadedModPacks(item);
-        setDownloadProgress(null);
-        setIsDownloading(false);
+        timeout = setTimeout(() => {
+          addDownloadedModPacks(item);
+          setDownloadProgress(null);
+          setIsDownloading(false);
 
-        toast.add({
-          type: 'success',
-          message: `Сборка ${item.name} успешно загружена`,
-        });
+          toast.add({
+            type: 'success',
+            message: `Сборка ${item.name} успешно загружена`,
+          });
+        }, 1000);
       }
     });
 
@@ -54,6 +58,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
     });
 
     return (): void => {
+      clearTimeout(timeout);
       window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_STARTED');
       window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_COMPLETED');
       window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
