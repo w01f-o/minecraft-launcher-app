@@ -27,5 +27,5 @@ publish:
   releaseType: release
 
 releaseInfo:
-  releaseName: "TCT Launcher - v${version}"
-  releaseNotesFile: "release-notes.md"
+  releaseName: 'TCT Launcher - v${version}'
+  releaseNotesFile: 'release-notes.md'

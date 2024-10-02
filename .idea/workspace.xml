@@ -5,8 +5,86 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: New version in packages.json">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron.vite.config.1727177113457.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/electron.vite.config.1727177113457.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron.vite.config.1727292389874.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/electron.vite.config.1727292389874.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron.vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/electron.vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release-notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/release-notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/constants/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/constants/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/addDirectoryToArchive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/addDirectoryToArchive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/formatDate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/formatDate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/enums/ModLoaders.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/enums/ModLoaders.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/types/MinecraftApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ClientScreenshot.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/Mod.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/Mod.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Image.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Toast/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Toast/Toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ActualIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ActualIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/CloseIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ErrorIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ErrorIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/NoThumbnailModIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/NoThumbnailModIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ToastIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/ToastIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/UploadSvg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/Icons/UploadSvg.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/VladBackGround.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/VladBackGround.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/DotsLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/DotsLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Mods/ModList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Mods/ModList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/enums/ModLoaders.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/enums/ModLoaders.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useMinecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useSettings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/hooks/useToast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/hooks/useToast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/services/character.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/services/character.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/downloadStatusSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/downloadStatusSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/minecraftSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/toastSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/toastSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/ToastItem.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/ToastItem.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/entities/Mod.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/Mod.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +132,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -89,7 +167,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.lint">
     <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -105,6 +183,16 @@
       <command value="run" />
       <scripts>
         <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="format" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -130,23 +218,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="typecheck" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="typecheck" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.format" />
         <item itemvalue="npm.build:win" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.typecheck" />
-        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
@@ -535,7 +613,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: Error Boundary scrollbar" />
     <MESSAGE value="feat: Mod list" />
     <MESSAGE value="feat: Ram warning" />
     <MESSAGE value="feat: Error handling in character canvas" />
@@ -560,7 +637,8 @@
     <MESSAGE value="fix: Loader on start button" />
     <MESSAGE value="feat: Logs downloading" />
     <MESSAGE value="fix: New version in packages.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: New version in packages.json" />
+    <MESSAGE value="Rebase with dev branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rebase with dev branch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
