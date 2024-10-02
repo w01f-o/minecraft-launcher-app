@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="Other: Merge with dev branch&#10;&#10;Working launcher. Last features: Logs downloading">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Remove message from ErrorMessage component and some UI changes">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -537,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727893291992</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="fix: Remove message from ErrorMessage component and some UI changes">
+      <option name="closed" value="true" />
+      <created>1727893664194</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1727893664194</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +567,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Ram warning" />
     <MESSAGE value="feat: Error handling in character canvas" />
     <MESSAGE value="feat: Animation for modpack list" />
     <MESSAGE value="feat: Routing animation" />
@@ -585,7 +591,8 @@
     <MESSAGE value="fix: New version in packages.json" />
     <MESSAGE value="Rebase with dev branch" />
     <MESSAGE value="Other: Merge with dev branch&#10;&#10;Working launcher. Last features: Logs downloading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Other: Merge with dev branch&#10;&#10;Working launcher. Last features: Logs downloading" />
+    <MESSAGE value="fix: Remove message from ErrorMessage component and some UI changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Remove message from ErrorMessage component and some UI changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
