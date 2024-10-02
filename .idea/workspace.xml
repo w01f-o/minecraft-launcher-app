@@ -89,7 +89,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build:win">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
