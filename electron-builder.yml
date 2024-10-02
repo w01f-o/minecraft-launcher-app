@@ -25,3 +25,8 @@ publish:
   owner: w01f-o
   repo: minecraft-launcher-app
   releaseType: release
+
+releaseInfo:
+  releaseName: "TCT Launcher - v${version}"
+  releaseNotesFile: "release-notes.md"
+  tagName: "v${version}"

@@ -6,6 +6,7 @@ import type { RemoteImage, TextureSource } from '@jebibot/skinview-utils';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
 import DotsLoader from '@renderer/components/widgets/DotsLoader';
 import { useSpring, animated } from '@react-spring/web';
+import log from 'electron-log/renderer';
 
 const CharacterCanvas: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -59,6 +60,7 @@ const CharacterCanvas: FC = () => {
     };
 
     try {
+      log.info('Fetching character textures... for: ', data);
       const [cape, skin] = await Promise.all([fetchCape(), fetchSkin()]);
 
       setTexturesData({ skin: skin ?? steveDefaultSkinTexture, cape });
@@ -66,7 +68,7 @@ const CharacterCanvas: FC = () => {
       if (error instanceof Error) {
         setTexturesError(error.message);
       }
-      console.error(error);
+      log.error(error);
     } finally {
       setTexturesIsLoading(false);
     }
@@ -112,13 +114,15 @@ const CharacterCanvas: FC = () => {
         skinViewerRef.current.loadSkin(texturesData.skin);
 
         texturesData.cape && skinViewerRef.current.loadCape(texturesData.cape);
+
+        log.info('Character textures loaded: ', texturesData);
       }
     } catch (error) {
       if (error instanceof Error) {
         setTexturesError(error.message);
       }
 
-      console.error(error);
+      log.error(error);
     }
   }, [texturesData]);
 

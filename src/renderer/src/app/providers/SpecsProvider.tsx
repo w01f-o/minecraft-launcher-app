@@ -1,6 +1,7 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { useSettings } from '../../hooks/useSettings';
 import { useToast } from '@renderer/hooks/useToast';
+import log from 'electron-log/renderer';
 
 interface SpecsProviderProps {
   children: ReactNode;
@@ -13,7 +14,7 @@ const SpecsProvider: FC<SpecsProviderProps> = ({ children }) => {
 
   useEffect(() => {
     window.electron.ipcRenderer.on('unhandled-error', (_e, error) => {
-      console.error(error);
+      log.error('Unhandled error in client-console: ', error);
       toast.add({ message: `Произошла ошибка: ${error.message}`, type: 'error' });
     });
 

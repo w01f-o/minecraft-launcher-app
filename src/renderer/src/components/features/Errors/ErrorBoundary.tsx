@@ -2,6 +2,8 @@ import { Component, ErrorInfo, ReactNode } from 'react';
 import ErrorMessage from './ErrorMessage';
 import Background from '../../widgets/Background/Background';
 import TitleBar from '../../widgets/TitleBar';
+import DownloadLogs from '@renderer/components/features/DownloadLogs';
+import log from 'electron-log/renderer';
 
 type ErrorBoundaryState =
   | {
@@ -40,7 +42,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({ hasError: true, error: { message: error, info: errorInfo } });
-    console.error('Uncaught error:', error, errorInfo);
+    log.error('Uncaught error:', error, errorInfo);
   }
 
   public render(): ReactNode {
@@ -50,10 +52,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           <TitleBar />
           <div className="flex-grow grid place-items-center ">
             <Background />
-            <div className="max-w-2xl custom-scrollbar overflow-y-auto">
-              <div className="max-h-[70vh]">
-                <ErrorMessage message={JSON.stringify(this.state.error)} />
-              </div>
+            <div className="flex flex-col gap-4">
+              <ErrorMessage />
+              <DownloadLogs />
             </div>
           </div>
         </>

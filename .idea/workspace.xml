@@ -4,10 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Auto update">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Loader on start button">
+      <change afterPath="$PROJECT_DIR$/release-notes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/utils/addDirectoryToArchive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/utils/formatDate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterNameChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorBoundary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +36,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -90,7 +109,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build:win">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -143,8 +162,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build:win" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build:win" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.typecheck" />
         <item itemvalue="npm.lint" />
@@ -193,7 +212,8 @@
       <workItem from="1727707657778" duration="6296000" />
       <workItem from="1727717824766" duration="6264000" />
       <workItem from="1727724195127" duration="2268000" />
-      <workItem from="1727727107366" duration="62000" />
+      <workItem from="1727727107366" duration="289000" />
+      <workItem from="1727884005859" duration="8052000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -499,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727726340302</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fix: Loader on start button">
+      <option name="closed" value="true" />
+      <created>1727727237931</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1727727237931</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Transition for change username button" />
     <MESSAGE value="feat: Loader for screenshots" />
     <MESSAGE value="ref: Renaming variables" />
     <MESSAGE value="fix: Error Boundary scrollbar" />
@@ -536,7 +563,8 @@
     <MESSAGE value="fix: Empty mod list" />
     <MESSAGE value="feat: App icon, builder config" />
     <MESSAGE value="feat: Auto update" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Auto update" />
+    <MESSAGE value="fix: Loader on start button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Loader on start button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

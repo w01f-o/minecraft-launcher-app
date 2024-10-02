@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import ModPack from '../../entities/ModPack';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
@@ -6,6 +6,7 @@ import ErrorMessage from '../../features/Errors/ErrorMessage';
 import { animated, useTransition } from '@react-spring/web';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import log from 'electron-log/renderer';
 
 const gap = 20;
 const cardHeight = 160;
@@ -31,6 +32,14 @@ const ModPackList: FC = () => {
       config: { tension: 400, friction: 40 },
     },
   );
+
+  useEffect(() => {
+    isError && log.error('Error while fetching modpacks: ', error);
+  }, [isError]);
+
+  useEffect(() => {
+    isSuccess && log.info('Modpacks fetched successfully: ', modPacks);
+  }, [isSuccess]);
 
   return (
     <div className="z-0 relative" style={{ height: sortedModPacks.length > 0 ? height : 'auto' }}>

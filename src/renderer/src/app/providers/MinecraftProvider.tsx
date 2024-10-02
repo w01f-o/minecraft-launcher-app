@@ -1,6 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { useMinecraft } from '../../hooks/useMinecraft';
 import { useGetCharacterQuery, useUpdateCharacterMutation } from '../../services/character.api';
+import log from 'electron-log/renderer';
 
 interface MinecraftProviderProps {
   children: ReactNode;
@@ -27,7 +28,11 @@ const MinecraftProvider: FC<MinecraftProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetchMinecraftServerIp();
+    try {
+      fetchMinecraftServerIp();
+    } catch (e) {
+      log.error('Error fetching server ip', e);
+    }
   }, []);
 
   useEffect(() => {
@@ -35,12 +40,16 @@ const MinecraftProvider: FC<MinecraftProviderProps> = ({ children }) => {
       const formData = new FormData();
       formData.append('hwid', hwid);
       updateCharacter(formData);
+      log.debug('Hwid set to:', hwid);
     }
   }, [hwid]);
 
   useEffect(() => {
     if (data && data?.username !== null) {
-      setUsername(data.username);
+      const { username } = data;
+
+      setUsername(username);
+      log.debug('Username set to:', username);
     }
   }, [data]);
 

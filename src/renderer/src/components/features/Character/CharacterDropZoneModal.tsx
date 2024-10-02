@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
 import DotsLoader from '@renderer/components/widgets/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
+import log from 'electron-log/renderer';
 
 interface CharacterDropZoneModalProps {
   modalIsOpen: boolean;
@@ -49,11 +50,15 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
         type: 'success',
         message: `${uploadType === 'skin' ? 'Скин' : 'Плащ'} успешно обновлен`,
       });
+
+      log.info(`Character ${uploadType} updated`);
     } catch (e) {
       toast.add({
         type: 'error',
         message: `Произошла ошибка при обновлении ${uploadType === 'skin' ? 'скина' : 'плаща'}`,
       });
+
+      log.error(`Character ${uploadType} update error: `, e);
     }
   };
 

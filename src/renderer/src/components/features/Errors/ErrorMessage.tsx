@@ -12,7 +12,7 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ message }) => {
         <img src={errorGif} alt="" />
       </div>
       <div className="text-3xl font-bold">Что-то пошло не так 😔</div>
-      <div>{message}</div>
+      {message && <div>{message}</div>}
     </div>
   );
 };

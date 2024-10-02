@@ -4,6 +4,7 @@ import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import CharacterDropZoneModal from './CharacterDropZoneModal';
 import { useDeleteCapeMutation, useGetCharacterQuery } from '../../../services/character.api';
 import { useToast } from '@renderer/hooks/useToast';
+import log from 'electron-log/renderer';
 
 const CharacterSkinCapeChanger: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -26,11 +27,13 @@ const CharacterSkinCapeChanger: FC = () => {
         type: 'success',
         message: 'Плащ успешно удалён',
       });
+      log.info('Cape deleted');
     } catch (e) {
       toast.add({
         type: 'error',
         message: 'Произошла ошибка при удалении плаща',
       });
+      log.error('Error while deleting cape', e);
     }
   };
 

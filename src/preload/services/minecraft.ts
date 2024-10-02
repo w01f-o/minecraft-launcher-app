@@ -1,7 +1,8 @@
 import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../types/MinecraftApi';
-import { Authenticator, Client } from 'minecraft-launcher-core';
+import { Authenticator, Client, ILauncherOptions } from 'minecraft-launcher-core';
 import * as electron from 'electron';
 import { fabric, forge, quilt } from 'tomate-loaders';
+import log from 'electron-log/node';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
@@ -37,6 +38,10 @@ export const minecraftApi: MinecraftApi = {
       version: { number: string; type: string; custom: string };
     };
 
+    this.launcher.on('debug', (e) => {
+      log.debug('Minecraft debug: ', e);
+    });
+
     try {
       switch (modLoader) {
         case 'FABRIC':
@@ -58,32 +63,11 @@ export const minecraftApi: MinecraftApi = {
           });
           break;
         default:
-          throw new Error('Invalid modloader');
+          log.error(`Invalid modloader: ${modLoader}`);
+          throw new Error(`Invalid modloader: ${modLoader}`);
       }
 
-      this.launcher.once('arguments', () => {
-        setIsLoading(false);
-
-        if (isDebugMode) {
-          navigateFunction('/debug');
-        } else {
-          navigateFunction('/');
-        }
-
-        if (isLauncherHide) {
-          electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
-
-          this.launcher.once('close', () => {
-            electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
-          });
-        }
-      });
-
-      this.launcher.on('progress', (e) => {
-        electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
-      });
-
-      await this.launcher.launch({
+      const launcherConfig: ILauncherOptions = {
         ...modloaderConfig,
         memory: {
           max: Math.round(maxRam / 1024 / 1024),
@@ -102,8 +86,37 @@ export const minecraftApi: MinecraftApi = {
               },
             }
           : {}),
+      };
+
+      log.info('Minecraft will be started with: ', launcherConfig);
+
+      this.launcher.once('arguments', (args) => {
+        setIsLoading(false);
+        log.info('Minecraft started with java arguments: ', args);
+
+        if (isDebugMode) {
+          navigateFunction('/debug');
+        } else {
+          navigateFunction('/');
+        }
+
+        if (isLauncherHide) {
+          electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
+
+          this.launcher.once('close', () => {
+            electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
+          });
+        }
       });
+
+      this.launcher.on('progress', (e) => {
+        log.info(`Minecraft with modpack '${directoryName}' loading progress: `, e);
+        electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
+      });
+
+      await this.launcher.launch(launcherConfig);
     } catch (e) {
+      log.error(e);
       electron.ipcRenderer.send('PRELOAD_ERROR', e);
     }
   },

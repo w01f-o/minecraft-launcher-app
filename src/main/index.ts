@@ -4,18 +4,30 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
+import log from 'electron-log/main';
 
 import { unzipArchive } from './utils/unzipeArchive';
 import { javasDirectory, minecraftDirectory } from './constants/constants';
 import { autoUpdater } from 'electron-updater';
+import * as os from 'node:os';
+import JSZip from 'jszip';
+import { addDirectoryToArchive } from './utils/addDirectoryToArchive';
+import { formatDate } from './utils/formatDate';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
 
   unhandled({
-    logger: (error) => BrowserWindow.getFocusedWindow()?.webContents.send('unhandled-error', error),
+    logger: (error) => {
+      log.error(error);
+      BrowserWindow.getFocusedWindow()?.webContents.send('unhandled-error', error);
+    },
   });
 })();
+
+log.initialize({
+  spyRendererConsole: true,
+});
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -95,32 +107,35 @@ function createWindow(): void {
   ipcMain.on(
     'DOWNLOAD_MINECRAFT',
     async (_event, options: { id: string; directoryName: string }) => {
-      const { download } = await import('electron-dl');
-
-      const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;
-      const directory = path.join(minecraftDirectory, options.directoryName);
-
-      const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
-        directory,
-        onProgress: (state) => {
-          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id });
-        },
-        saveAs: false,
-        onStarted: () => {
-          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
-        },
-        onCompleted: () => {
-          mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
-        },
-      });
-
-      const archivePath = downloadItem.savePath;
-
       try {
+        const { download } = await import('electron-dl');
+
+        const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;
+        const directory = path.join(minecraftDirectory, options.directoryName);
+
+        const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
+          directory,
+          onProgress: (state) => {
+            log.info(`Modpack '${directory}' download progress: `, state);
+            mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id });
+          },
+          saveAs: false,
+          onStarted: () => {
+            log.debug(`Modpack '${directory}' downloading...`);
+            mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
+          },
+          onCompleted: () => {
+            log.debug(`Modpack '${directory}' downloaded`);
+            mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
+          },
+        });
+
+        const archivePath = downloadItem.savePath;
+
         await unzipArchive(archivePath, directory);
         fs.rmSync(archivePath);
       } catch (error) {
-        console.error('Error while unpacking the archive:', error);
+        log.error('Error while downloading modpack: ', error);
       }
     },
   );
@@ -176,7 +191,7 @@ function createWindow(): void {
       const file = fs.readFileSync(path.join(minecraftDirectory, screenshotPath));
       fs.writeFileSync(filePath, file);
     } catch (error) {
-      console.error('Error while saving screenshot:', error);
+      log.error('Error saving screenshot:', error);
     }
   });
 
@@ -205,6 +220,7 @@ function createWindow(): void {
       );
       const hashesFileContent = fs.readFileSync(hashesFileDir, 'utf8');
       const hashes = JSON.parse(hashesFileContent);
+      log.info(`Modpack '${directoryName}' hashes: `, hashes);
 
       const url = `${import.meta.env.VITE_API_URL}/modpack/check_update/${modpackId}`;
       const res = await fetch(url, {
@@ -217,40 +233,52 @@ function createWindow(): void {
 
       if (res.ok) {
         const json = await res.json();
-        console.log(json);
+
+        log.debug('Update:', json);
+
         if (json.toDelete.length > 0) {
           for (const file of json.toDelete) {
             fs.rmSync(path.join(minecraftDirectory, file));
+            log.debug('Deleted file from update:', file);
           }
         }
 
         if (json.downloadLink) {
-          const { download } = await import('electron-dl');
-          const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${json.downloadLink}`;
-          const directory = path.join(minecraftDirectory, directoryName);
-
-          const downloadItem = await download(
-            BrowserWindow.getFocusedWindow() ?? mainWindow,
-            downloadUrl,
-            {
-              directory,
-              onProgress: (state) => {
-                mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
-                  total: state.totalBytes,
-                  task: state.transferredBytes,
-                });
-              },
-            },
-          );
-
-          const archivePath = downloadItem.savePath;
           try {
+            const { download } = await import('electron-dl');
+            const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${json.downloadLink}`;
+            const directory = path.join(minecraftDirectory, directoryName);
+
+            const downloadItem = await download(
+              BrowserWindow.getFocusedWindow() ?? mainWindow,
+              downloadUrl,
+              {
+                directory,
+                onProgress: (state) => {
+                  log.info(`Downloading modpack '${directoryName}' update progress: `, state);
+                  mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
+                    total: state.totalBytes,
+                    task: state.transferredBytes,
+                  });
+                },
+                onStarted: () => {
+                  log.debug(`Downloading modpack '${directoryName}' update...`);
+                },
+              },
+            );
+
+            const archivePath = downloadItem.savePath;
+
             await unzipArchive(archivePath, directory);
             fs.rmSync(archivePath);
+
+            log.debug(`Downloaded modpack '${directoryName}' update: `, json.downloadLink);
           } catch (error) {
-            console.error('Error while unpacking the archive:', error);
+            log.error(`Error while downloading modpack '${directoryName}' update: `, error);
           }
         }
+      } else {
+        log.error('Error while checking for updates', await res.text());
       }
 
       return;
@@ -273,10 +301,17 @@ function createWindow(): void {
           {
             directory,
             onProgress: (state) => {
+              log.info(`Downloading java '${javaVersion}' progress: `, state);
               mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
                 total: state.totalBytes,
                 task: state.transferredBytes,
               });
+            },
+            onStarted: () => {
+              log.debug(`Downloading java '${javaVersion}': ...`);
+            },
+            onCompleted: () => {
+              log.debug(`Java ${javaVersion} downloaded`);
             },
           },
         );
@@ -287,10 +322,11 @@ function createWindow(): void {
 
         return javaPath;
       } catch (error) {
-        console.error('Error while unpacking the archive:', error);
+        log.error('Error while downloading java', error);
       }
     }
 
+    log.debug('Java already exists:', javaPath);
     return javaPath;
   });
 
@@ -299,21 +335,90 @@ function createWindow(): void {
 
     try {
       fs.rmSync(dir, { recursive: true });
+      log.info(`Deleted modpack: ${directoryName}`);
 
       return { isSuccess: true };
     } catch (error) {
+      log.error(`Error while deleting modpack '${directoryName}': `, error);
       return { isSuccess: false, error };
+    }
+  });
+
+  ipcMain.handle('GET_LOGS', async () => {
+    const logsPath = log.transports.file.getFile().path;
+
+    const { canceled, filePath } = await dialog.showSaveDialog({
+      defaultPath: `TCTLauncher-${formatDate(new Date())}.zip`,
+      filters: [{ name: 'Logs', extensions: ['zip'] }],
+    });
+
+    if (canceled || !filePath) {
+      return {
+        type: 'canceled',
+        filePath: null,
+      };
+    }
+
+    const zip = new JSZip();
+
+    try {
+      const mainLogFile = fs.readFileSync(logsPath);
+      zip.file('main.log', mainLogFile);
+
+      const modpacks = fs.readdirSync(minecraftDirectory);
+
+      for (const modpack of modpacks) {
+        if (modpack !== 'javas') {
+          const pathToLogsFolder = path.join(minecraftDirectory, modpack, 'logs');
+          const pathToCrashReportsFolder = path.join(minecraftDirectory, modpack, 'crash-reports');
+
+          if (fs.existsSync(pathToLogsFolder)) {
+            addDirectoryToArchive(zip, pathToLogsFolder, `${modpack}/logs`);
+          }
+
+          if (fs.existsSync(pathToCrashReportsFolder)) {
+            addDirectoryToArchive(zip, pathToCrashReportsFolder, `${modpack}/crash-reports`);
+          }
+        }
+      }
+
+      const zipContent = await zip.generateAsync({ type: 'nodebuffer' });
+      fs.writeFileSync(filePath, zipContent);
+      log.info('Downloaded logs archive:', filePath);
+
+      return {
+        type: 'success',
+        filePath,
+      };
+    } catch (error) {
+      log.error('Error while creating log archive:', error);
+
+      return {
+        type: 'error',
+        error,
+      };
     }
   });
 }
 
 app.whenReady().then(() => {
+  log.info('Launcher is ready, client hardware information: ', {
+    cpu: `${os.cpus()[0].model.trim()} (${os.cpus()[0].speed} MHz)`,
+    totalMemory: os.totalmem(),
+    freeMemory: os.freemem(),
+    platform: os.platform(),
+    arch: os.arch(),
+    release: os.release(),
+  });
+
   if (!fs.existsSync(minecraftDirectory)) {
     fs.mkdirSync(minecraftDirectory);
+    log.debug(`Created minecraft directory: ${minecraftDirectory}`);
   }
 
   if (!fs.existsSync(javasDirectory)) {
     fs.mkdirSync(javasDirectory);
+    log.debug(`Created java directory: ${javasDirectory}`);
   }
 
   autoUpdater.checkForUpdatesAndNotify();
@@ -342,11 +447,16 @@ app.whenReady().then(() => {
 
     try {
       const file = fs.readFileSync(filePath);
+      log.debug('Sending screenshot: ', {
+        url,
+        filePath,
+      });
 
       return new Response(file, {
         headers: { 'Content-Type': 'image/png' },
       });
     } catch (error) {
+      log.error(error);
       return new Response(null, {
         status: 404,
         statusText: 'File Not Found',
@@ -361,14 +471,18 @@ app.on('window-all-closed', () => {
   }
 });
 
-autoUpdater.on('update-available', () => {
+autoUpdater.on('update-available', (info) => {
+  log.info('Update available', info);
+
   dialog.showMessageBox({
     title: 'Обновление доступно',
     message: 'Доступно новое обновление. Оно будет загружено в фоновом режиме.',
   });
 });
 
-autoUpdater.on('update-downloaded', () => {
+autoUpdater.on('update-downloaded', (event) => {
+  log.info('Update downloaded', event);
+
   dialog
     .showMessageBox({
       title: 'Обновление загружено',
@@ -380,5 +494,7 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 autoUpdater.on('error', (err) => {
+  log.error('Update error', err);
+
   dialog.showErrorBox('Ошибка обновления', `Ошибка при обновлении: ${err.message}`);
 });

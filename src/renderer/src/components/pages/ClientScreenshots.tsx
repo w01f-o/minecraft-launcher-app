@@ -96,7 +96,7 @@ const ClientScreenshots: FC = () => {
           initialSlide={initialIndex}
           onSlideChange={(swiper) => setInitialIndex(swiper.realIndex)}
         >
-          <GallerySwiperButtons isOpen={galleryIsOpen} />
+          {clientScreenshots.length > 1 && <GallerySwiperButtons isOpen={galleryIsOpen} />}
           {clientScreenshots.map((screenshot) => (
             <SwiperSlide key={screenshot} className="h-full">
               <ClientScreenshot key={screenshot} screenshot={screenshot} />

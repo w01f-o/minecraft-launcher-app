@@ -6,6 +6,7 @@ import { useMinecraft } from '../../../hooks/useMinecraft';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
 import { useTransition, animated } from '@react-spring/web';
 import { useToast } from '@renderer/hooks/useToast';
+import log from 'electron-log/renderer';
 
 const CharacterNameChanger: FC = () => {
   const { username } = useMinecraft();
@@ -24,14 +25,14 @@ const CharacterNameChanger: FC = () => {
     setInputLocalName(e.target.value);
   };
 
-  const canBeChanged = useMemo(() => {
-    return (
+  const canBeChanged = useMemo(
+    () =>
       inputLocalName !== null &&
       inputLocalName !== username &&
       username !== null &&
-      inputLocalName !== ''
-    );
-  }, [inputLocalName, username]);
+      inputLocalName !== '',
+    [inputLocalName, username],
+  );
 
   const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -47,11 +48,13 @@ const CharacterNameChanger: FC = () => {
         type: 'success',
         message: 'Имя персонажа успешно изменено',
       });
+      log.debug(`Character name changed from ${username} to ${inputLocalName}`);
     } catch (e) {
       toast.add({
         type: 'error',
         message: 'Произошла ошибка при изменении имени персонажа',
       });
+      log.error('Error while changing character name', e);
     }
   };
 

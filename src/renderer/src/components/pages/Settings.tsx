@@ -6,6 +6,7 @@ import { useSettings } from '../../hooks/useSettings';
 import RamSetting from '../features/Settings/RamSetting';
 import Button from '../shared/UI/Button';
 import VladBackGround from '../widgets/Background/VladBackGround';
+import DownloadLogs from '@renderer/components/features/DownloadLogs';
 
 const Settings: FC = () => {
   useEffect(() => {
@@ -61,9 +62,14 @@ const Settings: FC = () => {
             <SettingsSwitcher setting={setting} key={setting.id} />
           ))}
           <RamSetting />
-          <NavLink to={'/'} className="self-start">
-            <Button role={'secondary'}>На главную</Button>
-          </NavLink>
+          <div className="flex gap-6">
+            <NavLink to={'/'} className="self-start">
+              <Button role={'primary'}>На главную</Button>
+            </NavLink>
+            <div className="w-[250px]">
+              <DownloadLogs />
+            </div>
+          </div>
         </div>
       </div>
     </>
