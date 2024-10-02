@@ -53,7 +53,10 @@ const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, accentColor, valu
 
   return (
     <div className="h-2 w-full">
-      <div className="relative w-full h-2 bg-white rounded-3xl cursor-pointer" ref={rangeRef}>
+      <div
+        className="relative shadow-sm w-full h-2 bg-white rounded-3xl cursor-pointer"
+        ref={rangeRef}
+      >
         <div
           className="absolute h-2 left-0 bg-blue rounded-3xl transition"
           style={{
