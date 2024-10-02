@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="Other: Merge with dev branch&#10;&#10;Working launcher. Last features: Logs downloading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Errors/ErrorMessage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/Button.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
