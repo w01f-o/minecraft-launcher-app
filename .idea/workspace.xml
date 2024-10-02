@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Logs downloading">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: New version in packages.json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build:win">
     <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -142,8 +142,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build:win" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.typecheck" />
         <item itemvalue="npm.lint" />
@@ -193,7 +193,7 @@
       <workItem from="1727717824766" duration="6264000" />
       <workItem from="1727724195127" duration="2268000" />
       <workItem from="1727727107366" duration="289000" />
-      <workItem from="1727884005859" duration="8152000" />
+      <workItem from="1727884005859" duration="8443000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -515,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727892242773</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="fix: New version in packages.json">
+      <option name="closed" value="true" />
+      <created>1727892298423</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1727892298423</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ref: Renaming variables" />
     <MESSAGE value="fix: Error Boundary scrollbar" />
     <MESSAGE value="feat: Mod list" />
     <MESSAGE value="feat: Ram warning" />
@@ -552,7 +559,8 @@
     <MESSAGE value="feat: Auto update" />
     <MESSAGE value="fix: Loader on start button" />
     <MESSAGE value="feat: Logs downloading" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Logs downloading" />
+    <MESSAGE value="fix: New version in packages.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: New version in packages.json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

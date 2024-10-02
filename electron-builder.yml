@@ -29,4 +29,3 @@ publish:
 releaseInfo:
   releaseName: "TCT Launcher - v${version}"
   releaseNotesFile: "release-notes.md"
-  tagName: "v${version}"
