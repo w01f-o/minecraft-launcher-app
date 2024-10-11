@@ -347,6 +347,14 @@ function createWindow(): void {
 
         log.debug('Java path:', javaPath);
 
+        fs.chmod(javaPath, 0o755, (err) => {
+          if (err) {
+            log.error(`Error while changing java permissions: ${err}`);
+          } else {
+            log.log(`Changed java permissions: ${javaPath}`);
+          }
+        });
+
         return javaPath;
       } catch (error) {
         log.error('Error while downloading java', error);
