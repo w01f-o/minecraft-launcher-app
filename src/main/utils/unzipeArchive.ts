@@ -1,16 +1,5 @@
-import fs from 'node:fs';
-import * as unzipper from 'unzipper';
+import extract from 'extract-zip';
 
-export const unzipArchive = (archivePath: string, extractTo: string): Promise<void> => {
-  return new Promise<void>((resolve, reject) => {
-    fs.createReadStream(archivePath)
-      .pipe(unzipper.Extract({ path: extractTo }))
-      .on('close', () => {
-        resolve();
-      })
-      .on('error', (error: never) => {
-        console.error('Error during extraction:', error);
-        reject(error);
-      });
-  });
+export const unzipArchive = async (archivePath: string, extractTo: string): Promise<void> => {
+  await extract(archivePath, { dir: extractTo });
 };

@@ -124,8 +124,7 @@ function createWindow(): void {
           },
           saveAs: false,
           onCompleted: () => {
-            log.debug(`Modpack '${directory}' downloaded`);
-            mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
+            log.debug(`Modpack '${directory}' downloaded, unzipping...`);
           },
         });
 
@@ -133,6 +132,9 @@ function createWindow(): void {
 
         await unzipArchive(archivePath, directory);
         fs.rmSync(archivePath);
+
+        mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
+        log.debug(`Modpack '${directory}' unzipped`);
       } catch (error) {
         log.error('Error while downloading modpack: ', error);
       }
@@ -342,6 +344,8 @@ function createWindow(): void {
 
         await unzipArchive(archivePath, directory);
         fs.rmSync(archivePath);
+
+        log.debug('Java path:', javaPath);
 
         return javaPath;
       } catch (error) {

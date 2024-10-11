@@ -31,7 +31,7 @@ const persistConfig = {
   storage,
   whitelist: ['settings', 'minecraft'],
 };
-
+//'settings', 'minecraft'
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

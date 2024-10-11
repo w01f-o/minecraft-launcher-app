@@ -78,7 +78,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
         onClick={modPackClickHandler}
       >
         <Image
-          src={`${import.meta.env.VITE_STATIC_URL}/${item.thumbnail}`}
+          src={`${import.meta.env.VITE_API_URL}/${item.icon}`}
           alt={item.name}
           width={110}
           height={110}

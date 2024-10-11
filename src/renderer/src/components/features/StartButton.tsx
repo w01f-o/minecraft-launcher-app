@@ -14,6 +14,7 @@ const StartButton: FC = () => {
     setIsLoading(true);
 
     if (currentModPack) {
+      console.log(currentModPack);
       await window.minecraft.start({
         isFullscreen,
         isLauncherHide,

@@ -4,29 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Remove message from ErrorMessage component and some UI changes">
-      <change afterPath="$PROJECT_DIR$/src/renderer/src/enums/OperatingSystems.enum.ts" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: New API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/constants/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/constants/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/utils/unzipeArchive.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/MinecraftProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Character.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/StartButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Character/CharacterCanvas.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/DotsLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/DotsLoader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/services/character.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/services/character.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/services/modPacks.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/services/modPacks.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/entities/Screenshot.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/Screenshot.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +214,8 @@
       <workItem from="1728029369095" duration="24000" />
       <workItem from="1728170868709" duration="19000" />
       <workItem from="1728594684775" duration="3392000" />
-      <workItem from="1728643055363" duration="12362000" />
+      <workItem from="1728643055363" duration="12460000" />
+      <workItem from="1728663371917" duration="8512000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <option name="closed" value="true" />
@@ -587,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727894176185</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="feat: New API">
+      <option name="closed" value="true" />
+      <created>1728660600504</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1728660600504</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +608,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Animation for modpack list" />
     <MESSAGE value="feat: Routing animation" />
     <MESSAGE value="feat: Image with loader component" />
     <MESSAGE value="feat: Rounded modpack screenshot" />
@@ -635,7 +632,8 @@
     <MESSAGE value="Other: Merge with dev branch&#10;&#10;Working launcher. Last features: Logs downloading" />
     <MESSAGE value="fix: Change version number in package.json" />
     <MESSAGE value="fix: Remove message from ErrorMessage component and some UI changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Remove message from ErrorMessage component and some UI changes" />
+    <MESSAGE value="feat: New API" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: New API" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
