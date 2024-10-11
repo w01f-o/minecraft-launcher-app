@@ -7,7 +7,7 @@ import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
 
 const ClientScreenshots: FC = () => {

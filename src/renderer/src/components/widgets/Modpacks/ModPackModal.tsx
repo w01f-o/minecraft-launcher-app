@@ -69,7 +69,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
               )}
             </div>
 
-            <div className="text-xl truncate">{item.description}</div>
+            <div className="text-xl">{item.description}</div>
             <ModList mods={item.mods} />
           </div>
         </div>

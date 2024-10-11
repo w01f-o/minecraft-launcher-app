@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import UploadSvg from '../../shared/Icons/UploadSvg';
 import { useDropzone } from 'react-dropzone';
 import { useUpdateCharacterMutation } from '../../../services/character.api';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
 import log from 'electron-log/renderer';
 

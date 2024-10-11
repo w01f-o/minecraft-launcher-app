@@ -14,7 +14,6 @@ const StartButton: FC = () => {
     setIsLoading(true);
 
     if (currentModPack) {
-      console.log(currentModPack);
       await window.minecraft.start({
         isFullscreen,
         isLauncherHide,
@@ -31,7 +30,7 @@ const StartButton: FC = () => {
           javaVersion: currentModPack.javaVersion,
           autoLogin: {
             isAutoLogin,
-            serverIp: window.localStorage.getItem('serverIp')!,
+            serverIp: import.meta.env.VITE_MINECRAFT_SERVER_IP,
           },
         },
       });

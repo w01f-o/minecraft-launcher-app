@@ -3,7 +3,7 @@ import { useGetCharacterQuery } from '../../services/character.api';
 import CharacterCanvas from '../widgets/Character/CharacterCanvas';
 import CharacterController from '../features/Character/CharacterController';
 import ErrorMessage from '../features/Errors/ErrorMessage';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 
 const Character: FC = () => {
   const { isFetching, isLoading, isError, error } = useGetCharacterQuery(

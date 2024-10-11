@@ -29,7 +29,7 @@ const DownloadLogs: FC = () => {
   };
 
   return (
-    <Button role={'secondary'} onClick={clickHandler} isPending={isLoading} className="w-full">
+    <Button role={'primary'} onClick={clickHandler} isPending={isLoading} className="w-full">
       Скачать логи
     </Button>
   );

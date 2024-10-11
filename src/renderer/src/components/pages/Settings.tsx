@@ -63,12 +63,12 @@ const Settings: FC = () => {
           ))}
           <RamSetting />
           <div className="flex gap-6">
-            <NavLink to={'/'} className="self-start" draggable={false}>
-              <Button role={'primary'}>На главную</Button>
-            </NavLink>
             <div className="w-[250px]">
               <DownloadLogs />
             </div>
+            <NavLink to={'/'} className="self-start" draggable={false}>
+              <Button role={'secondary'}>На главную</Button>
+            </NavLink>
           </div>
         </div>
       </div>

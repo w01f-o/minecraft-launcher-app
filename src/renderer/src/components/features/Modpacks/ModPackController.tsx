@@ -6,6 +6,7 @@ import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import { useToast } from '@renderer/hooks/useToast';
+import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
 
 interface ModPackControllerProps {
   item: ModPackType;
@@ -83,7 +84,9 @@ const ModPackController: FC<ModPackControllerProps> = ({
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
         {item.name}
         {downloadProgress !== null && (
-          <div className="text-xl self-end">Загрузка - {Math.round(downloadProgress)}%</div>
+          <div className="text-xl self-end">
+            <TextLoader />
+          </div>
         )}
         {!isDownloadedModPack && downloadProgress === null && (
           <Button role={'primary'} rounded onClick={downloadClickHandler} isPending={isDownloading}>

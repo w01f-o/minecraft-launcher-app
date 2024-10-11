@@ -5,7 +5,7 @@ import { useGetModPacksQuery } from '@renderer/services/modPacks.api';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
 import { animated, useTransition } from '@react-spring/web';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import log from 'electron-log/renderer';
 
 const gap = 20;

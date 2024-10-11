@@ -4,7 +4,7 @@ import { SkinViewer, WalkingAnimation } from '@jebibot/skinview3d';
 import steveDefaultSkinTexture from '../../../../../../resources/steve.png';
 import type { RemoteImage, TextureSource } from '@jebibot/skinview-utils';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useSpring, animated } from '@react-spring/web';
 import log from 'electron-log/renderer';
 
