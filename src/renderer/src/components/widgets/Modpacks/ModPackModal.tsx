@@ -41,7 +41,7 @@ const ModPackModal: FC<ModPackModalProps> = ({
           {item.screenshots.map((screenshot) => (
             <SwiperSlide key={screenshot.id}>
               <Image
-                src={`${import.meta.env.VITE_STATIC_URL}/${screenshot.thumbnail}`}
+                src={`${import.meta.env.VITE_API_URL}/${screenshot.url}`}
                 alt={item.name}
                 width={'100%'}
                 height={'60vh'}

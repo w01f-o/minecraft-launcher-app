@@ -4,6 +4,7 @@ import SettingsIcon from '../shared/Icons/SettingsIcon';
 import ModPackList from '../widgets/Modpacks/ModpackList';
 import StartButton from '../features/StartButton';
 import StasBackground from '../widgets/Background/StasBackground';
+import Button from '@renderer/components/shared/UI/Button';
 
 const Home: FC = () => {
   useEffect(() => {
@@ -25,9 +26,19 @@ const Home: FC = () => {
             to={'/settings'}
             className="active:scale-95 animate-spin-slow"
             title={'Настройки'}
+            draggable={false}
           >
             <SettingsIcon />
           </NavLink>
+          <Button
+            role={'primary'}
+            onClick={async () => {
+              const path = await window.electron.ipcRenderer.invoke('CHECK_JAVA', 'jdk-17.0.11');
+              console.log(path);
+            }}
+          >
+            Test
+          </Button>
         </div>
       </div>
       <StasBackground />

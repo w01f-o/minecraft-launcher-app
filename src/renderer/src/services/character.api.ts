@@ -7,12 +7,20 @@ export const characterApi = createApi({
   tagTypes: ['Character'],
   endpoints: (builder) => ({
     getCharacter: builder.query<Character, string>({
-      query: (hwid: string) => `/character/hwid/${hwid}`,
+      query: (hwid: string) => `/characters/${hwid}`,
       providesTags: ['Character'],
+    }),
+    createCharacter: builder.mutation<Character, FormData>({
+      query: (createDto: FormData) => ({
+        url: `/characters`,
+        method: 'POST',
+        body: createDto,
+      }),
+      invalidatesTags: ['Character'],
     }),
     updateCharacter: builder.mutation<Character, FormData>({
       query: (updateOrCreateDto: FormData) => ({
-        url: `/character`,
+        url: `/characters`,
         method: 'PATCH',
         body: updateOrCreateDto,
       }),
@@ -20,7 +28,7 @@ export const characterApi = createApi({
     }),
     deleteCape: builder.mutation<Character, string>({
       query: (hwid: string) => ({
-        url: `/character/cape/${hwid}`,
+        url: `/characters/cape/${hwid}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Character'],

@@ -42,6 +42,7 @@ const NavBar: FC = () => {
                   className={clsx(
                     'relative z-10 flex items-center justify-center rounded-xl h-10 w-32 before:absolute before:inset-0 before:transition before:opacity-[.05] hover:before:bg-black before:rounded-2xl select-none',
                   )}
+                  draggable={false}
                 >
                   {route.title}
                 </NavLink>

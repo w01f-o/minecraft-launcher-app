@@ -110,8 +110,11 @@ function createWindow(): void {
       try {
         const { download } = await import('electron-dl');
 
-        const url = `${import.meta.env.VITE_API_URL}/modpack/download/${options.id}`;
+        const url = `${import.meta.env.VITE_API_URL}/modpacks/download/${options.id}`;
         const directory = path.join(minecraftDirectory, options.directoryName);
+
+        log.debug(`Modpack '${directory}' downloading...`);
+        mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
 
         const downloadItem = await download(BrowserWindow.getFocusedWindow() ?? mainWindow, url, {
           directory,
@@ -120,10 +123,6 @@ function createWindow(): void {
             mainWindow.webContents.send('MINECRAFT_DOWNLOAD_PROGRESS', { state, id: options.id });
           },
           saveAs: false,
-          onStarted: () => {
-            log.debug(`Modpack '${directory}' downloading...`);
-            mainWindow.webContents.send('MINECRAFT_DOWNLOAD_STARTED', options.id);
-          },
           onCompleted: () => {
             log.debug(`Modpack '${directory}' downloaded`);
             mainWindow.webContents.send('MINECRAFT_DOWNLOAD_COMPLETED', options.id);
@@ -216,13 +215,13 @@ function createWindow(): void {
       const hashesFileDir = path.join(
         minecraftDirectory,
         directoryName,
-        'tct-mc-launcher-hashes.json',
+        'tct-launcher-metadata.json',
       );
       const hashesFileContent = fs.readFileSync(hashesFileDir, 'utf8');
       const hashes = JSON.parse(hashesFileContent);
       log.info(`Modpack '${directoryName}' hashes: `, hashes);
 
-      const url = `${import.meta.env.VITE_API_URL}/modpack/check_update/${modpackId}`;
+      const url = `${import.meta.env.VITE_API_URL}/updates/modpack/check_update/${modpackId}`;
       const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -246,7 +245,7 @@ function createWindow(): void {
         if (json.downloadLink) {
           try {
             const { download } = await import('electron-dl');
-            const downloadUrl = `${import.meta.env.VITE_API_URL}/modpack/get_update/${json.downloadLink}`;
+            const downloadUrl = `${import.meta.env.VITE_API_URL}/updates/download/${json.downloadLink}`;
             const directory = path.join(minecraftDirectory, directoryName);
 
             const downloadItem = await download(
@@ -286,13 +285,37 @@ function createWindow(): void {
   );
 
   ipcMain.handle('CHECK_JAVA', async (_event, javaVersion) => {
-    const javaPath = path.join(javasDirectory, javaVersion, 'bin', 'javaw.exe');
+    const osEnum = {
+      win32: 'WINDOWS',
+      linux: 'LINUX',
+      darwin: 'MACOS',
+    };
+
+    let javaPath: string;
+
+    switch (os.platform()) {
+      case 'win32':
+        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'javaw.exe');
+        break;
+      case 'darwin':
+        javaPath = path.join(javasDirectory, javaVersion, 'Contents', 'Home', 'bin', 'java');
+        break;
+      case 'linux':
+        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'java');
+        break;
+      default:
+        throw new Error(`Unsupported platform: ${os.platform()}`);
+    }
 
     if (!fs.existsSync(javaPath)) {
       try {
         const { download } = await import('electron-dl');
 
-        const javaUrl = `${import.meta.env.VITE_API_URL}/modpack/get_java/${javaVersion}`;
+        const javaUrl = `${import.meta.env.VITE_API_URL}/java/download?${new URLSearchParams({
+          os: osEnum[os.platform()],
+          architecture: os.arch(),
+          version: javaVersion,
+        })}`;
         const directory = path.join(javasDirectory, javaVersion);
 
         const downloadJava = await download(
@@ -327,6 +350,7 @@ function createWindow(): void {
     }
 
     log.debug('Java already exists:', javaPath);
+
     return javaPath;
   });
 

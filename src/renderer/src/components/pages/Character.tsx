@@ -13,13 +13,7 @@ const Character: FC = () => {
   if (isFetching || isLoading) {
     return (
       <div className="grid flex-grow place-items-center">
-        <DotsLoader
-          color="#85A2E8"
-          wrapperClass="justify-center"
-          secondaryColor="#85A2E8"
-          width={100}
-          height={100}
-        />
+        <DotsLoader color="#85A2E8" secondaryColor="#85A2E8" />
       </div>
     );
   }

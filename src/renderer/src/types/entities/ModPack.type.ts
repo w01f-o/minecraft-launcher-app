@@ -6,15 +6,13 @@ export interface ModPack {
   id: string;
   name: string;
   description: string;
-  screenshots: Screenshot[];
-  thumbnail: string;
-  minecraftVersion: string;
+  icon: string;
   directoryName: string;
   modLoader: ModLoaders;
+  minecraftVersion: string;
+  screenshots: Screenshot[];
   mods: Mod[];
+  javaVersion: string;
   isDownloaded: boolean;
   isActual: boolean;
-  isUpdated: boolean;
-  size: number;
-  javaVersion: string;
 }

@@ -36,7 +36,7 @@ const CharacterCanvas: FC = () => {
     const fetchSkin = async (): Promise<TextureSource | null> => {
       if (data.skins.default) {
         const skinResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/character/textures/${data.skins.default}`,
+          `${import.meta.env.VITE_API_URL}/characters/textures/${data.skins.default}`,
         );
         const skinBlob = await skinResponse.blob();
 
@@ -49,7 +49,7 @@ const CharacterCanvas: FC = () => {
     const fetchCape = async (): Promise<TextureSource | null> => {
       if (data.cape) {
         const capeResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/character/textures/${data.cape}`,
+          `${import.meta.env.VITE_API_URL}/characters/textures/${data.cape}`,
         );
         const capeBlob = await capeResponse.blob();
 

@@ -2,9 +2,12 @@ import { FC } from 'react';
 import { MutatingDots, MutatingDotsProps } from 'react-loader-spinner';
 import { animated, useSpring } from '@react-spring/web';
 
-interface DotsLoaderProps extends MutatingDotsProps {}
+interface DotsLoaderProps extends MutatingDotsProps {
+  color: string;
+  secondaryColor: string;
+}
 
-const DotsLoader: FC<DotsLoaderProps> = ({ ...props }) => {
+const DotsLoader: FC<DotsLoaderProps> = ({ color, secondaryColor, ...props }) => {
   const styles = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -13,7 +16,14 @@ const DotsLoader: FC<DotsLoaderProps> = ({ ...props }) => {
 
   return (
     <animated.div style={styles}>
-      <MutatingDots {...props} />
+      <MutatingDots
+        wrapperClass="justify-center"
+        width={100}
+        height={100}
+        color={color}
+        secondaryColor={secondaryColor}
+        {...props}
+      />
     </animated.div>
   );
 };

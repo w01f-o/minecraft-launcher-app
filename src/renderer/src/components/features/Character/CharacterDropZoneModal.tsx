@@ -117,13 +117,7 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
           <input {...getInputProps()} />
 
           {isLoading ? (
-            <DotsLoader
-              color="#F4F8FE"
-              wrapperClass="justify-center"
-              secondaryColor="#F4F8FE"
-              width={100}
-              height={100}
-            />
+            <DotsLoader color="#F4F8FE" secondaryColor="#F4F8FE" />
           ) : (
             <UploadSvg isHover={isDragActive} isError={isDragReject || fileError} />
           )}

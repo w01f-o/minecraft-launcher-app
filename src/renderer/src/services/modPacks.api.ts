@@ -6,11 +6,10 @@ export const modPacksApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
   endpoints: (builder) => ({
     getModPacks: builder.query<ModPack[], void>({
-      query: () => `/modpack`,
+      query: () => '/modpacks',
     }),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    getModPackById: builder.query<ModPack & Record<string, any>, string>({
-      query: (id: string) => `/modpack/${id}`,
+    getModPackById: builder.query<ModPack, string>({
+      query: (id: string) => `/modpacks/${id}`,
     }),
   }),
 });
