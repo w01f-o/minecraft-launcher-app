@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Simple loader for download modpack">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Circle loader with progress on modpack downloading">
+      <change afterPath="$PROJECT_DIR$/src/main/types/CheckUpdateResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/types/Metadata.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/DownloadStatus.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/DownloadStatus.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -214,15 +213,8 @@
       <workItem from="1728673564120" duration="77000" />
       <workItem from="1728674178112" duration="686000" />
       <workItem from="1728678019244" duration="2196000" />
-      <workItem from="1728749866673" duration="5278000" />
-    </task>
-    <task id="LOCAL-00001" summary="...">
-      <option name="closed" value="true" />
-      <created>1727377251068</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1727377251068</updated>
+      <workItem from="1728749866673" duration="5620000" />
+      <workItem from="1728762415596" duration="362000" />
     </task>
     <task id="LOCAL-00002" summary="fix: Delete dotenv from git">
       <option name="closed" value="true" />
@@ -608,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728680232765</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fix: Circle loader with progress on modpack downloading">
+      <option name="closed" value="true" />
+      <created>1728758513138</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1728758513138</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Rounded modpack screenshot" />
     <MESSAGE value="feat: Updating modpacks" />
     <MESSAGE value="feat and ref: LICENSE.md file, remove all console.logs, some refactoring and add download queue" />
     <MESSAGE value="feat: Notification hub" />
@@ -656,6 +655,7 @@
     <MESSAGE value="feat: New API" />
     <MESSAGE value="fix: Java permissions for linux" />
     <MESSAGE value="fix: Simple loader for download modpack" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Simple loader for download modpack" />
+    <MESSAGE value="fix: Circle loader with progress on modpack downloading" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Circle loader with progress on modpack downloading" />
   </component>
 </project>

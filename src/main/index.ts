@@ -13,6 +13,7 @@ import * as os from 'node:os';
 import JSZip from 'jszip';
 import { addDirectoryToArchive } from './utils/addDirectoryToArchive';
 import { formatDate } from './utils/formatDate';
+import { CheckUpdateResult } from './types/CheckUpdateResult';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
@@ -233,21 +234,34 @@ function createWindow(): void {
       });
 
       if (res.ok) {
-        const json = await res.json();
+        const checkUpdateResult: CheckUpdateResult = await res.json();
 
-        log.debug('Update:', json);
+        log.debug('Update:', checkUpdateResult);
 
-        if (json.toDelete.length > 0) {
-          for (const file of json.toDelete) {
+        const { toDelete, serverMetadata, downloadLink } = checkUpdateResult;
+
+        if (toDelete.length) {
+          toDelete.forEach((file: string) => {
+            if (os.platform() === 'linux' || os.platform() === 'darwin') {
+              file = file.replace(/\\/g, '/');
+            }
+
             fs.rmSync(path.join(minecraftDirectory, file));
             log.debug('Deleted file from update:', file);
-          }
+          });
         }
 
-        if (json.downloadLink) {
+        if (serverMetadata !== null) {
+          fs.writeFileSync(
+            path.join(minecraftDirectory, directoryName, 'tct-launcher-metadata.json'),
+            JSON.stringify(serverMetadata),
+          );
+        }
+
+        if (downloadLink !== null) {
           try {
             const { download } = await import('electron-dl');
-            const downloadUrl = `${import.meta.env.VITE_API_URL}/updates/modpack/download/${json.downloadLink}`;
+            const downloadUrl = `${import.meta.env.VITE_API_URL}/updates/modpack/download/${downloadLink}`;
             const directory = path.join(minecraftDirectory, directoryName);
 
             const downloadItem = await download(
@@ -273,7 +287,7 @@ function createWindow(): void {
             await unzipArchive(archivePath, directory);
             fs.rmSync(archivePath);
 
-            log.debug(`Downloaded modpack '${directoryName}' update: `, json.downloadLink);
+            log.debug(`Downloaded modpack '${directoryName}' update: `, downloadLink);
           } catch (error) {
             log.error(`Error while downloading modpack '${directoryName}' update: `, error);
           }
