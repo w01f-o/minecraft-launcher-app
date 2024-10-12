@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Metadata.json doesn't change, when update contains only &quot;delete files&quot;">
-      <change afterPath="$PROJECT_DIR$/src/renderer/loading.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Update window and build for linux">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/release-notes.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +41,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -100,7 +95,17 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build:all">
+    <configuration name="build:all" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:all" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build:win" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -141,23 +146,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build:all" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.build:win" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -218,15 +213,7 @@
       <workItem from="1728678019244" duration="2196000" />
       <workItem from="1728749866673" duration="5620000" />
       <workItem from="1728762415596" duration="412000" />
-      <workItem from="1728764213065" duration="4041000" />
-    </task>
-    <task id="LOCAL-00003" summary="feat: Error boundary">
-      <option name="closed" value="true" />
-      <created>1727378912291</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1727378912291</updated>
+      <workItem from="1728764213065" duration="4234000" />
     </task>
     <task id="LOCAL-00004" summary="feat: Error boundary">
       <option name="closed" value="true" />
@@ -612,7 +599,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728762822044</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="feat: Update window and build for linux">
+      <option name="closed" value="true" />
+      <created>1728768356788</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1728768356788</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +630,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat and ref: LICENSE.md file, remove all console.logs, some refactoring and add download queue" />
     <MESSAGE value="feat: Notification hub" />
     <MESSAGE value="feat: Notification for each features" />
     <MESSAGE value="feat: Java from server" />
@@ -660,6 +654,7 @@
     <MESSAGE value="fix: Simple loader for download modpack" />
     <MESSAGE value="fix: Circle loader with progress on modpack downloading" />
     <MESSAGE value="fix: Metadata.json doesn't change, when update contains only &quot;delete files&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Metadata.json doesn't change, when update contains only &quot;delete files&quot;" />
+    <MESSAGE value="feat: Update window and build for linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Update window and build for linux" />
   </component>
 </project>
