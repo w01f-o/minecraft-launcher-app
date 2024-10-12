@@ -26,11 +26,12 @@ import { CheckUpdateResult } from './types/CheckUpdateResult';
   });
 })();
 
+log.transports.file.maxSize = 50 * 1024 * 1024;
 log.initialize({
   spyRendererConsole: true,
 });
 
-function createWindow(): void {
+function createMainWindow(): void {
   const mainWindow = new BrowserWindow({
     minWidth: 1100,
     minHeight: 730,
@@ -252,10 +253,7 @@ function createWindow(): void {
         }
 
         if (serverMetadata !== null) {
-          fs.writeFileSync(
-            path.join(minecraftDirectory, directoryName, 'tct-launcher-metadata.json'),
-            JSON.stringify(serverMetadata),
-          );
+          fs.writeFileSync(hashesFileDir, JSON.stringify(serverMetadata));
         }
 
         if (downloadLink !== null) {
@@ -445,7 +443,39 @@ function createWindow(): void {
   });
 }
 
-app.whenReady().then(() => {
+function createLoadingWindow(): void {
+  const loadingWindow = new BrowserWindow({
+    width: 400,
+    height: 350,
+    show: false,
+    autoHideMenuBar: true,
+    title: 'The Chocolate Thief - loading...',
+    icon,
+    webPreferences: {
+      preload: join(__dirname, '../preload/index.js'),
+      nodeIntegration: true,
+    },
+    frame: false,
+    resizable: false,
+  });
+
+  loadingWindow.on('ready-to-show', () => {
+    loadingWindow.show();
+  });
+
+  loadingWindow.webContents.setWindowOpenHandler((details) => {
+    shell.openExternal(details.url);
+    return { action: 'deny' };
+  });
+
+  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    loadingWindow.loadURL(`${process.env['ELECTRON_RENDERER_URL']}/loading.html`);
+  } else {
+    loadingWindow.loadFile(join(__dirname, '../renderer/loading.html'));
+  }
+}
+
+app.whenReady().then(async () => {
   log.info('Launcher is ready, client hardware information: ', {
     cpu: `${os.cpus()[0].model.trim()} (${os.cpus()[0].speed} MHz)`,
     totalMemory: os.totalmem(),
@@ -465,25 +495,26 @@ app.whenReady().then(() => {
     log.debug(`Created java directory: ${javasDirectory}`);
   }
 
-  autoUpdater.checkForUpdatesAndNotify();
-
-  const updateInterval = 60 * 60 * 1000;
-
-  setInterval(() => {
-    autoUpdater.checkForUpdatesAndNotify();
-  }, updateInterval);
-
   electronApp.setAppUserModelId('com.thechocolatethief.app');
 
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  createWindow();
+  createLoadingWindow();
 
-  app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
+  const updateResult = await autoUpdater.checkForUpdates();
+
+  if (updateResult === null) {
+    BrowserWindow.getAllWindows().forEach((win) => win.close());
+    createMainWindow();
+  } else {
+    autoUpdater.on('update-downloaded', (event) => {
+      log.info('Update downloaded: ', event);
+
+      autoUpdater.quitAndInstall(true, true);
+    });
+  }
 
   protocol.handle('client-screenshots', async (request) => {
     const url = request.url.replace('client-screenshots://', '');
@@ -513,32 +544,4 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
-
-autoUpdater.on('update-available', (info) => {
-  log.info('Update available', info);
-
-  dialog.showMessageBox({
-    title: 'Обновление доступно',
-    message: 'Доступно новое обновление. Оно будет загружено в фоновом режиме.',
-  });
-});
-
-autoUpdater.on('update-downloaded', (event) => {
-  log.info('Update downloaded', event);
-
-  dialog
-    .showMessageBox({
-      title: 'Обновление загружено',
-      message: 'Обновление загружено. Приложение будет перезапущено для применения обновления.',
-    })
-    .then(() => {
-      autoUpdater.quitAndInstall();
-    });
-});
-
-autoUpdater.on('error', (err) => {
-  log.error('Update error', err);
-
-  dialog.showErrorBox('Ошибка обновления', `Ошибка при обновлении: ${err.message}`);
 });
