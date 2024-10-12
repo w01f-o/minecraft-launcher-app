@@ -84,8 +84,11 @@ const ModPackController: FC<ModPackControllerProps> = ({
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
         {item.name}
         {downloadProgress !== null && (
-          <div className="text-xl self-end">
-            <TextLoader />
+          <div className="flex text-xl self-end">
+            <div className="w-28">
+              <TextLoader />
+            </div>
+            {downloadProgress}%
           </div>
         )}
         {!isDownloadedModPack && downloadProgress === null && (

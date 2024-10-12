@@ -6,7 +6,7 @@ import ModPackModal from '../widgets/Modpacks/ModPackModal';
 import ActualIcon from '../shared/Icons/ActualIcon';
 import Image from '@renderer/components/features/Image';
 import { useToast } from '@renderer/hooks/useToast';
-import { Oval } from 'react-loader-spinner';
+import CircleLoader from '@renderer/components/shared/UI/DownloadStatus';
 
 interface ModPackProps {
   item: ModPackType;
@@ -16,7 +16,7 @@ interface ModPackProps {
 const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
-  const { addDownloadedModPacks, setIsDownloading, isDownloading } = useMinecraft();
+  const { addDownloadedModPacks, setIsDownloading } = useMinecraft();
 
   const toast = useToast();
 
@@ -51,17 +51,17 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
       }
     });
 
-    // window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_e, { state, id }) => {
-    //   if (id === item.id) {
-    //     setDownloadProgress(state.percent * 100);
-    //   }
-    // });
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_PROGRESS', (_e, { state, id }) => {
+      if (id === item.id) {
+        setDownloadProgress(state.percent * 100);
+      }
+    });
 
     return (): void => {
       clearTimeout(timeout);
       window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_STARTED');
       window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_COMPLETED');
-      // window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
+      window.electron.ipcRenderer.removeAllListeners('MINECRAFT_DOWNLOAD_PROGRESS');
     };
   }, []);
 
@@ -92,11 +92,9 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
             {item.isActual && <ActualIcon />}
           </div>
         </div>
-        {isDownloading && (
-          <div className="flex justify-end flex-grow">
-            <Oval color="#85A2E8" secondaryColor="#85A2E8" width={50} height={50} strokeWidth={4} />
-          </div>
-        )}
+        <div className="flex-grow flex justify-end">
+          <CircleLoader progress={downloadProgress} />
+        </div>
       </button>
       <ModPackModal
         item={item}

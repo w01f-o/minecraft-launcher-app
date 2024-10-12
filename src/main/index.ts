@@ -223,7 +223,7 @@ function createWindow(): void {
       const hashes = JSON.parse(hashesFileContent);
       log.info(`Modpack '${directoryName}' hashes: `, hashes);
 
-      const url = `${import.meta.env.VITE_API_URL}/updates/modpack/check_update/${modpackId}`;
+      const url = `${import.meta.env.VITE_API_URL}/updates/modpack/check/${modpackId}`;
       const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -247,7 +247,7 @@ function createWindow(): void {
         if (json.downloadLink) {
           try {
             const { download } = await import('electron-dl');
-            const downloadUrl = `${import.meta.env.VITE_API_URL}/updates/download/${json.downloadLink}`;
+            const downloadUrl = `${import.meta.env.VITE_API_URL}/updates/modpack/download/${json.downloadLink}`;
             const directory = path.join(minecraftDirectory, directoryName);
 
             const downloadItem = await download(
@@ -287,12 +287,6 @@ function createWindow(): void {
   );
 
   ipcMain.handle('CHECK_JAVA', async (_event, javaVersion) => {
-    const osEnum = {
-      win32: 'WINDOWS',
-      linux: 'LINUX',
-      darwin: 'MACOS',
-    };
-
     let javaPath: string;
 
     switch (os.platform()) {
@@ -314,7 +308,7 @@ function createWindow(): void {
         const { download } = await import('electron-dl');
 
         const javaUrl = `${import.meta.env.VITE_API_URL}/java/download?${new URLSearchParams({
-          os: osEnum[os.platform()],
+          os: os.platform(),
           architecture: os.arch(),
           version: javaVersion,
         })}`;
