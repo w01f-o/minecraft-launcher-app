@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Update window and build for linux">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Remove building for linux">
+      <change afterPath="$PROJECT_DIR$/src/preload/services/forge.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron-builder.yml" beforeDir="false" afterPath="$PROJECT_DIR$/electron-builder.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +69,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build:all.executor&quot;: &quot;Run&quot;,
     &quot;npm.build:win.executor&quot;: &quot;Run&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.format.executor&quot;: &quot;Run&quot;,
@@ -95,7 +100,7 @@
       <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build:all">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build:all" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -148,8 +153,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build:all" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build:all" />
         <item itemvalue="npm.build:win" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
@@ -213,15 +218,9 @@
       <workItem from="1728678019244" duration="2196000" />
       <workItem from="1728749866673" duration="5620000" />
       <workItem from="1728762415596" duration="412000" />
-      <workItem from="1728764213065" duration="4234000" />
-    </task>
-    <task id="LOCAL-00004" summary="feat: Error boundary">
-      <option name="closed" value="true" />
-      <created>1727378930808</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1727378930808</updated>
+      <workItem from="1728764213065" duration="4421000" />
+      <workItem from="1728769545523" duration="5400000" />
+      <workItem from="1728776850111" duration="3778000" />
     </task>
     <task id="LOCAL-00005" summary="feat: Screenshot deleting">
       <option name="closed" value="true" />
@@ -607,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728768356788</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="feat: Update window and build for linux">
+      <option name="closed" value="true" />
+      <created>1728768682705</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1728768682705</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

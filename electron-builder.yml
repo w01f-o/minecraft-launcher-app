@@ -21,19 +21,6 @@ nsis:
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 
-linux:
-  icon: build/icons/icon_256x256.png
-  executableName: TheChocolateThief
-  target:
-    - AppImage
-    - deb
-    - rpm
-  category: Game
-  synopsis: "Minecraft launcher for local usage"
-  artifactName: ${name}-${version}-linux.${ext}
-  maintainer: "w01f <arsenimarchenko@bk.ru>"
-  description: "Minecraft launcher for local usage"
-
 publish:
   provider: github
   owner: w01f-o

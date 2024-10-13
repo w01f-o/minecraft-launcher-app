@@ -1,6 +1,6 @@
 {
   "name": "the-chocolate-thief",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Minecraft launcher for local usage",
   "main": "./out/main/index.js",
   "author": "w01f",
@@ -51,7 +51,8 @@
     "tailwind-scrollbar": "^3.1.0",
     "tomate-loaders": "^2.0.2",
     "unzipper": "^0.12.3",
-    "use-sound": "^4.0.3"
+    "use-sound": "^4.0.3",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",

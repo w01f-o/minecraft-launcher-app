@@ -1,8 +1,9 @@
 import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../types/MinecraftApi';
 import { Authenticator, Client, ILauncherOptions } from 'minecraft-launcher-core';
 import * as electron from 'electron';
-import { fabric, forge, quilt } from 'tomate-loaders';
+import { fabric, quilt } from 'tomate-loaders';
 import log from 'electron-log/node';
+import { getForgeConfig } from './forge';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
@@ -57,10 +58,11 @@ export const minecraftApi: MinecraftApi = {
           });
           break;
         case 'FORGE':
-          modloaderConfig = await forge.getMCLCLaunchConfig({
-            gameVersion: gameVersion,
+          modloaderConfig = await getForgeConfig({
+            gameVersion,
             rootPath,
           });
+
           break;
         default:
           log.error(`Invalid modloader: ${modLoader}`);
