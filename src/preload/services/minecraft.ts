@@ -121,7 +121,10 @@ export const minecraftApi: MinecraftApi = {
         electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
       });
 
-      await this.launcher.launch(launcherConfig);
+      const process = await this.launcher.launch(launcherConfig);
+      process?.on('close', () => {
+        console.log('CLOSED');
+      });
     } catch (e) {
       log.error(e);
       electron.ipcRenderer.send('PRELOAD_ERROR', e);

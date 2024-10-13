@@ -3,8 +3,9 @@ import { parseStringPromise } from 'xml2js';
 import { LaunchConfig } from 'tomate-loaders';
 import path from 'node:path';
 import * as fs from 'fs/promises';
+import { MavenMetadata } from '../types/MavenMetadata.type';
 
-const getMavenMetadata = async (): Promise<any> => {
+const getMavenMetadata = async (): Promise<MavenMetadata> => {
   const metadataUrl =
     'https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml';
   const response = await axios.get(metadataUrl);

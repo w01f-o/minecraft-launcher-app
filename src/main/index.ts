@@ -311,7 +311,7 @@ function createMainWindow(): void {
 
     switch (os.platform()) {
       case 'win32':
-        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'java.exe');
+        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'javaw.exe');
         break;
       case 'darwin':
         javaPath = path.join(javasDirectory, javaVersion, 'Contents', 'Home', 'bin', 'java');

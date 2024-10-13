@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="todo: Fix forge loader">
+      <change afterPath="$PROJECT_DIR$/src/preload/types/MavenMetadata.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/services/forge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/forge.ts" afterDir="false" />
@@ -220,15 +221,8 @@
       <workItem from="1728764213065" duration="4421000" />
       <workItem from="1728769545523" duration="5400000" />
       <workItem from="1728776850111" duration="3920000" />
-      <workItem from="1728808727319" duration="10500000" />
-    </task>
-    <task id="LOCAL-00006" summary="feat: Transition for change username button">
-      <option name="closed" value="true" />
-      <created>1727380780047</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1727380780047</updated>
+      <workItem from="1728808727319" duration="10794000" />
+      <workItem from="1728826932488" duration="5520000" />
     </task>
     <task id="LOCAL-00007" summary="feat: Loader for screenshots">
       <option name="closed" value="true" />
@@ -614,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728780805585</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="todo: Fix forge loader">
+      <option name="closed" value="true" />
+      <created>1728820156854</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1728820156855</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
