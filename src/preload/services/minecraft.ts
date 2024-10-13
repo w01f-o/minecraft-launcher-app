@@ -34,14 +34,15 @@ export const minecraftApi: MinecraftApi = {
     const javaPath = await electron.ipcRenderer.invoke('CHECK_JAVA', javaVersion);
 
     const rootPath = await electron.ipcRenderer.invoke('GET_MINECRAFT_PATH', directoryName);
-    let modloaderConfig: {
-      root: string;
-      version: { number: string; type: string; custom: string };
-    };
-
     this.launcher.on('debug', (e) => {
       log.debug('Minecraft debug: ', e);
     });
+
+    let modloaderConfig: {
+      root: string;
+      version: { number: string; type: string; custom?: string };
+      forge?: string;
+    };
 
     try {
       switch (modLoader) {
@@ -62,6 +63,10 @@ export const minecraftApi: MinecraftApi = {
             gameVersion,
             rootPath,
           });
+          // modloaderConfig = await electron.ipcRenderer.invoke('GET_FORGE_CONFIG', {
+          //   gameVersion,
+          //   rootPath,
+          // });
 
           break;
         default:

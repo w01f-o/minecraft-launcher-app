@@ -14,6 +14,7 @@ import JSZip from 'jszip';
 import { addDirectoryToArchive } from './utils/addDirectoryToArchive';
 import { formatDate } from './utils/formatDate';
 import { CheckUpdateResult } from './types/CheckUpdateResult';
+import { forge } from 'tomate-loaders';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
@@ -298,12 +299,19 @@ function createMainWindow(): void {
     },
   );
 
+  ipcMain.handle('GET_FORGE_CONFIG', async (_event, { gameVersion, rootPath }) => {
+    return await forge.getMCLCLaunchConfig({
+      gameVersion,
+      rootPath,
+    });
+  });
+
   ipcMain.handle('CHECK_JAVA', async (_event, javaVersion) => {
     let javaPath: string;
 
     switch (os.platform()) {
       case 'win32':
-        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'javaw.exe');
+        javaPath = path.join(javasDirectory, javaVersion, 'bin', 'java.exe');
         break;
       case 'darwin':
         javaPath = path.join(javasDirectory, javaVersion, 'Contents', 'Home', 'bin', 'java');
