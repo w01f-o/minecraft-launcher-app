@@ -7,6 +7,8 @@ import { useMinecraft } from '../../../hooks/useMinecraft';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import { useToast } from '@renderer/hooks/useToast';
 import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
+import { MainEvents } from '@renderer/enums/MainEventsEnum';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
 
 interface ModPackControllerProps {
   item: ModPackType;
@@ -44,7 +46,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
     setDownloadProgress(0);
     setIsDownloading(true);
 
-    window.electron.ipcRenderer.send('DOWNLOAD_MINECRAFT', {
+    window.electron.ipcRenderer.send(MainEvents.DOWNLOAD_MODPACK, {
       id: item.id,
       directoryName: item.directoryName,
     });
@@ -52,7 +54,10 @@ const ModPackController: FC<ModPackControllerProps> = ({
 
   const deleteClickHandler = async (): Promise<void> => {
     setModalIsOpen(!modalIsOpen);
-    const result = await window.electron.ipcRenderer.invoke('DELETE_MODPACK', item.directoryName);
+    const result = await window.electron.ipcRenderer.invoke(
+      MainInvokeEvents.DELETE_MODPACK,
+      item.directoryName,
+    );
 
     if (result.isSuccess) {
       removeDownloadedModPacks(item);
@@ -88,7 +93,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
             <div className="w-28">
               <TextLoader />
             </div>
-            {downloadProgress}%
+            {Math.round(downloadProgress)}%
           </div>
         )}
         {!isDownloadedModPack && downloadProgress === null && (

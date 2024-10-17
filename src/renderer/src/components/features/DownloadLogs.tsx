@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import Button from '@renderer/components/shared/UI/Button';
 import log from 'electron-log/renderer';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
 
 const DownloadLogs: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -9,9 +10,9 @@ const DownloadLogs: FC = () => {
     log.info('Downloading logs...');
     setIsLoading(true);
 
-    const result = await window.electron.ipcRenderer.invoke('GET_LOGS');
+    const { type } = await window.electron.ipcRenderer.invoke(MainInvokeEvents.GET_LAUNCHER_LOGS);
 
-    switch (result.type) {
+    switch (type) {
       case 'success':
         log.info('Logs downloaded');
         break;

@@ -4,12 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="todo: Fix forge loader">
-      <change afterPath="$PROJECT_DIR$/src/preload/types/MavenMetadata.type.ts" afterDir="false" />
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Main events builder">
+      <change afterPath="$PROJECT_DIR$/src/main/enums/MainEventsEnum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/enums/MainInvokeEventsEnum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/checkJavaEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/checkModpackUpdates.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/debugWindowEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/deleteModpackEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/deleteScreenshotEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/downloadModpackEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/getLogsEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/getMinecraftPathEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/getModpacksScreenshotsEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/hideLauncherEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/initializer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/minecraftLoadingProgressEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/preloadErrorEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/saveScreenshotEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/events/titleBarActionEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/types/MainEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/types/MainInvokeEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/enums/MainEventsEnum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/enums/MainInvokeEventsEnum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/services/forge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/forge.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/loading.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/loading.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,9 +90,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/minecraft-launcher/frontend/src/renderer/src/enums&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;npm.build.executor&quot;: &quot;Run&quot;,
@@ -78,7 +108,7 @@
     &quot;npm.typecheck.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.stylesheets.stylelint&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -93,11 +123,15 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer\src\enums" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\main\events" />
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\main\events\minecraft" />
+      <recent name="E:\Projects\minecraft-launcher\frontend\src\main\types" />
       <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer" />
       <recent name="E:\Projects\minecraft-launcher\frontend\src\renderer\src\components\widgets\Loaders" />
-      <recent name="E:\Projects\minecraft-launcher\frontend\build\icons" />
-      <recent name="E:\Projects\minecraft-launcher\frontend\src\main" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -222,15 +256,25 @@
       <workItem from="1728769545523" duration="5400000" />
       <workItem from="1728776850111" duration="3920000" />
       <workItem from="1728808727319" duration="10794000" />
-      <workItem from="1728826932488" duration="5520000" />
-    </task>
-    <task id="LOCAL-00007" summary="feat: Loader for screenshots">
-      <option name="closed" value="true" />
-      <created>1727381630633</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1727381630633</updated>
+      <workItem from="1728826932488" duration="5542000" />
+      <workItem from="1728902003650" duration="199000" />
+      <workItem from="1728923169969" duration="21000" />
+      <workItem from="1728923196268" duration="112000" />
+      <workItem from="1728923314122" duration="1460000" />
+      <workItem from="1728992607000" duration="1406000" />
+      <workItem from="1729000038008" duration="9351000" />
+      <workItem from="1729013931949" duration="189000" />
+      <workItem from="1729015436434" duration="77000" />
+      <workItem from="1729015597268" duration="1084000" />
+      <workItem from="1729074615401" duration="363000" />
+      <workItem from="1729078402729" duration="132000" />
+      <workItem from="1729078544036" duration="21000" />
+      <workItem from="1729078570207" duration="4000" />
+      <workItem from="1729078581759" duration="2927000" />
+      <workItem from="1729098625938" duration="2092000" />
+      <workItem from="1729102977728" duration="618000" />
+      <workItem from="1729176366588" duration="366000" />
+      <workItem from="1729188819904" duration="31000" />
     </task>
     <task id="LOCAL-00008" summary="ref: Renaming variables">
       <option name="closed" value="true" />
@@ -616,7 +660,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728820156855</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="fix: Fix forge loader">
+      <option name="closed" value="true" />
+      <created>1728833296908</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1728833296908</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,8 +691,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Notification for each features" />
-    <MESSAGE value="feat: Java from server" />
     <MESSAGE value="feat: Auto login" />
     <MESSAGE value="feat: ..." />
     <MESSAGE value="fix: Fixed Stas background" />
@@ -664,6 +714,8 @@
     <MESSAGE value="fix: Metadata.json doesn't change, when update contains only &quot;delete files&quot;" />
     <MESSAGE value="feat: Update window and build for linux" />
     <MESSAGE value="todo: Fix forge loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="todo: Fix forge loader" />
+    <MESSAGE value="fix: Fix forge loader" />
+    <MESSAGE value="feat: Main events builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Main events builder" />
   </component>
 </project>

@@ -9,6 +9,8 @@ import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
 import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
+import { MainEvents } from '@renderer/enums/MainEventsEnum';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
@@ -26,7 +28,9 @@ const ClientScreenshots: FC = () => {
 
   const fetchScreenshots = async (): Promise<void> => {
     setIsLoading(true);
-    const result = await window.electron.ipcRenderer.invoke('GET_LAUNCHER_SCREENSHOTS');
+    const result = await window.electron.ipcRenderer.invoke(
+      MainInvokeEvents.GET_MODPACKS_SCREENSHOTS,
+    );
 
     setClientScreenshots(result);
     setIsLoading(false);
@@ -37,7 +41,7 @@ const ClientScreenshots: FC = () => {
   }, []);
 
   const downloadClickHandler = (): void => {
-    window.electron.ipcRenderer.send('SAVE_SCREENSHOT', clientScreenshots[initialIndex]);
+    window.electron.ipcRenderer.send(MainEvents.SAVE_SCREENSHOT, clientScreenshots[initialIndex]);
   };
 
   const deleteClickHandler = async (): Promise<void> => {

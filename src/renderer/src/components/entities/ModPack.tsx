@@ -27,7 +27,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
+    window.electron.ipcRenderer.once('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
       if (id === item.id) {
         toast.add({
           type: 'info',
@@ -36,7 +36,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
       }
     });
 
-    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
+    window.electron.ipcRenderer.once('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
       if (id === item.id) {
         timeout = setTimeout(() => {
           addDownloadedModPacks(item);

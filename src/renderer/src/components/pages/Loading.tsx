@@ -1,17 +1,18 @@
 import { FC, useEffect, useState } from 'react';
 import loadingLogo from '../../../../../resources/camel-minecraft.gif';
 import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
+import { MainEvents } from '@renderer/enums/MainEventsEnum';
 
 const Loading: FC = () => {
   const [loadingStatus, setLoadingStatus] = useState<number>(0);
 
   useEffect(() => {
-    window.electron.ipcRenderer.on('LAUNCHER_LOADING_PROGRESS', (_e, progress): void => {
+    window.electron.ipcRenderer.on(MainEvents.MINECRAFT_LOADING_PROGRESS, (_e, progress): void => {
       setLoadingStatus(Math.round((progress.task / progress.total) * 100));
     });
 
     return (): void => {
-      window.electron.ipcRenderer.removeAllListeners('LAUNCHER_LOADING_PROGRESS');
+      window.electron.ipcRenderer.removeAllListeners(MainEvents.MINECRAFT_LOADING_PROGRESS);
     };
   }, []);
 
