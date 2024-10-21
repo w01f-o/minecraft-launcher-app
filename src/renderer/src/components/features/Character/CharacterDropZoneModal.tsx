@@ -7,6 +7,7 @@ import { useUpdateCharacterMutation } from '../../../services/character.api';
 import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
 import log from 'electron-log/renderer';
+import { useMinecraft } from '@renderer/hooks/useMinecraft';
 
 interface CharacterDropZoneModalProps {
   modalIsOpen: boolean;
@@ -20,6 +21,7 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
   uploadType,
 }) => {
   const [updateCharacter, { isLoading, isSuccess }] = useUpdateCharacterMutation();
+  const { currentModPack } = useMinecraft();
   const [fileError, setFileError] = useState<boolean>(false);
 
   const toast = useToast();
@@ -50,6 +52,14 @@ const CharacterDropZoneModal: FC<CharacterDropZoneModalProps> = ({
         type: 'success',
         message: `${uploadType === 'skin' ? 'Скин' : 'Плащ'} успешно обновлен`,
       });
+
+      if (currentModPack && +currentModPack.minecraftVersion.split('.')[1] < 8) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        toast.add({
+          type: 'warning',
+          message: `У вас выбрана сборка с версией ${currentModPack?.minecraftVersion} - эта версия не поддерживает смену скинов`,
+        });
+      }
 
       log.info(`Character ${uploadType} updated`);
     } catch (e) {

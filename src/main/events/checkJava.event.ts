@@ -8,6 +8,7 @@ import { BrowserWindow } from 'electron';
 import log from 'electron-log/main';
 import { unzipArchive } from '../utils/unzipeArchive';
 import { getMainWindow } from '../index';
+import { MainEvents } from '../enums/MainEventsEnum';
 
 const checkJavaEvent = registerMainEvent({
   invoke: true,
@@ -48,7 +49,7 @@ const checkJavaEvent = registerMainEvent({
             directory,
             onProgress: (state) => {
               log.info(`Downloading java '${javaVersion}' progress: `, state);
-              mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
+              mainWindow.webContents.send(MainEvents.MINECRAFT_LOADING_PROGRESS, {
                 total: state.totalBytes,
                 task: state.transferredBytes,
               });

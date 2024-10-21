@@ -68,8 +68,16 @@ const ModPackModal: FC<ModPackModalProps> = ({
                 </div>
               )}
             </div>
-
-            <div className="text-xl">{item.description}</div>
+            <div
+              className="text-xl whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
+            <div>
+              Автор:{' '}
+              <a href={item.author} target={'_blank'} rel={'noreferrer'}>
+                {item.author}
+              </a>
+            </div>
             <ModList mods={item.mods} />
           </div>
         </div>

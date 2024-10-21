@@ -58,6 +58,9 @@ const CharacterSkinCapeChanger: FC = () => {
           </Button>
         )}
       </div>
+      <div className="w-[70%] text-sm">
+        *На данный момент скины работают в сборках, версия которых выше 1.7.10
+      </div>
       <CharacterDropZoneModal
         setModalIsOpen={setModalIsOpen}
         modalIsOpen={modalIsOpen}

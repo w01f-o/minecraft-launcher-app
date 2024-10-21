@@ -76,11 +76,13 @@ export const minecraftApi: MinecraftApi = {
         ...modloaderConfig,
         memory: {
           max: Math.round(maxRam / 1024 / 1024),
-          min: 0,
+          min: 2048,
         },
         authorization: Authenticator.getAuth(username),
         window: {
           fullscreen: isFullscreen,
+          width: 1900,
+          height: 1000,
         },
         javaPath,
         ...(autoLogin.isAutoLogin
@@ -95,8 +97,17 @@ export const minecraftApi: MinecraftApi = {
 
       log.info('Minecraft will be started with: ', launcherConfig);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const progressHandler = (e: any): void => {
+        log.info(`Minecraft with modpack '${directoryName}' loading progress: `, e);
+        electron.ipcRenderer.send(MainEvents.MINECRAFT_LOADING_PROGRESS, e);
+      };
+
+      this.launcher.on('progress', progressHandler);
+
       this.launcher.once('arguments', (args) => {
         setIsLoading(false);
+        this.launcher.removeListener('progress', progressHandler);
         log.info('Minecraft started with java arguments: ', args);
 
         if (isDebugMode) {
@@ -114,14 +125,12 @@ export const minecraftApi: MinecraftApi = {
         }
       });
 
-      this.launcher.on('progress', (e) => {
-        log.info(`Minecraft with modpack '${directoryName}' loading progress: `, e);
-        electron.ipcRenderer.send(MainEvents.MINECRAFT_LOADING_PROGRESS, e);
-      });
-
       const process = await this.launcher.launch(launcherConfig);
-      process?.on('close', () => {
-        console.log('CLOSED');
+      process?.once('close', () => {
+        log.log('MINECRAFT CLOSED BY PROGRESS');
+      });
+      this.launcher.once('close', () => {
+        log.log('MINECRAFT CLOSED BY LAUNCHER');
       });
     } catch (e) {
       log.error(e);

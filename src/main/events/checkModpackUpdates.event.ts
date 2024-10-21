@@ -9,8 +9,9 @@ import os from 'node:os';
 import { BrowserWindow } from 'electron';
 import { unzipArchive } from '../utils/unzipeArchive';
 import { getMainWindow } from '../index';
+import { MainEvents } from '../enums/MainEventsEnum';
 
-const checkModpackUpdates = registerMainEvent({
+const checkModpackUpdatesEvent = registerMainEvent({
   invoke: true,
   channel: MainInvokeEvents.CHECK_MODPACK_UPDATES,
   callback: async (
@@ -71,7 +72,7 @@ const checkModpackUpdates = registerMainEvent({
               directory,
               onProgress: (state) => {
                 log.info(`Downloading modpack '${directoryName}' update progress: `, state);
-                mainWindow.webContents.send('LAUNCHER_LOADING_PROGRESS', {
+                mainWindow.webContents.send(MainEvents.MINECRAFT_LOADING_PROGRESS, {
                   total: state.totalBytes,
                   task: state.transferredBytes,
                 });
@@ -100,4 +101,4 @@ const checkModpackUpdates = registerMainEvent({
   },
 });
 
-export default checkModpackUpdates;
+export default checkModpackUpdatesEvent;

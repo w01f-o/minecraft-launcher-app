@@ -27,7 +27,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    window.electron.ipcRenderer.once('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_STARTED', (_e, id: string) => {
       if (id === item.id) {
         toast.add({
           type: 'info',
@@ -36,7 +36,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
       }
     });
 
-    window.electron.ipcRenderer.once('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
+    window.electron.ipcRenderer.on('MINECRAFT_DOWNLOAD_COMPLETED', (_e, id: string) => {
       if (id === item.id) {
         timeout = setTimeout(() => {
           addDownloadedModPacks(item);
@@ -69,7 +69,7 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
     <div className="relative active:scale-[.98] transition h-[160px]">
       <button
         className={clsx(
-          'flex w-full text-start items-center gap-6 border-4 bg-white rounded-2xl py-4 px-6 h-40 cursor-pointer transition before:absolute before:inset-0 hover:before:bg-black before:opacity-[.05] before:rounded-2xl before:transition',
+          'flex w-full text-start items-center gap-6 border-4 shadow-md bg-white rounded-2xl py-4 px-6 h-40 cursor-pointer transition before:absolute before:inset-0 hover:before:bg-black before:opacity-[.05] before:rounded-2xl before:transition',
           {
             'border-white': !isCurrent,
             'border-blue': isCurrent,
@@ -92,7 +92,10 @@ const ModPack: FC<ModPackProps> = ({ item, isCurrent }) => {
             {item.isActual && <ActualIcon />}
           </div>
         </div>
-        <div className="flex-grow flex justify-end">
+        <div
+          className="flex-grow flex justify-end"
+          title={downloadProgress !== null ? `${Math.round(downloadProgress)}%` : undefined}
+        >
           <CircleLoader progress={downloadProgress} />
         </div>
       </button>

@@ -5,7 +5,7 @@ export function registerMainEvent(params: MainEventParams): () => MainEvent {
 }
 
 export const initializeMainEvents = (): void => {
-  const modules = import.meta.glob('./*Event.ts', { eager: true });
+  const modules = import.meta.glob('./*.event.ts', { eager: true });
 
   Object.values(modules).forEach((module) => {
     const { default: registerFunc } = module as { default: () => void };
