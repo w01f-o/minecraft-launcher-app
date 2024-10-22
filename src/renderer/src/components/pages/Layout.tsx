@@ -12,11 +12,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
-  const pathnamesWithoutNavBar = [
-    RoutePaths.SETTINGS,
-    RoutePaths.MINECRAFT_LOADING,
-    RoutePaths.LAUNCHER_LOADING,
-  ];
+  const pathnamesWithoutNavBar = [RoutePaths.SETTINGS, RoutePaths.MINECRAFT_LOADING];
 
   return (
     <>
