@@ -6,6 +6,7 @@ import log from 'electron-log/node';
 import { getForgeConfig } from './forge';
 import { MainInvokeEvents } from '../../main/enums/MainInvokeEventsEnum';
 import { MainEvents } from '../../main/enums/MainEventsEnum';
+import { RoutePaths } from '../enums/RoutePaths.enum';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
@@ -26,7 +27,7 @@ export const minecraftApi: MinecraftApi = {
       autoLogin,
     },
   }: StartMinecraftOptions) {
-    navigateFunction('/loading');
+    navigateFunction(RoutePaths.MINECRAFT_LOADING, { replace: true });
 
     await electron.ipcRenderer.invoke(MainInvokeEvents.CHECK_MODPACK_UPDATES, {
       modpackId: modpackId,
@@ -81,8 +82,8 @@ export const minecraftApi: MinecraftApi = {
         authorization: Authenticator.getAuth(username),
         window: {
           fullscreen: isFullscreen,
-          width: 1900,
-          height: 1000,
+          width: 1800,
+          height: 900,
         },
         javaPath,
         ...(autoLogin.isAutoLogin
@@ -111,9 +112,9 @@ export const minecraftApi: MinecraftApi = {
         log.info('Minecraft started with java arguments: ', args);
 
         if (isDebugMode) {
-          navigateFunction('/debug');
+          navigateFunction(RoutePaths.DEBUG, { replace: true });
         } else {
-          navigateFunction('/');
+          navigateFunction(RoutePaths.HOME, { replace: true });
         }
 
         if (isLauncherHide) {
