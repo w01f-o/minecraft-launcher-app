@@ -74,7 +74,12 @@ const ModPackModal: FC<ModPackModalProps> = ({
             />
             <div>
               Автор:{' '}
-              <a href={item.author} target={'_blank'} rel={'noreferrer'}>
+              <a
+                href={item.author}
+                target={'_blank'}
+                rel={'noreferrer'}
+                className="text-blue_light"
+              >
                 {item.author}
               </a>
             </div>
