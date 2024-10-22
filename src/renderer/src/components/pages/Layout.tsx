@@ -4,6 +4,7 @@ import TitleBar from '../widgets/TitleBar';
 import NavBar from '../widgets/NavBar';
 import { useLocation } from 'react-router-dom';
 import Toast from '@renderer/components/features/Toast/Toast';
+import { RoutePaths } from '@renderer/enums/RoutePaths.enum';
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,7 +12,11 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
-  const pathnamesWithoutNavBar = ['/settings', '/loading'];
+  const pathnamesWithoutNavBar = [
+    RoutePaths.SETTINGS,
+    RoutePaths.MINECRAFT_LOADING,
+    RoutePaths.LAUNCHER_LOADING,
+  ];
 
   return (
     <>
@@ -20,7 +25,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <h1 className="text-[40px] leading-none font-bold text-blue_dark pb-4 mt-2 desktop-height:text-5xl desktop-height:mb-2 select-none">
           The Chocolate Thief
         </h1>
-        {!pathnamesWithoutNavBar.includes(pathname) && <NavBar />}
+        {!pathnamesWithoutNavBar.includes(pathname as RoutePaths) && <NavBar />}
         {children}
       </div>
       <Background />

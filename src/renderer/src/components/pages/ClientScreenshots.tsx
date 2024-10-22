@@ -9,8 +9,8 @@ import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
 import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
-import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
-import { MainEvents } from '@renderer/enums/MainEventsEnum';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEvents.enum';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);

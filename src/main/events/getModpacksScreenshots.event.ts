@@ -9,7 +9,6 @@ const getModpacksScreenshotsEvent = registerMainEvent({
   channel: MainInvokeEvents.GET_MODPACKS_SCREENSHOTS,
   callback: async () => {
     const modpacks = fs.readdirSync(minecraftDirectory);
-
     const screenshots: string[] = [];
 
     for (const modpack of modpacks) {

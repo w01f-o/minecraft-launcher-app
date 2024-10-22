@@ -4,32 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Main events builder">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="ref: Event files renamed to .event.ts">
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/enums/RoutePaths.enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/checkJavaEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/checkJava.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/checkModpackUpdates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/checkModpackUpdates.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/debugWindowEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/debugWindow.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/deleteModpackEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/deleteModpack.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/deleteScreenshotEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/deleteScreenshot.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/downloadModpackEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/downloadModpack.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/getLogsEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/getLogs.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/getMinecraftPathEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/getMinecraftPath.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/getModpacksScreenshotsEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/getModpacksScreenshots.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/hideLauncherEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/hideLauncher.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/initializer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/initializer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/minecraftLoadingProgressEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/minecraftLoadingProgress.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/preloadErrorEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/preloadError.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/saveScreenshotEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/saveScreenshot.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/events/titleBarActionEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/titleBarAction.event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/entities/ModPack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterDropZoneModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Character/CharacterSkinCapeChanger.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Settings/RamSetting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/shared/UI/RangeInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/entities/ModPack.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/enums/MainEventsEnum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/enums/MainEventsEnum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/events/getModpacksScreenshots.event.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/events/getModpacksScreenshots.event.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/app/providers/SpecsProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/DownloadLogs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/features/Modpacks/ModPackController.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/ClientScreenshots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Loaders/TextLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Loaders/TextLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/TitleBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/constants/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/enums/MainEventsEnum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/enums/MainEvents.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/enums/MainInvokeEventsEnum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/enums/MainInvokeEvents.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/types/Route.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/types/Route.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,8 +177,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build:all" />
         <item itemvalue="npm.build:win" />
+        <item itemvalue="npm.build:all" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
       </list>
@@ -273,15 +269,10 @@
       <workItem from="1729193318207" duration="7000" />
       <workItem from="1729525429611" duration="8075000" />
       <workItem from="1729536209320" duration="3227000" />
-      <workItem from="1729551177330" duration="92000" />
-    </task>
-    <task id="LOCAL-00009" summary="fix: Error Boundary scrollbar">
-      <option name="closed" value="true" />
-      <created>1727382974082</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1727382974082</updated>
+      <workItem from="1729551177330" duration="323000" />
+      <workItem from="1729551510143" duration="172000" />
+      <workItem from="1729551822996" duration="263000" />
+      <workItem from="1729590515004" duration="5838000" />
     </task>
     <task id="LOCAL-00010" summary="feat: Mod list">
       <option name="closed" value="true" />
@@ -667,7 +658,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729188869669</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="ref: Event files renamed to .event.ts">
+      <option name="closed" value="true" />
+      <created>1729551350039</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729551350040</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +689,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: Auto login" />
     <MESSAGE value="feat: ..." />
     <MESSAGE value="fix: Fixed Stas background" />
     <MESSAGE value="fix: Fixed cape loading issue" />
@@ -715,6 +713,19 @@
     <MESSAGE value="todo: Fix forge loader" />
     <MESSAGE value="fix: Fix forge loader" />
     <MESSAGE value="feat: Main events builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Main events builder" />
+    <MESSAGE value="ref: Event files renamed to .event.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref: Event files renamed to .event.ts" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx</url>
+          <line>14</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

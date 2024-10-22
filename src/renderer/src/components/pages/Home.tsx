@@ -4,6 +4,7 @@ import SettingsIcon from '../shared/Icons/SettingsIcon';
 import ModPackList from '../widgets/Modpacks/ModpackList';
 import StartButton from '../features/StartButton';
 import StasBackground from '../widgets/Background/StasBackground';
+import { RoutePaths } from '@renderer/enums/RoutePaths.enum';
 
 const Home: FC = () => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const Home: FC = () => {
         <div className="flex items-center gap-4 self-end z-20">
           <StartButton />
           <NavLink
-            to={'/settings'}
+            to={RoutePaths.SETTINGS}
             className="active:scale-95 animate-spin-slow"
             title={'Настройки'}
             draggable={false}

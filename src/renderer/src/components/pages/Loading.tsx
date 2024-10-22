@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import loadingLogo from '../../../../../resources/camel-minecraft.gif';
 import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
-import { MainEvents } from '@renderer/enums/MainEventsEnum';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
 
 const Loading: FC = () => {
   const [loadingStatus, setLoadingStatus] = useState<number>(0);

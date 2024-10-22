@@ -9,6 +9,7 @@ import { javasDirectory, minecraftDirectory } from './constants/constants';
 import { autoUpdater } from 'electron-updater';
 import * as os from 'node:os';
 import { initializeMainEvents } from './events/initializer';
+import { MainEvents } from './enums/MainEventsEnum';
 
 (async (): Promise<void> => {
   const { default: unhandled } = await import('electron-unhandled');
@@ -70,38 +71,6 @@ const createMainWindow = (): void => {
   initializeMainEvents();
 };
 
-const createLoadingWindow = (): void => {
-  const loadingWindow = new BrowserWindow({
-    width: 400,
-    height: 350,
-    show: false,
-    autoHideMenuBar: true,
-    title: 'The Chocolate Thief - loading...',
-    icon,
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      nodeIntegration: true,
-    },
-    frame: false,
-    resizable: false,
-  });
-
-  loadingWindow.on('ready-to-show', () => {
-    loadingWindow.show();
-  });
-
-  loadingWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url);
-    return { action: 'deny' };
-  });
-
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    loadingWindow.loadURL(`${process.env['ELECTRON_RENDERER_URL']}/loading.html`);
-  } else {
-    loadingWindow.loadFile(join(__dirname, '../renderer/loading.html'));
-  }
-};
-
 app.whenReady().then(async () => {
   log.info('Launcher is ready, client hardware information: ', {
     cpu: `${os.cpus()[0].model.trim()} (${os.cpus()[0].speed} MHz)`,
@@ -128,20 +97,28 @@ app.whenReady().then(async () => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  createLoadingWindow();
+  createMainWindow();
 
-  const updateResult = await autoUpdater.checkForUpdates();
+  await autoUpdater.checkForUpdates();
 
-  if (updateResult === null) {
-    BrowserWindow.getAllWindows().forEach((win) => win.close());
-    createMainWindow();
-  } else {
-    autoUpdater.on('update-downloaded', (event) => {
-      log.info('Update downloaded: ', event);
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
+  });
 
+  autoUpdater.on('update-available', (event) => {
+    log.info('Update available: ', event);
+
+    mainWindow?.webContents.send(MainEvents.LAUNCHER_UPDATE_AVAILABLE, event);
+  });
+
+  autoUpdater.on('update-downloaded', (event) => {
+    log.info('Update downloaded: ', event);
+
+    mainWindow?.webContents.send(MainEvents.LAUNCHER_UPDATE_DOWNLOADED, event);
+    setTimeout(() => {
       autoUpdater.quitAndInstall(true, true);
-    });
-  }
+    }, 1000);
+  });
 
   protocol.handle('client-screenshots', async (request) => {
     const url = request.url.replace('client-screenshots://', '');

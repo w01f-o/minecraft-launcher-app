@@ -7,8 +7,8 @@ import { useMinecraft } from '../../../hooks/useMinecraft';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import { useToast } from '@renderer/hooks/useToast';
 import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
-import { MainEvents } from '@renderer/enums/MainEventsEnum';
-import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEvents.enum';
 
 interface ModPackControllerProps {
   item: ModPackType;

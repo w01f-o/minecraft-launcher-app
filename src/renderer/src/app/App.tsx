@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from '../components/pages/Layout';
 import { routes } from '../constants/routes';
-import { useSpring, animated } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 
 const App: FC = () => {
   const location = useLocation();

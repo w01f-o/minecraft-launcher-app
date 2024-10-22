@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import Button from '@renderer/components/shared/UI/Button';
 import log from 'electron-log/renderer';
-import { MainInvokeEvents } from '@renderer/enums/MainInvokeEventsEnum';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEvents.enum';
 
 const DownloadLogs: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

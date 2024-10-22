@@ -2,7 +2,7 @@ import { FC } from 'react';
 import MaximizeIcon from '../shared/Icons/MaximizeIcon';
 import MinimizeIcon from '../shared/Icons/MinimizeIcon';
 import CloseIcon from '../shared/Icons/CloseIcon';
-import { MainEvents } from '@renderer/enums/MainEventsEnum';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
 
 const TitleBar: FC = () => {
   const clickHandler = (action: 'minimize' | 'maximize' | 'close') => (): void => {
