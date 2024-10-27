@@ -119,17 +119,18 @@ export const minecraftApi: MinecraftApi = {
 
         if (isLauncherHide) {
           electron.ipcRenderer.send(MainEvents.HIDE_LAUNCHER, 'hide');
-
-          this.launcher.once('close', () => {
-            electron.ipcRenderer.send(MainEvents.HIDE_LAUNCHER, 'show');
-          });
         }
       });
 
       const process = await this.launcher.launch(launcherConfig);
-      process?.once('close', () => {
-        log.log('MINECRAFT CLOSED BY PROGRESS');
-      });
+
+      if (isLauncherHide) {
+        process?.once('close', () => {
+          log.log('MINECRAFT CLOSED BY PROGRESS');
+          electron.ipcRenderer.send(MainEvents.HIDE_LAUNCHER, 'show');
+        });
+      }
+
       this.launcher.once('close', () => {
         log.log('MINECRAFT CLOSED BY LAUNCHER');
       });

@@ -23,7 +23,7 @@ const StasBackground: FC = () => {
 
   return (
     <>
-      <div className="flex absolute right-0 bottom-0 z-10 pointer-events-none select-none w-auto h-[70vh]">
+      <div className="flex fixed right-0 bottom-0 z-10 pointer-events-none select-none w-auto h-[70vh]">
         <img src={stasImage} alt="" className="size-full" />
         <div
           className={clsx(

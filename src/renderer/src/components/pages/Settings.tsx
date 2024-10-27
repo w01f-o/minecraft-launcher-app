@@ -20,6 +20,8 @@ const Settings: FC = () => {
     isAutoLogin,
     isDebugMode,
     isFullscreen,
+    isLauncherHide,
+    toggleLauncherHide,
   } = useSettings();
 
   const settingsSwitcherList: Setting[] = [
@@ -37,13 +39,13 @@ const Settings: FC = () => {
       value: isFullscreen,
       action: toggleFullScreen,
     },
-    // {
-    //   id: 3,
-    //   name: 'Скрывать лаунчер',
-    //   description: 'Скрывать лаунчер при запуске игры',
-    //   value: isLauncherHide,
-    //   action: toggleLauncherHide,
-    // },
+    {
+      id: 3,
+      name: 'Скрывать лаунчер',
+      description: 'Скрывать лаунчер при запуске игры',
+      value: isLauncherHide,
+      action: toggleLauncherHide,
+    },
     {
       id: 4,
       name: 'Автоматический вход на сервер',

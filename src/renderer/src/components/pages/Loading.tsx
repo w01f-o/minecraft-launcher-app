@@ -17,9 +17,9 @@ const Loading: FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center">
+    <div className="flex flex-grow flex-col items-center justify-center select-none">
       <div>
-        <img src={loadingLogo} alt="Loading..." />
+        <img src={loadingLogo} alt="Loading..." draggable={false} />
       </div>
       <div className="text-2xl font-medium mb-3">
         <TextLoader />

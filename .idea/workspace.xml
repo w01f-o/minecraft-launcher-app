@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="feat: Update notifications. Some UI fixes">
+    <list default="true" id="ca1afe8a-5130-4f75-ae68-449288e442aa" name="Changes" comment="fix: Some UI fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/loading.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModPackModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/services/minecraft.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/services/minecraft.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/pages/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Background/StasBackground.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/Modpacks/ModpackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/components/widgets/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/store/reducers/settingsSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,34 +64,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/Projects/minecraft-launcher/frontend/src/preload/enums",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "npm.build.executor": "Run",
-    "npm.build:all.executor": "Run",
-    "npm.build:win.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.format.executor": "Run",
-    "npm.lint.executor": "Run",
-    "npm.start.executor": "Run",
-    "npm.typecheck.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/minecraft-launcher/frontend/src/preload/enums&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build:all.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build:win.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.typecheck.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\prettier&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Projects\\minecraft-launcher\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -256,15 +263,9 @@
       <workItem from="1729551177330" duration="323000" />
       <workItem from="1729551510143" duration="172000" />
       <workItem from="1729551822996" duration="263000" />
-      <workItem from="1729590515004" duration="7684000" />
-    </task>
-    <task id="LOCAL-00013" summary="feat: Ram warning">
-      <option name="closed" value="true" />
-      <created>1727391895247</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1727391895247</updated>
+      <workItem from="1729590515004" duration="7921000" />
+      <workItem from="1730028353589" duration="547000" />
+      <workItem from="1730029144454" duration="3459000" />
     </task>
     <task id="LOCAL-00014" summary="feat: Error handling in character canvas">
       <option name="closed" value="true" />
@@ -650,7 +651,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729600032629</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="fix: Some UI fixes">
+      <option name="closed" value="true" />
+      <created>1729600365832</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1729600365832</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +682,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: Fixed Stas background" />
     <MESSAGE value="fix: Fixed cape loading issue" />
     <MESSAGE value="feat: Error handling" />
     <MESSAGE value="fix: Fixed appId in builder.yml" />
@@ -698,7 +706,8 @@
     <MESSAGE value="feat: Main events builder" />
     <MESSAGE value="ref: Event files renamed to .event.ts" />
     <MESSAGE value="feat: Update notifications. Some UI fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update notifications. Some UI fixes" />
+    <MESSAGE value="fix: Some UI fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Some UI fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -706,7 +715,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/renderer/src/components/pages/Layout.tsx</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -43,7 +43,7 @@ const ModPackList: FC = () => {
 
   return (
     <div
-      className="z-0 relative mt-[20px] px-2"
+      className="z-0 relative px-2"
       style={{ height: sortedModPacks.length > 0 ? height + 20 : 'auto' }}
     >
       {isLoading && <DotsLoader color="#85A2E8" secondaryColor="#85A2E8" />}

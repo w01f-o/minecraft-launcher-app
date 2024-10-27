@@ -23,7 +23,7 @@ const NavBar: FC = () => {
   return (
     <nav>
       <ul
-        className="flex relative gap-4 items-center py-3 px-4 bg-white rounded-3xl mb-4 z-20"
+        className="flex relative gap-4 items-center py-3 px-4 bg-white rounded-3xl mb-6 z-20"
         ref={listRef}
       >
         <div
