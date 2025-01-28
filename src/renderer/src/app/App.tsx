@@ -1,13 +1,12 @@
-import { FC } from 'react';
-import './styles/index.css';
-import 'swiper/css';
-import 'react-loading-skeleton/dist/skeleton.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import Layout from '../components/pages/Layout';
-import { routes } from '../constants/routes';
 import { animated, useSpring } from '@react-spring/web';
+import { FC } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import 'swiper/css';
+import { appRoutes } from '../shared/router';
+import { Layout } from '../shared/ui';
+import './styles/index.css';
 
-const App: FC = () => {
+export const App: FC = () => {
   const location = useLocation();
 
   const springProps = useSpring({
@@ -24,7 +23,7 @@ const App: FC = () => {
         className="flex flex-col flex-grow root-animate"
       >
         <Routes location={location}>
-          {routes.map(route => (
+          {appRoutes.map(route => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
         </Routes>
@@ -32,5 +31,3 @@ const App: FC = () => {
     </Layout>
   );
 };
-
-export default App;

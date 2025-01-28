@@ -1,8 +1,8 @@
-import { FC, ReactNode, useEffect } from 'react';
-import { useSettings } from '../../hooks/useSettings';
-import { useToast } from '@renderer/hooks/useToast';
+import { MainEvents } from '@/renderer/shared/model';
 import log from 'electron-log/renderer';
-import { MainEvents } from '@renderer/enums/MainEvents.enum';
+import { FC, ReactNode, useEffect } from 'react';
+import { toast } from 'sonner';
+import { useSettings } from '../../shared/lib/hooks/useSettings';
 
 interface SpecsProviderProps {
   children: ReactNode;
@@ -11,23 +11,15 @@ interface SpecsProviderProps {
 const SpecsProvider: FC<SpecsProviderProps> = ({ children }) => {
   const { setMaxRam, maxRam } = useSettings();
 
-  const toast = useToast();
-
   useEffect(() => {
     window.electron.ipcRenderer.on(MainEvents.LAUNCHER_UPDATE_AVAILABLE, () => {
-      toast.add({
-        message: 'Доступно обновление, оно будет загружено в фоне',
-        type: 'info',
-      });
+      toast.info('Доступно обновление, оно будет загружено в фоновом режиме');
     });
 
     window.electron.ipcRenderer.on(
       MainEvents.LAUNCHER_UPDATE_DOWNLOADED,
       () => {
-        toast.add({
-          message: 'Обновление загружено, лаунчер перезапуститься',
-          type: 'success',
-        });
+        toast.success('Обновление загружено, лаунчер перезапуститься');
       }
     );
 
@@ -44,10 +36,7 @@ const SpecsProvider: FC<SpecsProviderProps> = ({ children }) => {
   useEffect(() => {
     window.electron.ipcRenderer.on('unhandled-error', (_e, error) => {
       log.error('Unhandled error in client-console: ', error);
-      toast.add({
-        message: `Произошла ошибка: ${error.message}`,
-        type: 'error',
-      });
+      toast.error(`Произошла ошибка: ${error.message}`);
     });
 
     return (): void => {

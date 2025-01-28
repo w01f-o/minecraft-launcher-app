@@ -18,7 +18,7 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -28,7 +28,7 @@ body {
 }
 
 * {
-  @apply focus:outline-blue;
+  @apply focus:outline-none;
 }
 
 .root-animate {

@@ -4,6 +4,6 @@ out
 .DS_Store
 *.log*
 /minecraft
-.idea
-.vscode
+/.idea
+/.vscode
 .env

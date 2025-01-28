@@ -1,23 +1,26 @@
+import { HeroUIProvider } from '@heroui/react';
 import { FC, ReactNode } from 'react';
-import StoreProvider from './StoreProvider';
 import { HashRouter } from 'react-router-dom';
-import SpecsProvider from './SpecsProvider';
 import MinecraftProvider from './MinecraftProvider';
+import SpecsProvider from './SpecsProvider';
+import StoreProvider from './StoreProvider';
 
 interface RootProviderProps {
   children: ReactNode;
 }
 
-const RootProvider: FC<RootProviderProps> = ({ children }) => {
+export const RootProvider: FC<RootProviderProps> = ({ children }) => {
   return (
     <HashRouter>
       <StoreProvider>
         <SpecsProvider>
-          <MinecraftProvider>{children}</MinecraftProvider>
+          <MinecraftProvider>
+            <HeroUIProvider className="flex flex-grow flex-col">
+              {children}
+            </HeroUIProvider>
+          </MinecraftProvider>
         </SpecsProvider>
       </StoreProvider>
     </HashRouter>
   );
 };
-
-export default RootProvider;
