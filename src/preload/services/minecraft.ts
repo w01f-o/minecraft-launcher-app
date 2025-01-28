@@ -1,8 +1,20 @@
-import { DebugOptions, MinecraftApi, StartMinecraftOptions } from '../types/MinecraftApi';
-import { Authenticator, Client, ILauncherOptions } from 'minecraft-launcher-core';
+import {
+  DebugOptions,
+  MinecraftApi,
+  StartMinecraftOptions,
+} from '../types/MinecraftApi';
+import {
+  Authenticator,
+  Client,
+  ILauncherOptions,
+} from 'minecraft-launcher-core';
 import * as electron from 'electron';
-import { fabric, forge, quilt } from 'tomate-loaders';
+import { fabric, quilt } from 'tomate-loaders';
 import log from 'electron-log/node';
+import { getForgeConfig } from './forge';
+import { MainInvokeEvents } from '../../main/enums/MainInvokeEventsEnum';
+import { MainEvents } from '../../main/enums/MainEventsEnum';
+import { RoutePaths } from '../enums/RoutePaths.enum';
 
 export const minecraftApi: MinecraftApi = {
   launcher: new Client(),
@@ -23,24 +35,27 @@ export const minecraftApi: MinecraftApi = {
       autoLogin,
     },
   }: StartMinecraftOptions) {
-    navigateFunction('/loading');
+    navigateFunction(RoutePaths.MINECRAFT_LOADING, { replace: true });
 
-    await electron.ipcRenderer.invoke('CHECK_UPDATES', {
+    await electron.ipcRenderer.invoke(MainInvokeEvents.CHECK_MODPACK_UPDATES, {
       modpackId: modpackId,
       directoryName: directoryName,
     });
 
-    const javaPath = await electron.ipcRenderer.invoke('CHECK_JAVA', javaVersion);
+    const javaPath = await electron.ipcRenderer.invoke(
+      MainInvokeEvents.CHECK_JAVA,
+      javaVersion
+    );
+    const rootPath = await electron.ipcRenderer.invoke(
+      MainInvokeEvents.GET_MINECRAFT_PATH,
+      directoryName
+    );
 
-    const rootPath = await electron.ipcRenderer.invoke('GET_MINECRAFT_PATH', directoryName);
     let modloaderConfig: {
       root: string;
-      version: { number: string; type: string; custom: string };
+      version: { number: string; type: string; custom?: string };
+      forge?: string;
     };
-
-    this.launcher.on('debug', (e) => {
-      log.debug('Minecraft debug: ', e);
-    });
 
     try {
       switch (modLoader) {
@@ -57,13 +72,15 @@ export const minecraftApi: MinecraftApi = {
           });
           break;
         case 'FORGE':
-          modloaderConfig = await forge.getMCLCLaunchConfig({
-            gameVersion: gameVersion,
+          modloaderConfig = await getForgeConfig({
+            gameVersion,
             rootPath,
           });
+
           break;
         default:
           log.error(`Invalid modloader: ${modLoader}`);
+
           throw new Error(`Invalid modloader: ${modLoader}`);
       }
 
@@ -71,11 +88,13 @@ export const minecraftApi: MinecraftApi = {
         ...modloaderConfig,
         memory: {
           max: Math.round(maxRam / 1024 / 1024),
-          min: 0,
+          min: 2048,
         },
         authorization: Authenticator.getAuth(username),
         window: {
           fullscreen: isFullscreen,
+          width: 1800,
+          height: 900,
         },
         javaPath,
         ...(autoLogin.isAutoLogin
@@ -90,44 +109,58 @@ export const minecraftApi: MinecraftApi = {
 
       log.info('Minecraft will be started with: ', launcherConfig);
 
-      this.launcher.once('arguments', (args) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const progressHandler = (e: any): void => {
+        log.info(
+          `Minecraft with modpack '${directoryName}' loading progress: `,
+          e
+        );
+        electron.ipcRenderer.send(MainEvents.MINECRAFT_LOADING_PROGRESS, e);
+      };
+
+      this.launcher.on('progress', progressHandler);
+
+      this.launcher.once('arguments', args => {
         setIsLoading(false);
+        this.launcher.removeListener('progress', progressHandler);
         log.info('Minecraft started with java arguments: ', args);
 
         if (isDebugMode) {
-          navigateFunction('/debug');
+          navigateFunction(RoutePaths.DEBUG, { replace: true });
         } else {
-          navigateFunction('/');
+          navigateFunction(RoutePaths.HOME, { replace: true });
         }
 
         if (isLauncherHide) {
-          electron.ipcRenderer.send('HIDE_LAUNCHER', 'hide');
-
-          this.launcher.once('close', () => {
-            electron.ipcRenderer.send('HIDE_LAUNCHER', 'show');
-          });
+          electron.ipcRenderer.send(MainEvents.HIDE_LAUNCHER, 'hide');
         }
       });
 
-      this.launcher.on('progress', (e) => {
-        log.info(`Minecraft with modpack '${directoryName}' loading progress: `, e);
-        electron.ipcRenderer.send('LAUNCHER_LOADING_PROGRESS', e);
-      });
+      const process = await this.launcher.launch(launcherConfig);
 
-      await this.launcher.launch(launcherConfig);
+      if (isLauncherHide) {
+        process?.once('close', () => {
+          log.log('MINECRAFT CLOSED BY PROGRESS');
+          electron.ipcRenderer.send(MainEvents.HIDE_LAUNCHER, 'show');
+        });
+      }
+
+      this.launcher.once('close', () => {
+        log.log('MINECRAFT CLOSED BY LAUNCHER');
+      });
     } catch (e) {
       log.error(e);
-      electron.ipcRenderer.send('PRELOAD_ERROR', e);
+      electron.ipcRenderer.send(MainEvents.PRELOAD_ERROR, e);
     }
   },
   debug({ setDebugInfo, isDebugMode }: DebugOptions) {
     if (isDebugMode) {
       const debugHandler = (e: string): void => {
-        setDebugInfo((prev) => [...prev, e]);
+        setDebugInfo(prev => [...prev, e]);
       };
 
       const dataHandler = (e: string): void => {
-        setDebugInfo((prev) => [...prev, e]);
+        setDebugInfo(prev => [...prev, e]);
       };
 
       this.launcher.on('debug', debugHandler);

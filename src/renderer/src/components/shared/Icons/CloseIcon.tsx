@@ -14,8 +14,22 @@ const CloseIcon: FC<CloseIconProps> = ({ color, ...props }) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <line x1="6" y1="6" x2="18" y2="18" stroke={color ?? '#F4F8FE'} strokeWidth="2" />
-      <line x1="6" y1="18" x2="18" y2="6" stroke={color ?? '#F4F8FE'} strokeWidth="2" />
+      <line
+        x1="6"
+        y1="6"
+        x2="18"
+        y2="18"
+        stroke={color ?? '#F4F8FE'}
+        strokeWidth="2"
+      />
+      <line
+        x1="6"
+        y1="18"
+        x2="18"
+        y2="6"
+        stroke={color ?? '#F4F8FE'}
+        strokeWidth="2"
+      />
     </svg>
   );
 };

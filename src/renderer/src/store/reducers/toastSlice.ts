@@ -21,10 +21,11 @@ export const toastSlice = createSlice({
       });
     },
     removeToast: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((item) => item.id !== action.payload);
+      state.items = state.items.filter(item => item.id !== action.payload);
     },
   },
 });
 
-export const { addToast: addToastAction, removeToast: removeToastAction } = toastSlice.actions;
+export const { addToast: addToastAction, removeToast: removeToastAction } =
+  toastSlice.actions;
 export default toastSlice.reducer;

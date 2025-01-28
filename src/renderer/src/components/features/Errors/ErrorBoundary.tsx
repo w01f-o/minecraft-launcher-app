@@ -21,7 +21,10 @@ interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   public constructor(props: ErrorBoundaryProps) {
     super(props);
 
@@ -41,7 +44,10 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({ hasError: true, error: { message: error, info: errorInfo } });
+    this.setState({
+      hasError: true,
+      error: { message: error, info: errorInfo },
+    });
     log.error('Uncaught error:', error, errorInfo);
   }
 

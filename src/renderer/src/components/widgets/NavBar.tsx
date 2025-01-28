@@ -23,7 +23,7 @@ const NavBar: FC = () => {
   return (
     <nav>
       <ul
-        className="flex relative gap-4 items-center py-3 px-4 bg-white rounded-3xl mb-4 z-20"
+        className="flex relative gap-4 items-center py-3 px-4 bg-white rounded-3xl mb-6 z-20"
         ref={listRef}
       >
         <div
@@ -34,19 +34,20 @@ const NavBar: FC = () => {
           }}
         ></div>
         {routes.map(
-          (route) =>
+          route =>
             route.isNavBar && (
               <li key={route.path}>
                 <NavLink
                   to={route.path}
                   className={clsx(
-                    'relative z-10 flex items-center justify-center rounded-xl h-10 w-32 before:absolute before:inset-0 before:transition before:opacity-[.05] hover:before:bg-black before:rounded-2xl select-none',
+                    'relative z-10 flex items-center justify-center rounded-xl h-10 w-32 before:absolute before:inset-0 before:transition before:opacity-[.05] hover:before:bg-black before:rounded-2xl select-none'
                   )}
+                  draggable={false}
                 >
                   {route.title}
                 </NavLink>
               </li>
-            ),
+            )
         )}
       </ul>
     </nav>

@@ -1,31 +1,34 @@
 import { FC, useEffect, useState } from 'react';
 import loadingLogo from '../../../../../resources/camel-minecraft.gif';
+import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
 
 const Loading: FC = () => {
   const [loadingStatus, setLoadingStatus] = useState<number>(0);
-  const [dots, setDots] = useState<string>('');
 
   useEffect(() => {
-    window.electron.ipcRenderer.on('LAUNCHER_LOADING_PROGRESS', (_e, progress): void => {
-      setLoadingStatus(Math.round((progress.task / progress.total) * 100));
-    });
-
-    const interval = setInterval(() => {
-      setDots((prev) => (prev.length < 3 ? prev + '.' : ''));
-    }, 400);
+    window.electron.ipcRenderer.on(
+      MainEvents.MINECRAFT_LOADING_PROGRESS,
+      (_e, progress): void => {
+        setLoadingStatus(Math.round((progress.task / progress.total) * 100));
+      }
+    );
 
     return (): void => {
-      clearInterval(interval);
-      window.electron.ipcRenderer.removeAllListeners('LAUNCHER_LOADING_PROGRESS');
+      window.electron.ipcRenderer.removeAllListeners(
+        MainEvents.MINECRAFT_LOADING_PROGRESS
+      );
     };
   }, []);
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center">
+    <div className="flex flex-grow flex-col items-center justify-center select-none">
       <div>
-        <img src={loadingLogo} alt="Loading..." />
+        <img src={loadingLogo} alt="Loading..." draggable={false} />
       </div>
-      <div className="text-2xl font-medium mb-3">Загрузка {dots}</div>
+      <div className="text-2xl font-medium mb-3">
+        <TextLoader />
+      </div>
       <div className="w-full h-3 bg-white rounded-2xl border border-blue_light">
         <div
           className="h-3 bg-blue rounded-2xl transition-all duration-500"

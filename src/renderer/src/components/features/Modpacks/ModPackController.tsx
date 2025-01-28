@@ -6,6 +6,9 @@ import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import { useMinecraft } from '../../../hooks/useMinecraft';
 import type { ModPack as ModPackType } from '../../../types/entities/ModPack.type';
 import { useToast } from '@renderer/hooks/useToast';
+import TextLoader from '@renderer/components/widgets/Loaders/TextLoader';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEvents.enum';
 
 interface ModPackControllerProps {
   item: ModPackType;
@@ -43,7 +46,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
     setDownloadProgress(0);
     setIsDownloading(true);
 
-    window.electron.ipcRenderer.send('DOWNLOAD_MINECRAFT', {
+    window.electron.ipcRenderer.send(MainEvents.DOWNLOAD_MODPACK, {
       id: item.id,
       directoryName: item.directoryName,
     });
@@ -51,7 +54,10 @@ const ModPackController: FC<ModPackControllerProps> = ({
 
   const deleteClickHandler = async (): Promise<void> => {
     setModalIsOpen(!modalIsOpen);
-    const result = await window.electron.ipcRenderer.invoke('DELETE_MODPACK', item.directoryName);
+    const result = await window.electron.ipcRenderer.invoke(
+      MainInvokeEvents.DELETE_MODPACK,
+      item.directoryName
+    );
 
     if (result.isSuccess) {
       removeDownloadedModPacks(item);
@@ -71,7 +77,7 @@ const ModPackController: FC<ModPackControllerProps> = ({
   };
 
   const isDownloadedModPack = useMemo(() => {
-    return !!downloadedModPacks.find((m) => m.id === item.id);
+    return !!downloadedModPacks.find(m => m.id === item.id);
   }, [downloadedModPacks]);
 
   const isCurrentModPack = useMemo(() => {
@@ -83,10 +89,20 @@ const ModPackController: FC<ModPackControllerProps> = ({
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-5xl mb-2">
         {item.name}
         {downloadProgress !== null && (
-          <div className="text-xl self-end">Загрузка - {Math.round(downloadProgress)}%</div>
+          <div className="flex text-xl self-end">
+            <div className="w-28">
+              <TextLoader />
+            </div>
+            {Math.round(downloadProgress)}%
+          </div>
         )}
         {!isDownloadedModPack && downloadProgress === null && (
-          <Button role={'primary'} rounded onClick={downloadClickHandler} isPending={isDownloading}>
+          <Button
+            role={'primary'}
+            rounded
+            onClick={downloadClickHandler}
+            isPending={isDownloading}
+          >
             <DownloadIcon />
           </Button>
         )}
@@ -99,7 +115,12 @@ const ModPackController: FC<ModPackControllerProps> = ({
               </div>
             )}
 
-            <Button role={'primary'} rounded danger onClick={deleteClickHandler}>
+            <Button
+              role={'primary'}
+              rounded
+              danger
+              onClick={deleteClickHandler}
+            >
               <ThrashIcon />
             </Button>
 

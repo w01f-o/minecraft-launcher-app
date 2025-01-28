@@ -23,10 +23,10 @@ type useMinecraftReturn = {
 export const useMinecraft = (): useMinecraftReturn => {
   const dispatch = useAppDispatch();
   const { currentModPack, downloadedModPacks, username } = useAppSelector(
-    (state) => state.minecraft,
+    state => state.minecraft
   );
 
-  const { isDownloading } = useAppSelector((state) => state.downloadStatus);
+  const { isDownloading } = useAppSelector(state => state.downloadStatus);
 
   const setCurrentModPack = (modPack: ModPack | null): void => {
     dispatch(setCurrentModPackAction(modPack));

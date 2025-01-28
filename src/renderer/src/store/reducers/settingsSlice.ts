@@ -12,7 +12,7 @@ const initialState: State = {
   isAutoLogin: false,
   isDebugMode: false,
   isFullscreen: false,
-  isLauncherHide: false,
+  isLauncherHide: true,
   maxRam: null,
 };
 
@@ -20,20 +20,20 @@ export const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
-    toggleDebugMode: (state) => {
-      // if (!state.isDebugMode) {
-      //   state.isLauncherHide = false;
-      // }
+    toggleDebugMode: state => {
+      if (!state.isDebugMode) {
+        state.isLauncherHide = false;
+      }
 
       state.isDebugMode = !state.isDebugMode;
     },
-    toggleFullscreen: (state) => {
+    toggleFullscreen: state => {
       state.isFullscreen = !state.isFullscreen;
     },
-    toggleAutoLogin: (state) => {
+    toggleAutoLogin: state => {
       state.isAutoLogin = !state.isAutoLogin;
     },
-    toggleLauncherHide: (state) => {
+    toggleLauncherHide: state => {
       if (!state.isLauncherHide) {
         state.isDebugMode = false;
       }

@@ -4,7 +4,13 @@ interface CrossIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
 const CrossIcon: FC<CrossIconProps> = ({ ...props }) => {
   return (
-    <svg width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      width="26"
+      height="26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

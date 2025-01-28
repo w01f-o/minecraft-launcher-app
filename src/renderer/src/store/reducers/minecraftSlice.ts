@@ -25,7 +25,7 @@ export const minecraftSlice = createSlice({
     },
     removeDownloadedModPacks: (state, action: PayloadAction<ModPack>) => {
       state.downloadedModPacks = state.downloadedModPacks.filter(
-        (modPack) => modPack.id !== action.payload.id,
+        modPack => modPack.id !== action.payload.id
       );
     },
     setUsername: (state, action: PayloadAction<string>) => {

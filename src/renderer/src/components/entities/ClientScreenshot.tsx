@@ -14,7 +14,7 @@ type ClientScreenshotProps =
       screenshot: string;
     };
 
-const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
+const ClientScreenshot: FC<ClientScreenshotProps> = props => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const clickHandler = (): void => {
@@ -35,7 +35,7 @@ const ClientScreenshot: FC<ClientScreenshotProps> = (props) => {
             'peer select-none flex before:z-40 overflow-hidden h-full cursor-progress w-full relative before:pointer-events-none rounded-xl active:scale-[.99] transition-all before:absolute before:inset-0 before:opacity-25 before:rounded-xl before:transition',
             {
               'hover:scale-105 hover:before:bg-black !cursor-pointer': isLoaded,
-            },
+            }
           )}
           onClick={clickHandler}
         >

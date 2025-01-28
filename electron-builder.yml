@@ -20,12 +20,9 @@ nsis:
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+
 publish:
   provider: github
   owner: w01f-o
   repo: minecraft-launcher-app
   releaseType: release
-
-releaseInfo:
-  releaseName: "TCT Launcher - v${version}"
-  releaseNotesFile: "release-notes.md"

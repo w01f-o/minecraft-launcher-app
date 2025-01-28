@@ -3,7 +3,8 @@ import clsx from 'clsx';
 import Skeleton from 'react-loading-skeleton';
 import { useTransition, animated } from '@react-spring/web';
 
-interface ImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
+interface ImageProps
+  extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
   src: string;
   alt: string;
   width?: number | string;
@@ -62,7 +63,7 @@ const Image: FC<ImageProps> = ({
                 highlightColor="#F4F8FE"
               />
             </animated.div>
-          ),
+          )
       )}
     </div>
   );

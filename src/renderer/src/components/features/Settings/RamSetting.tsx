@@ -11,7 +11,8 @@ const RamSetting: FC = () => {
 
   const fieldChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = +e.target.value * 1024 * 1024;
-    if (value >= 0 && value <= totalRam!) {
+
+    if (value >= 2147483648 && value <= totalRam!) {
       setMaxRam(value);
     }
   };
@@ -29,7 +30,7 @@ const RamSetting: FC = () => {
       <div className={'text-lg'}>Выделение памяти:</div>
       <RangeInput
         value={maxRam}
-        min={0}
+        min={2147483648}
         max={totalRam}
         setValue={setMaxRam}
         accentColor={ramWarning ? '#f87171' : undefined}
@@ -58,10 +59,13 @@ const RamSetting: FC = () => {
         {textRamWarningTransition(
           (props, ramWarning) =>
             ramWarning && (
-              <animated.div style={props} className="text-sm self-end text-red-400">
+              <animated.div
+                style={props}
+                className="text-sm self-end text-red-400"
+              >
                 *Не рекомендуется устанавливать слишком маленькое значение
               </animated.div>
-            ),
+            )
         )}
       </div>
     </div>

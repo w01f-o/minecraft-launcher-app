@@ -5,7 +5,7 @@ import * as path from 'node:path';
 export const addDirectoryToArchive = (
   zip: JSZip,
   folderPath: string,
-  zipFolderPath: string,
+  zipFolderPath: string
 ): void => {
   const files = fs.readdirSync(folderPath);
 

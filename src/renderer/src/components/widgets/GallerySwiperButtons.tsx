@@ -35,18 +35,24 @@ const GallerySwiperButtons: FC<GallerySwiperButtonsProps> = ({ isOpen }) => {
     (props, item) =>
       item && (
         <ReactPortal>
-          <animated.div style={props} className="fixed z-50 top-1/2 -translate-y-1/2 left-[5vw]">
+          <animated.div
+            style={props}
+            className="fixed z-50 top-1/2 -translate-y-1/2 left-[5vw]"
+          >
             <Button role={'secondary'} rounded onClick={clickHandler('prev')}>
               <ArrowLeftIcon />
             </Button>
           </animated.div>
-          <animated.div style={props} className="fixed z-50 top-1/2 -translate-y-1/2 right-[5vw]">
+          <animated.div
+            style={props}
+            className="fixed z-50 top-1/2 -translate-y-1/2 right-[5vw]"
+          >
             <Button role={'secondary'} rounded onClick={clickHandler('next')}>
               <ArrowRightIcon />
             </Button>
           </animated.div>
         </ReactPortal>
-      ),
+      )
   );
 };
 

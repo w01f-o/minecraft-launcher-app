@@ -15,7 +15,10 @@ const Background: FC = () => {
         variant={'left'}
         className="absolute left-0 top-1/2 translate-y-[-50%]"
       />
-      <BackgroundCloudIcon variant={'bottom'} className="absolute right-36 bottom-0" />
+      <BackgroundCloudIcon
+        variant={'bottom'}
+        className="absolute right-36 bottom-0"
+      />
     </div>
   );
 };

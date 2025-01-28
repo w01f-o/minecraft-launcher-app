@@ -17,7 +17,7 @@ const CircleLoader: FC<CircleLoaderProps> = ({ progress }) => {
   return transition(
     (props, item) =>
       item && (
-        <animated.div className="relative size-10" style={props}>
+        <animated.div className="relative size-11" style={props}>
           <svg
             className="size-full -rotate-90"
             viewBox="0 0 36 36"
@@ -44,7 +44,7 @@ const CircleLoader: FC<CircleLoaderProps> = ({ progress }) => {
             ></circle>
           </svg>
         </animated.div>
-      ),
+      )
   );
 };
 

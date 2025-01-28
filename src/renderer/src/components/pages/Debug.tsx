@@ -13,12 +13,16 @@ const Debug: FC = () => {
 
   useEffect(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+      scrollContainerRef.current.scrollTop =
+        scrollContainerRef.current.scrollHeight;
     }
   }, [debugInfo]);
 
   return (
-    <div className="custom-scrollbar overflow-y-auto max-h-[70vh]" ref={scrollContainerRef}>
+    <div
+      className="custom-scrollbar overflow-y-auto max-h-[70vh]"
+      ref={scrollContainerRef}
+    >
       <div className="flex flex-col gap-2">
         {debugInfo.map((item, index) => (
           <div key={index}>{item}</div>

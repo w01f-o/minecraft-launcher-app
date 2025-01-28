@@ -4,11 +4,20 @@ interface BackgroundCloudProps extends SVGAttributes<HTMLOrSVGElement> {
   variant?: 'left' | 'top' | 'bottom';
 }
 
-const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) => {
+const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({
+  variant,
+  ...props
+}) => {
   switch (variant) {
     case 'left':
       return (
-        <svg width="129" height="419" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg
+          width="129"
+          height="419"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...props}
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -33,7 +42,13 @@ const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) =>
 
     case 'top':
       return (
-        <svg width="411" height="189" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg
+          width="411"
+          height="189"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...props}
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -45,7 +60,13 @@ const BackgroundCloudIcon: FC<BackgroundCloudProps> = ({ variant, ...props }) =>
 
     case 'bottom':
       return (
-        <svg width="258" height="76" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg
+          width="258"
+          height="76"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...props}
+        >
           <path
             fillRule="evenodd"
             clipRule="evenodd"

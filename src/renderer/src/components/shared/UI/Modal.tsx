@@ -1,4 +1,11 @@
-import { Dispatch, FC, MouseEvent, ReactNode, SetStateAction, useEffect } from 'react';
+import {
+  Dispatch,
+  FC,
+  MouseEvent,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+} from 'react';
 import { animated, useTransition } from '@react-spring/web';
 import ReactPortal from '../../features/ReactPortal';
 import clsx from 'clsx';
@@ -11,7 +18,13 @@ interface ModalProps {
   preventClose?: boolean;
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen, preventClose }) => {
+const Modal: FC<ModalProps> = ({
+  isOpen,
+  children,
+  contentClassName,
+  setIsOpen,
+  preventClose,
+}) => {
   const wrapperMouseDownHandler = (): void => {
     !preventClose && setIsOpen(false);
   };
@@ -53,7 +66,7 @@ const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen, 
             <div
               className={clsx(
                 'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] z-50  overflow-y-auto custom-scrollbar px-2',
-                contentClassName,
+                contentClassName
               )}
               onMouseDown={contentMouseDownHandler}
             >
@@ -61,7 +74,7 @@ const Modal: FC<ModalProps> = ({ isOpen, children, contentClassName, setIsOpen, 
             </div>
           </animated.div>
         </ReactPortal>
-      ),
+      )
   );
 };
 

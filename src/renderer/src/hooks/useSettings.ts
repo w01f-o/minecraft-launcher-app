@@ -22,9 +22,8 @@ type useSettingReturn = {
 
 export const useSettings = (): useSettingReturn => {
   const dispatch = useAppDispatch();
-  const { isDebugMode, isAutoLogin, isFullscreen, maxRam, isLauncherHide } = useAppSelector(
-    (state) => state.settings,
-  );
+  const { isDebugMode, isAutoLogin, isFullscreen, maxRam, isLauncherHide } =
+    useAppSelector(state => state.settings);
 
   const toggleDebugMode = (): void => {
     dispatch(toggleDebugModeAction());

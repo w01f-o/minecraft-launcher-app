@@ -4,6 +4,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     '@electron-toolkit/eslint-config-ts/recommended',
+    'prettier',
     'plugin:prettier/recommended',
   ],
 };

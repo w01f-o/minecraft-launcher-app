@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useMemo, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import Field from '../../shared/UI/Field';
 import Button from '../../shared/UI/Button';
 import ReadyIcon from '../../shared/Icons/ReadyIcon';
@@ -21,7 +28,9 @@ const CharacterNameChanger: FC = () => {
     }
   }, [username]);
 
-  const inputLocalNameChangeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+  const inputLocalNameChangeHandler = (
+    e: ChangeEvent<HTMLInputElement>
+  ): void => {
     setInputLocalName(e.target.value);
   };
 
@@ -31,10 +40,12 @@ const CharacterNameChanger: FC = () => {
       inputLocalName !== username &&
       username !== null &&
       inputLocalName !== '',
-    [inputLocalName, username],
+    [inputLocalName, username]
   );
 
-  const submitChangeNameHandler = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const submitChangeNameHandler = async (
+    e: FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
     if (!canBeChanged) return;
 
@@ -68,7 +79,10 @@ const CharacterNameChanger: FC = () => {
   return (
     <>
       <div className="text-2xl">Имя персонажа:</div>
-      <form className="flex items-center gap-4" onSubmit={submitChangeNameHandler}>
+      <form
+        className="flex items-center gap-4"
+        onSubmit={submitChangeNameHandler}
+      >
         <Field
           value={inputLocalName ?? ''}
           onChange={inputLocalNameChangeHandler}
@@ -82,7 +96,7 @@ const CharacterNameChanger: FC = () => {
                   <ReadyIcon />
                 </Button>
               </animated.div>
-            ),
+            )
         )}
       </form>
     </>

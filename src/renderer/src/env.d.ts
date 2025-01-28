@@ -2,5 +2,5 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
-  readonly VITE_STATIC_URL: string;
+  readonly VITE_MINECRAFT_SERVER_IP: string;
 }

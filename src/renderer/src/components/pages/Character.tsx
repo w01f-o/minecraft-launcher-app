@@ -3,23 +3,17 @@ import { useGetCharacterQuery } from '../../services/character.api';
 import CharacterCanvas from '../widgets/Character/CharacterCanvas';
 import CharacterController from '../features/Character/CharacterController';
 import ErrorMessage from '../features/Errors/ErrorMessage';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 
 const Character: FC = () => {
   const { isFetching, isLoading, isError, error } = useGetCharacterQuery(
-    window.localStorage.getItem('hwid')!,
+    window.localStorage.getItem('hwid')!
   );
 
   if (isFetching || isLoading) {
     return (
       <div className="grid flex-grow place-items-center">
-        <DotsLoader
-          color="#85A2E8"
-          wrapperClass="justify-center"
-          secondaryColor="#85A2E8"
-          width={100}
-          height={100}
-        />
+        <DotsLoader color="#85A2E8" secondaryColor="#85A2E8" />
       </div>
     );
   }

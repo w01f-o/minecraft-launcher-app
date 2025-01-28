@@ -1,6 +1,9 @@
 import { ToastItem } from '@renderer/types/ToastItem.type';
 import { useAppDispatch, useAppSelector } from '@renderer/hooks/redux';
-import { addToastAction, removeToastAction } from '@renderer/store/reducers/toastSlice';
+import {
+  addToastAction,
+  removeToastAction,
+} from '@renderer/store/reducers/toastSlice';
 
 type useToastReturn = {
   items: ToastItem[];
@@ -10,7 +13,7 @@ type useToastReturn = {
 
 export const useToast = (): useToastReturn => {
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector((state) => state.toast);
+  const { items } = useAppSelector(state => state.toast);
 
   const add = (item: Omit<ToastItem, 'id'>): void => {
     dispatch(addToastAction(item));

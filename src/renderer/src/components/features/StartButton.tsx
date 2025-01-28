@@ -6,7 +6,8 @@ import { useMinecraft } from '../../hooks/useMinecraft';
 
 const StartButton: FC = () => {
   const { currentModPack, username } = useMinecraft();
-  const { isFullscreen, isDebugMode, isLauncherHide, isAutoLogin, maxRam } = useSettings();
+  const { isFullscreen, isDebugMode, isLauncherHide, isAutoLogin, maxRam } =
+    useSettings();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ const StartButton: FC = () => {
           javaVersion: currentModPack.javaVersion,
           autoLogin: {
             isAutoLogin,
-            serverIp: window.localStorage.getItem('serverIp')!,
+            serverIp: import.meta.env.VITE_MINECRAFT_SERVER_IP,
           },
         },
       });

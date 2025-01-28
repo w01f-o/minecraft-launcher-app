@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
+import { RoutePaths } from '@renderer/enums/RoutePaths.enum';
 
 export interface Route {
-  path: string;
+  path: RoutePaths;
   title: string;
-  isNavBar: boolean;
+  isNavBar?: true;
   element: ReactNode;
 }

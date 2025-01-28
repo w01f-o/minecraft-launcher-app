@@ -2,7 +2,10 @@ import { FC, useState } from 'react';
 import Button from '../../shared/UI/Button';
 import ThrashIcon from '../../shared/Icons/ThrashIcon';
 import CharacterDropZoneModal from './CharacterDropZoneModal';
-import { useDeleteCapeMutation, useGetCharacterQuery } from '../../../services/character.api';
+import {
+  useDeleteCapeMutation,
+  useGetCharacterQuery,
+} from '../../../services/character.api';
 import { useToast } from '@renderer/hooks/useToast';
 import log from 'electron-log/renderer';
 
@@ -39,11 +42,19 @@ const CharacterSkinCapeChanger: FC = () => {
 
   return (
     <>
-      <Button className="w-[80%]" role={'primary'} onClick={uploaderButtonClickHandler('skin')}>
+      <Button
+        className="w-[80%]"
+        role={'primary'}
+        onClick={uploaderButtonClickHandler('skin')}
+      >
         Загрузить скин
       </Button>
       <div className="flex gap-4">
-        <Button role={'secondary'} onClick={uploaderButtonClickHandler('cape')} className="w-[80%]">
+        <Button
+          role={'secondary'}
+          onClick={uploaderButtonClickHandler('cape')}
+          className="w-[80%]"
+        >
           Загрузить плащ
         </Button>
         {data?.cape !== null && (
@@ -57,6 +68,9 @@ const CharacterSkinCapeChanger: FC = () => {
             <ThrashIcon />
           </Button>
         )}
+      </div>
+      <div className="w-[70%] text-sm">
+        *На данный момент скины работают в сборках, версия которых выше 1.7.10
       </div>
       <CharacterDropZoneModal
         setModalIsOpen={setModalIsOpen}

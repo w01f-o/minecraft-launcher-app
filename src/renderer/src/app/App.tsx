@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from '../components/pages/Layout';
 import { routes } from '../constants/routes';
-import { useSpring, animated } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 
 const App: FC = () => {
   const location = useLocation();
@@ -19,9 +19,12 @@ const App: FC = () => {
 
   return (
     <Layout>
-      <animated.div style={springProps} className="flex flex-col flex-grow root-animate">
+      <animated.div
+        style={springProps}
+        className="flex flex-col flex-grow root-animate"
+      >
         <Routes location={location}>
-          {routes.map((route) => (
+          {routes.map(route => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
         </Routes>

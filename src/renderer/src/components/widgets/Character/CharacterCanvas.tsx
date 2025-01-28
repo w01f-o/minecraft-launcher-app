@@ -4,7 +4,7 @@ import { SkinViewer, WalkingAnimation } from '@jebibot/skinview3d';
 import steveDefaultSkinTexture from '../../../../../../resources/steve.png';
 import type { RemoteImage, TextureSource } from '@jebibot/skinview-utils';
 import ErrorMessage from '../../features/Errors/ErrorMessage';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useSpring, animated } from '@react-spring/web';
 import log from 'electron-log/renderer';
 
@@ -36,7 +36,7 @@ const CharacterCanvas: FC = () => {
     const fetchSkin = async (): Promise<TextureSource | null> => {
       if (data.skins.default) {
         const skinResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/character/textures/${data.skins.default}`,
+          `${import.meta.env.VITE_API_URL}/characters/textures/${data.skins.default}`
         );
         const skinBlob = await skinResponse.blob();
 
@@ -49,7 +49,7 @@ const CharacterCanvas: FC = () => {
     const fetchCape = async (): Promise<TextureSource | null> => {
       if (data.cape) {
         const capeResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/character/textures/${data.cape}`,
+          `${import.meta.env.VITE_API_URL}/characters/textures/${data.cape}`
         );
         const capeBlob = await capeResponse.blob();
 
@@ -76,7 +76,8 @@ const CharacterCanvas: FC = () => {
 
   useEffect(() => {
     if (canvasRef.current && canvasWrapperRef.current) {
-      const { offsetWidth: width, offsetHeight: height } = canvasWrapperRef.current;
+      const { offsetWidth: width, offsetHeight: height } =
+        canvasWrapperRef.current;
 
       skinViewerRef.current = new SkinViewer({
         canvas: canvasRef.current,
@@ -91,7 +92,8 @@ const CharacterCanvas: FC = () => {
 
     const resizeHandler = (): void => {
       if (canvasRef.current && canvasWrapperRef.current) {
-        const { offsetWidth: width, offsetHeight: height } = canvasWrapperRef.current;
+        const { offsetWidth: width, offsetHeight: height } =
+          canvasWrapperRef.current;
 
         skinViewerRef.current?.setSize(width, height);
       }
@@ -133,7 +135,10 @@ const CharacterCanvas: FC = () => {
   });
 
   return (
-    <div className="grid place-items-center w-1/2 h-[70vh] relative" ref={canvasWrapperRef}>
+    <div
+      className="grid place-items-center w-1/2 h-[70vh] relative"
+      ref={canvasWrapperRef}
+    >
       {texturesIsLoading && (
         <DotsLoader
           color="#85A2E8"

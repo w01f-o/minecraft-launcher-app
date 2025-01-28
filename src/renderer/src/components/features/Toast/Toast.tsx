@@ -21,9 +21,9 @@ const Toast: FC = () => {
 
   const transitions = useTransition(localItems, {
     from: { opacity: 0, height: 0, life: '100%' },
-    keys: (item) => item.id,
+    keys: item => item.id,
     enter:
-      (item) =>
+      item =>
       async (next, cancel): Promise<void> => {
         cancelMap.set(item, cancel);
         await next({ opacity: 1, height: refMap.get(item).offsetHeight + 8 });
@@ -31,10 +31,10 @@ const Toast: FC = () => {
       },
     leave: [{ opacity: 0 }, { height: 0 }],
     onRest: (_result, _ctrl, item) => {
-      setLocalItems((state) =>
-        state.filter((i) => {
+      setLocalItems(state =>
+        state.filter(i => {
           return i.id !== item.id;
-        }),
+        })
       );
       remove(item.id);
     },
@@ -46,9 +46,10 @@ const Toast: FC = () => {
           : { tension: 125, friction: 20, precision: 0.1 },
   });
 
-  const closeButtonClickHandler = (item: ToastItem, life: SpringValue<string>) => (): void => {
-    if (cancelMap.has(item) && life.get() !== '0%') cancelMap.get(item)();
-  };
+  const closeButtonClickHandler =
+    (item: ToastItem, life: SpringValue<string>) => (): void => {
+      if (cancelMap.has(item) && life.get() !== '0%') cancelMap.get(item)();
+    };
 
   return (
     <ReactPortal>
@@ -64,7 +65,7 @@ const Toast: FC = () => {
                   'bg-green-400': item.type === 'success',
                   'bg-yellow-400': item.type === 'warning',
                   'bg-blue': item.type === 'info',
-                },
+                }
               )}
             >
               <div className="flex h-full items-center gap-4">

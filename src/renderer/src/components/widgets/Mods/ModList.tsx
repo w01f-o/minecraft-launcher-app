@@ -20,7 +20,7 @@ const ModList: FC<ModListProps> = ({ mods }) => {
         <div className="text-md">*Может содержать неточности</div>
       </div>
       <div className="flex flex-col gap-4 pt-4">
-        {mods?.map((mod) => <Mod item={mod} key={mod.id} />)}
+        {mods?.map(mod => <Mod item={mod} key={mod.id} />)}
       </div>
     </div>
   );

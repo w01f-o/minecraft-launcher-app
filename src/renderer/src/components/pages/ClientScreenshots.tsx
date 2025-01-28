@@ -7,8 +7,10 @@ import Button from '../shared/UI/Button';
 import DownloadIcon from '../shared/Icons/DownloadIcon';
 import ThrashIcon from '../shared/Icons/ThrashIcon';
 import sadGif from '../../../../../resources/sad-azolotl.gif';
-import DotsLoader from '@renderer/components/widgets/DotsLoader';
+import DotsLoader from '@renderer/components/widgets/Loaders/DotsLoader';
 import { useToast } from '@renderer/hooks/useToast';
+import { MainInvokeEvents } from '@renderer/enums/MainInvokeEvents.enum';
+import { MainEvents } from '@renderer/enums/MainEvents.enum';
 
 const ClientScreenshots: FC = () => {
   const [galleryIsOpen, setGalleryIsOpen] = useState<boolean>(false);
@@ -26,7 +28,9 @@ const ClientScreenshots: FC = () => {
 
   const fetchScreenshots = async (): Promise<void> => {
     setIsLoading(true);
-    const result = await window.electron.ipcRenderer.invoke('GET_LAUNCHER_SCREENSHOTS');
+    const result = await window.electron.ipcRenderer.invoke(
+      MainInvokeEvents.GET_MODPACKS_SCREENSHOTS
+    );
 
     setClientScreenshots(result);
     setIsLoading(false);
@@ -37,14 +41,17 @@ const ClientScreenshots: FC = () => {
   }, []);
 
   const downloadClickHandler = (): void => {
-    window.electron.ipcRenderer.send('SAVE_SCREENSHOT', clientScreenshots[initialIndex]);
+    window.electron.ipcRenderer.send(
+      MainEvents.SAVE_SCREENSHOT,
+      clientScreenshots[initialIndex]
+    );
   };
 
   const deleteClickHandler = async (): Promise<void> => {
     setGalleryIsOpen(!galleryIsOpen);
     const result = await window.electron.ipcRenderer.invoke(
       'DELETE_SCREENSHOT',
-      clientScreenshots[initialIndex],
+      clientScreenshots[initialIndex]
     );
     if (result.isSuccess) {
       toast.add({
@@ -63,13 +70,7 @@ const ClientScreenshots: FC = () => {
   if (isLoading) {
     return (
       <div className="flex-grow grid place-items-center">
-        <DotsLoader
-          color="#85A2E8"
-          wrapperClass="justify-center"
-          secondaryColor="#85A2E8"
-          width={100}
-          height={100}
-        />
+        <DotsLoader color="#85A2E8" secondaryColor="#85A2E8" />
       </div>
     );
   }
@@ -94,10 +95,12 @@ const ClientScreenshots: FC = () => {
           spaceBetween={50}
           className="w-full rounded-3xl"
           initialSlide={initialIndex}
-          onSlideChange={(swiper) => setInitialIndex(swiper.realIndex)}
+          onSlideChange={swiper => setInitialIndex(swiper.realIndex)}
         >
-          {clientScreenshots.length > 1 && <GallerySwiperButtons isOpen={galleryIsOpen} />}
-          {clientScreenshots.map((screenshot) => (
+          {clientScreenshots.length > 1 && (
+            <GallerySwiperButtons isOpen={galleryIsOpen} />
+          )}
+          {clientScreenshots.map(screenshot => (
             <SwiperSlide key={screenshot} className="h-full">
               <ClientScreenshot key={screenshot} screenshot={screenshot} />
             </SwiperSlide>
@@ -108,7 +111,12 @@ const ClientScreenshots: FC = () => {
             </Button>
           </div>
           <div className="absolute right-24 bottom-8 z-40 shadow-2xl">
-            <Button role={'primary'} danger rounded onClick={deleteClickHandler}>
+            <Button
+              role={'primary'}
+              danger
+              rounded
+              onClick={deleteClickHandler}
+            >
               <ThrashIcon />
             </Button>
           </div>

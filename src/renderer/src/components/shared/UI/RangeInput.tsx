@@ -8,16 +8,29 @@ interface RangeInputProps {
   accentColor?: string;
 }
 
-const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, accentColor, value }) => {
+const RangeInput: FC<RangeInputProps> = ({
+  min,
+  max,
+  setValue,
+  accentColor,
+  value,
+}) => {
   const rangeRef = useRef<HTMLDivElement | null>(null);
-  // TODO: Add type for Event
+
   useEffect(() => {
-    const mouseMoveHandler = (e): void => {
+    const setValueToElement = (e: MouseEvent): void => {
       if (rangeRef.current && max !== null) {
         const rect = rangeRef.current.getBoundingClientRect();
         const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width);
-        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)));
+        const newValue = Math.round(Math.floor((x / rect.width) * max));
+
+        newValue >= min &&
+          setValue(Math.round(Math.floor((x / rect.width) * max)));
       }
+    };
+
+    const mouseMoveHandler = (e: MouseEvent): void => {
+      setValueToElement(e);
     };
 
     const mouseUpHandler = (): void => {
@@ -26,13 +39,11 @@ const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, accentColor, valu
       }
     };
 
-    const mouseDownHandler = (e): void => {
+    const mouseDownHandler = (e: MouseEvent): void => {
       if (rangeRef.current && max !== null) {
         document.addEventListener('mousemove', mouseMoveHandler);
 
-        const rect = rangeRef.current.getBoundingClientRect();
-        const x = Math.min(Math.max(e.clientX - rect.x, 0), rect.width);
-        setValue(Math.round(Math.floor((x / rect.width) * (max - min) + min)));
+        setValueToElement(e);
 
         document.addEventListener('mouseup', mouseUpHandler, {
           once: true,
@@ -49,11 +60,14 @@ const RangeInput: FC<RangeInputProps> = ({ min, max, setValue, accentColor, valu
         rangeRef.current.removeEventListener('mousedown', mouseDownHandler);
       }
     };
-  }, [max]);
+  }, [max, value]);
 
   return (
     <div className="h-2 w-full">
-      <div className="relative w-full h-2 bg-white rounded-3xl cursor-pointer" ref={rangeRef}>
+      <div
+        className="relative shadow-sm w-full h-2 bg-white rounded-3xl cursor-pointer"
+        ref={rangeRef}
+      >
         <div
           className="absolute h-2 left-0 bg-blue rounded-3xl transition"
           style={{

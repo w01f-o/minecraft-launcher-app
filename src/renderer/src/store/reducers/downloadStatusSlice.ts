@@ -18,6 +18,7 @@ export const downloadStatusSlice = createSlice({
   },
 });
 
-export const { setIsDownloading: setIsDownloadingAction } = downloadStatusSlice.actions;
+export const { setIsDownloading: setIsDownloadingAction } =
+  downloadStatusSlice.actions;
 
 export default downloadStatusSlice.reducer;

@@ -38,10 +38,10 @@ const ModPackModal: FC<ModPackModalProps> = ({
           className="w-full rounded-2xl overflow-hidden"
           autoplay={{ delay: 2000, pauseOnMouseEnter: true }}
         >
-          {item.screenshots.map((screenshot) => (
+          {item.screenshots.map(screenshot => (
             <SwiperSlide key={screenshot.id}>
               <Image
-                src={`${import.meta.env.VITE_STATIC_URL}/${screenshot.thumbnail}`}
+                src={`${import.meta.env.VITE_API_URL}/${screenshot.url}`}
                 alt={item.name}
                 width={'100%'}
                 height={'60vh'}
@@ -64,12 +64,27 @@ const ModPackModal: FC<ModPackModalProps> = ({
               {item.isActual && (
                 <div className="flex items-center gap-1">
                   <ActualIcon />
-                  <p className="text-lg text-red-400 font-medium leading-none">Актуальная</p>
+                  <p className="text-lg text-red-400 font-medium leading-none">
+                    Актуальная
+                  </p>
                 </div>
               )}
             </div>
-
-            <div className="text-xl">{item.description}</div>
+            <div
+              className="text-xl whitespace-pre-wrap"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
+            <div>
+              Автор:{' '}
+              <a
+                href={item.author}
+                target={'_blank'}
+                rel={'noreferrer'}
+                className="text-blue_light"
+              >
+                {item.author}
+              </a>
+            </div>
             <ModList mods={item.mods} />
           </div>
         </div>

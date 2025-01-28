@@ -4,7 +4,13 @@ interface HomeIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
 const HomeIcon: FC<HomeIconProps> = ({ ...props }) => {
   return (
-    <svg width="20" height="21" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      width="20"
+      height="21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <path
         d="M13 20v-8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v8"
         stroke="#F4F8FE"

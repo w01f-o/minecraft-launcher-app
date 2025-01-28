@@ -20,6 +20,8 @@ const Settings: FC = () => {
     isAutoLogin,
     isDebugMode,
     isFullscreen,
+    isLauncherHide,
+    toggleLauncherHide,
   } = useSettings();
 
   const settingsSwitcherList: Setting[] = [
@@ -37,13 +39,13 @@ const Settings: FC = () => {
       value: isFullscreen,
       action: toggleFullScreen,
     },
-    // {
-    //   id: 3,
-    //   name: 'Скрывать лаунчер',
-    //   description: 'Скрывать лаунчер при запуске игры',
-    //   value: isLauncherHide,
-    //   action: toggleLauncherHide,
-    // },
+    {
+      id: 3,
+      name: 'Скрывать лаунчер',
+      description: 'Скрывать лаунчер при запуске игры',
+      value: isLauncherHide,
+      action: toggleLauncherHide,
+    },
     {
       id: 4,
       name: 'Автоматический вход на сервер',
@@ -58,17 +60,17 @@ const Settings: FC = () => {
       <VladBackGround />
       <div className="flex justify-end py-12 flex-grow">
         <div className="flex w-[60%] justify-center flex-col gap-6">
-          {settingsSwitcherList.map((setting) => (
+          {settingsSwitcherList.map(setting => (
             <SettingsSwitcher setting={setting} key={setting.id} />
           ))}
           <RamSetting />
           <div className="flex gap-6">
-            <NavLink to={'/'} className="self-start">
-              <Button role={'primary'}>На главную</Button>
-            </NavLink>
             <div className="w-[250px]">
               <DownloadLogs />
             </div>
+            <NavLink to={'/'} className="self-start" draggable={false}>
+              <Button role={'secondary'}>На главную</Button>
+            </NavLink>
           </div>
         </div>
       </div>

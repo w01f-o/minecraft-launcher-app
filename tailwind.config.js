@@ -2,7 +2,6 @@
 module.exports = {
   content: [
     './src/renderer/index.html',
-    './src/renderer/loading.html',
     './src/renderer/src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
