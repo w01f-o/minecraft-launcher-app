@@ -1,0 +1,1 @@
+export { VpnDetect } from './VpnDetect';

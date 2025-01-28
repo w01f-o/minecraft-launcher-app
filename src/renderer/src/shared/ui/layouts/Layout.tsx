@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import { NavBar } from '@/renderer/widgets/navbar';
 import { TitleBar } from '@/renderer/widgets/titlebar';
+import { VpnDetect } from '@/renderer/widgets/vpn-detect';
 import Snowfall from 'react-snowfall';
 import { Toaster } from 'sonner';
 import { RoutePaths } from '../../router';
@@ -23,9 +24,12 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     <>
       <TitleBar />
       <div className="flex flex-col flex-grow px-14 pb-12 relative">
-        <h1 className="text-[40px] leading-none font-bold text-blue_dark pb-4 mt-2 desktop-height:text-5xl desktop-height:mb-2 select-none">
-          The Chocolate Thief
-        </h1>
+        <div className="flex desktop-height:mb-2 pb-4 gap-4 items-end">
+          <h1 className="text-[40px] leading-none font-bold text-blue_dark  mt-2 desktop-height:text-5xl select-none">
+            The Chocolate Thief
+          </h1>
+          <VpnDetect />
+        </div>
         {!pathnamesWithoutNavBar.includes(pathname as RoutePaths) && <NavBar />}
         {children}
       </div>
