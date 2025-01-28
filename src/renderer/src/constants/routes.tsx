@@ -1,10 +1,10 @@
-import { Route } from '../types/Route.type';
-import Home from '../components/pages/Home';
-import Settings from '../components/pages/Settings';
 import Character from '../components/pages/Character';
 import ClientScreenshots from '../components/pages/ClientScreenshots';
 import Debug from '../components/pages/Debug';
+import Home from '../components/pages/Home';
 import Loading from '../components/pages/Loading';
+import Settings from '../components/pages/Settings';
+import { Route } from '../types/Route.type';
 
 export const routes: Route[] = [
   {
