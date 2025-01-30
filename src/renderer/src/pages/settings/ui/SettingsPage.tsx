@@ -62,12 +62,11 @@ export const SettingsPage: FC = () => {
           <div className="flex gap-6">
             <DownloadLogs />
             <Button
-              role={'secondary'}
               as={NavLink}
               to="/"
               draggable={false}
               size="lg"
-              className="shadow-md"
+              className="shadow-md bg-white"
             >
               На главную
             </Button>

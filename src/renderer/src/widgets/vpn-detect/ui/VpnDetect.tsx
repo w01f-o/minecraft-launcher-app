@@ -1,32 +1,41 @@
+import { useNetworkState } from '@uidotdev/usehooks';
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 
 export const VpnDetect: FC = () => {
   const [isVpnDetect, setIsVpnDetect] = useState<boolean>(false);
 
+  const getSimulatedLocation = async (): Promise<void> => {
+    try {
+      const { data } = await axios.get('https://api.ipgeolocation.io/getip');
+      const { data: location } = await axios.get(
+        `https://api.ipgeolocation.io/ipgeo`,
+        {
+          params: {
+            apiKey: import.meta.env.VITE_VPN_DETECT_API_KEY,
+            ip: data.ip,
+          },
+        }
+      );
+
+      setIsVpnDetect(
+        location.time_zone.name !==
+          Intl.DateTimeFormat().resolvedOptions().timeZone
+      );
+    } catch {
+      console.log('Error');
+    }
+  };
+
+  const { online } = useNetworkState();
+
   useEffect(() => {
-    const getSimulatedLocation = async (): Promise<void> => {
-      try {
-        const { data } = await axios.get('https://api.ipgeolocation.io/getip');
-        const { data: location } = await axios.get(
-          `https://api.ipgeolocation.io/ipgeo`,
-          {
-            params: {
-              apiKey: import.meta.env.VITE_VPN_DETECT_API_KEY,
-              ip: data.ip,
-            },
-          }
-        );
+    if (online) {
+      getSimulatedLocation();
+    }
+  }, [online]);
 
-        setIsVpnDetect(
-          location.time_zone.name !==
-            Intl.DateTimeFormat().resolvedOptions().timeZone
-        );
-      } catch {
-        console.log('Error');
-      }
-    };
-
+  useEffect(() => {
     getSimulatedLocation();
   }, []);
 

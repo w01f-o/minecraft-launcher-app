@@ -1,10 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { FC, lazy, ReactNode, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { NavBar } from '@/renderer/widgets/navbar';
 import { TitleBar } from '@/renderer/widgets/titlebar';
 import { VpnDetect } from '@/renderer/widgets/vpn-detect';
-import Snowfall from 'react-snowfall';
 import { Toaster } from 'sonner';
 import { RoutePaths } from '../../router';
 import Background from './Background';
@@ -12,6 +11,8 @@ import Background from './Background';
 interface LayoutProps {
   children: ReactNode;
 }
+
+const LazySnowfall = lazy(() => import('react-snowfall'));
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
@@ -35,7 +36,11 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
       </div>
       <Background />
       <div id="root-portal" className="z-[60]"></div>
-      <Snowfall snowflakeCount={60} />
+      {[12, 1, 2].includes(new Date().getMonth() + 1) && (
+        <Suspense>
+          <LazySnowfall snowflakeCount={60} />
+        </Suspense>
+      )}
       <Toaster
         richColors
         closeButton
